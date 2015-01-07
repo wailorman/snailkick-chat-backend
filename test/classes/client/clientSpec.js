@@ -278,6 +278,18 @@ describe( 'Client class', function () {
 
             } );
 
+            it( 'with name, provider', function ( done ) {
+
+                testTemplates.create.shouldCreate(
+                    {
+                        name:     'The Name',
+                        provider: 'vk'
+                    },
+                    done
+                );
+
+            } );
+
             it( 'with name, avatar, profile', function ( done ) {
 
                 testTemplates.create.shouldCreate(
@@ -312,6 +324,12 @@ describe( 'Client class', function () {
             beforeEach( function ( done ) {
 
                 cleanUp.Clients( done );
+
+            } );
+
+            it( 'with null data', function ( done ) {
+
+                testTemplates.create.shouldReturnError( null, done );
 
             } );
 

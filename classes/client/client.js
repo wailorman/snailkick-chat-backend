@@ -8,6 +8,9 @@ var mongoose    = require( 'mongoose' ),
     ClientModel = require( './client-model.js' ).ClientModel;
 
 
+/* TODO Add a key property to the object which will random-generated */
+
+
 /**
  *
  * Construct a new Client
@@ -109,6 +112,9 @@ Client.prototype.create = function ( data, next ) {
             // . Validate parameters
             function ( scb ) {
 
+                if ( !data )
+                    return scb( new restify.InvalidArgumentError( 'data|invalid' ) );
+
                 if ( !self._validators.name( data.name ) )
                     return scb( new restify.InvalidArgumentError( 'name|invalid' ) );
 
@@ -132,13 +138,14 @@ Client.prototype.create = function ( data, next ) {
 
                 dataForWrite.name = data.name;
 
-                if ( data.avatarUrl ) dataForWrite.avatarUrl = data.avatarUrl;
-                if ( data.profileUrl ) dataForWrite.profileUrl = data.profileUrl;
-                if ( data.provider ) dataForWrite.provider = data.provider;
+                if ( data.avatarUrl )   dataForWrite.avatarUrl = data.avatarUrl;
+                if ( data.profileUrl )  dataForWrite.profileUrl = data.profileUrl;
+                if ( data.provider )    dataForWrite.provider = data.provider;
 
                 var newDocument = new ClientModel( dataForWrite );
 
                 newDocument.save( function ( err, doc ) {
+
 
                     if ( err ) return scb( new restify.InternalError( 'Mongo: ' + err.message ) );
 
@@ -177,6 +184,8 @@ Client.prototype.create = function ( data, next ) {
 Client.prototype.remove = function ( next ) {
 
     var self = this;
+
+    if ( !self.id ) return next( new restify.InvalidArgumentError( 'self.id - undefined' ) );
 
     async.series(
         [
@@ -227,6 +236,8 @@ Client.prototype.remove = function ( next ) {
 /**
  * Find one Client
  *
+ * @todo Find by key. But not together with id
+ *
  * @param               filter          Should be not null
  * @param {string}      filter.id
  * @param {function}    next
@@ -260,7 +271,7 @@ Client.prototype.findOne = function ( filter, next ) {
                 ClientModel.findOne( { _id: new mf.ObjectId( filter.id ) }, function ( err, doc ) {
 
                     if ( err ) return scb( new restify.InternalError( 'Mongo: ' + err.message ) );
-                    if ( ! doc ) return scb( new restify.ResourceNotFoundError( '404' ) );
+                    if ( !doc ) return scb( new restify.ResourceNotFoundError( '404' ) );
 
                     receivedDocument = doc;
 
@@ -298,8 +309,6 @@ Client.prototype.findOne = function ( filter, next ) {
  */
 Array.prototype.findClients = function ( filter, next ) {
 };
-
-
 
 
 module.exports = Client;
