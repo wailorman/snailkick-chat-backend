@@ -10,7 +10,9 @@ var mongoose     = require( 'mongoose' ),
 
     MessageModel = require( './message-model.js' ).MessageModel,
 
-    defaultLimit = 1000;
+    defaultLimit = 100,
+
+    maxLimit     = 1000;
 
 var Message = function () {
 };
@@ -98,13 +100,13 @@ Message.prototype.post = function ( data, next ) {
         function ( scb ) {
 
             if ( !data )
-                return scb( new restify.InvalidArgumentError( 'data|invalid can not be null' ) );
+                return scb( new restify.InvalidArgumentError( 'data|invalid. can not be null' ) );
 
             if ( !self._validators.text( data.text ) )
-                return scb( new restify.InvalidArgumentError( 'text|invalid' ) );
+                return scb( new restify.InvalidArgumentError( 'data.text|invalid' ) );
 
             if ( !data.client )
-                return scb( new restify.InvalidArgumentError( 'client|can not be null' ) );
+                return scb( new restify.InvalidArgumentError( 'data.client|invalid. can not be null' ) );
 
             self._validators.client( data.client, scb );
 
@@ -188,50 +190,144 @@ Message.prototype.remove = function ( next ) {
 
 };
 
-
+/**
+ *
+ * @param filter
+ * @param filter.limit
+ * @param filter.after
+ * @param next
+ */
 Array.prototype.findMessages = function ( filter, next ) {
 
-    var limit, after, sort;
+    var arrayInstance = this,
+
+        limit, after, sort,
+        query = {},
+        receivedDocuments;
 
     async.series( [
 
         // . Validate and parse parameters
         function ( scb ) {
 
-            // limit
+            async.series( [
 
-            if ( !filter.limit ) {
-                limit = defaultLimit;
-            }
+                // limit
+                function ( vscb ) {
 
-            if ( typeof filter.limit === 'string' && ( parseInt( filter.limit ) ) ) {
+                    if ( !filter.limit ) {
+                        limit = defaultLimit;
+                        return vscb();
+                    }
 
-                limit = parseInt( filter.limit );
+                    if ( typeof filter.limit !== 'string' && typeof filter.limit !== 'number' )
+                        return vscb( new restify.InvalidArgumentError( 'filter.limit|invalid' ) );
 
-            } else if ( typeof filter.limit === 'number' ) {
+                    if ( typeof filter.limit === 'string' ) {
 
-                limit = filter.limit;
+                        if ( parseInt( filter.limit ) )
+                            filter.limit = parseInt( filter.limit );
+                        else
+                            return vscb( new restify.InvalidArgumentError( 'filter.limit|invalid string number' ) );
 
-            } else
-                return scb( new restify.InvalidArgumentError( 'limit|invalid' ) );
+                    }
 
+                    if ( filter.limit > maxLimit )
+                        return vscb( new restify.InvalidArgumentError( 'filter.limit|invalid. should be less or equal ' + maxLimit ) );
 
+                    limit = filter.limit;
 
-            // after
+                    vscb();
 
-            if ( filter.after ) {
+                },
 
+                // after
+                function ( vscb ) {
 
+                    if ( !filter.after ) {
+                        return vscb();
+                    }
 
-            }
+                    if ( !mf.isObjectId( filter.after ) )
+                        return vscb( new restify.InvalidArgumentError( 'filter.after|invalid. should be an ObjectId' ) );
 
-        }
+                    after = filter.after;
+
+                    vscb();
+                },
+
+                // sort
+                function ( vscb ) {
+
+                    // limit positive - find last
+                    // limit negative - find first
+
+                    //sort = { _id: limit > 0 ? -1 : 1 };
+
+                    sort = { _id: 1 };
+
+                    vscb();
+
+                }
+
+            ], scb );
+
+        },
 
         // . Prepare query
+        function ( scb ) {
+
+            query = after ? { _id: { $gt: new mf.ObjectId( after ) } } : {};
+            scb();
+
+        },
 
         // . Find in DB
+        function ( scb ) {
+
+            console.log( 'query: ' + JSON.stringify( query ) +
+                         ' limit: ' + limit +
+                         ' sort: ' + JSON.stringify( sort ) );
+
+            MessageModel.find( query ).limit( limit ).sort( sort ).exec( function ( err, docs ) {
+
+                if ( err ) return scb( new restify.InternalError( 'Find in DB: Mongo error: ' + err.message ) );
+
+                receivedDocuments = docs.reverse();
+
+                scb();
+
+            } );
+
+        },
 
         // . Convert to objects
+        function ( scb ) {
+
+            if ( receivedDocuments.length === 0 )
+                return scb();
+
+
+            async.each(
+                receivedDocuments,
+                function ( document, ecb ) {
+
+                    var messageToPushToResultArray = new Message();
+
+                    messageToPushToResultArray._documentToObject( document, function ( err ) {
+                        if ( err ) return ecb( new restify.InternalError( 'Documents to object converting error: ' + err.message ) );
+
+                        arrayInstance.push( messageToPushToResultArray );
+
+                        ecb();
+
+                    } );
+
+                },
+                scb
+            );
+
+        }
 
     ], next );
 

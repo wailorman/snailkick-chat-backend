@@ -5,7 +5,7 @@ var mongoose     = require( 'mongoose' ),
     restify      = require( 'restify' ),
 
     Message      = require( '../../../classes/message/message.js' ),
-    MessageModel = require( '../../../classes/message/message-model.js' ).ClientModel,
+    MessageModel = require( '../../../classes/message/message-model.js' ).MessageModel,
 
     ClientModel  = require( '../../../classes/client/client-model.js' ).ClientModel,
     Client       = require( '../../../classes/client/client.js' );
@@ -445,13 +445,6 @@ describe( 'Message class', function () {
             it( 'should return error when limit > 1000', function ( done ) {
 
                 testTemplates.findMessages.shouldReturnError( { limit: 1001 }, done );
-
-            } );
-
-
-            it( 'should return error when limit == 0', function ( done ) {
-
-                testTemplates.findMessages.shouldReturnError( { limit: 0 }, done );
 
             } );
 
