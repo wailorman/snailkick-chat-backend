@@ -10,7 +10,7 @@ var messageSchema = new Schema( {
     },
 
     client: {
-        type:     String,
+        type:     Schema.Types.ObjectId,
         required: true
     },
 

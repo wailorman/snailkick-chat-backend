@@ -19,6 +19,7 @@ var theNewMessage,
 
     theNewMessagesArray    = [],
     generatedMessagesArray = [],
+    findMessagesArray      = [],
 
     theNewClient,
     theNewClientArguments  = {
@@ -145,7 +146,7 @@ var testTemplates = {
 
         generatedMessagesArray = [];
 
-        cleanUp.messages( function(){
+        cleanUp.messages( function () {
 
             async.times(
                 numOfMessages,
@@ -181,94 +182,128 @@ var testTemplates = {
 
         /**
          *
-         * @param filter
+         * @param [parameters]
          *
-         * @param {number}  [filter.generate]
-         * @param {number}  [filter.length]
-         * @param {Array}   [filter.numbersOfMessagesToRemove]
-         * @param {number}  [filter.limit]
-         * @param {number}  [filter.after]
-         * @param {number}  [filter.textOfFirst]
-         * @param {number}  [filter.textOfLast]
+         * @param [parameters.generateKey]
+         * @param [parameters.generateAmount]
+         *
+         * @param [parameters.checkResultArray]
+         * @param [parameters.checkLength]
+         *
+         * @param [parameters]
+         * @param [parameters.lastText]
+         * @param [parameters.limit]
          *
          * @param next
          */
-        shouldFind: function ( filter, next ) {
+        shouldFind: function ( parameters, next ) {
 
-            var query;
+            var lastParameter,
+                generatedMessagesArray = [];
 
             async.series( [
 
-                // . Generate and prepare
+                // . Generate messages
                 function ( scb ) {
 
-                    testTemplates.generateMessages( filter.generate, theNewClient, scb );
+                    if ( !parameters.generateKey ) return scb();
+
+                    async.timesSeries(
+                        parameters.generateAmount,
+                        function ( n, tcb ) {
+
+                            var theMessage = new Message();
+
+                            theMessage.post(
+                                {
+                                    text:   parameters.generateKey + n,
+                                    client: theNewClient
+                                },
+                                function ( err ) {
+
+                                    should.not.exist( err );
+
+                                    generatedMessagesArray.push( theMessage );
+
+                                    tcb();
+
+                                }
+                            );
+
+                        }, scb
+                    );
 
                 },
 
-                // . Prepare
+                // . Prepare last
                 function ( scb ) {
 
-                    query = {};
+                    lastParameter = null;
 
-                    if ( filter.after )
-                        query.after = generatedMessagesArray[ filter.after ].id;
+                    if ( parameters.lastText ) {
 
-                    if ( filter.limit )
-                        query.limit = filter.limit;
+                        MessageModel.findOne( { text: parameters.lastText }, function ( err, doc ) {
+
+                            should.not.exist( err );
+                            //should.exist( doc );
+
+                            if ( !doc ) return scb();
+
+                            lastParameter = doc._id.toString();
+
+                            scb();
+
+                        } );
+
+                    } else scb();
+
+                },
+
+                // . Find
+                function ( scb ) {
+
+                    findMessagesArray = [];
+                    findMessagesArray.findMessages(
+                        {
+                            last:  lastParameter,
+                            limit: parameters.limit
+                        },
+                        function ( err ) {
+
+                            should.not.exist( err );
+                            scb();
+
+                        }
+                    );
+
+                },
+
+                // . Check results
+                function ( scb ) {
+
+                    if ( parameters.checkLength ) findMessagesArray.length.should.eql( parameters.checkLength );
+
+                    if ( parameters.checkResultArray ) {
+
+                        var keysToCheck = Object.extended( parameters.checkResultArray ).keys();
+
+                        keysToCheck.each( function ( n ) {
+
+                            var indexOfMessageToCheck = n,
+                                messageToCheck = findMessagesArray[ parseInt( indexOfMessageToCheck ) ]; //.text.should.eql( parameters.checkResultArray[ n ] );
+
+                            messageToCheck.text.should.eql( parameters.checkResultArray[ n ] );
+
+                        } );
+
+                    }
 
                     scb();
-
-                },
-
-                // . Remove
-                function ( scb ) {
-
-                    if ( filter.numbersOfMessagesToRemove ) {
-
-                        async.each(
-                            filter.numbersOfMessagesToRemove,
-
-                            function ( numberOfMessage, ecb ) {
-
-                                generatedMessagesArray[ numberOfMessage ].remove( ecb );
-
-                            },
-
-                            scb
-                        );
-
-                    } else
-                        scb();
-
-                },
-
-                // . Request and check
-                function ( scb ) {
-
-
-                    theNewMessagesArray = [];
-                    theNewMessagesArray.findMessages( query, function ( err ) {
-
-                        should.not.exist( err );
-
-                        if ( filter.length )
-                            theNewMessagesArray.length.should.eql( filter.length );
-
-                        if ( filter.textOfFirst && filter.length > 0 )
-                            theNewMessagesArray[ 0 ].text.should.eql( 'hey' + filter.textOfFirst );
-
-                        if ( filter.textOfLast && filter.length > 1 )
-                            theNewMessagesArray[ filter.length - 1 ].text.should.eql( 'hey' + filter.textOfLast );
-
-
-                        scb();
-
-                    } );
 
                 }
 
             ], next );
+
         },
 
         shouldReturnError: function ( filter, next ) {
@@ -288,7 +323,7 @@ var testTemplates = {
 };
 
 
-describe( 'Message class', function () {
+describe( 'Message', function () {
 
     before( function ( done ) {
 
@@ -431,307 +466,155 @@ describe( 'Message class', function () {
 
     describe( 'Array.findMessages()', function () {
 
-        // TODO Try to pass string int to limit
+        describe( 'with last', function () {
 
-        before( function ( done ) {
+            before( function ( done ) {
 
-            testCreate.Client( done );
-
-        } );
-
-        describe( 'limit', function () {
-
-
-            it( 'should return error when limit > 1000', function ( done ) {
-
-                testTemplates.findMessages.shouldReturnError( { limit: 1001 }, done );
+                cleanUp.messages( done );
 
             } );
 
+            it( 'B. No new messages -> empty array', function ( done ) {
 
-            it( 'should not return error when limit == 1000', function ( done ) {
+                testTemplates.findMessages.shouldFind(
+                    {
+                        generateKey:    'gen',
+                        generateAmount: 100,
+                        checkLength:    0,
+                        lastText:       'gen99'
+                    },
+                    done
+                );
 
-                theNewMessagesArray.findMessages( { limit: 1000 }, function ( err ) {
+            } );
+
+            it( 'C. Add one -> new + 99gen', function ( done ) {
+
+                testTemplates.findMessages.shouldFind(
+                    {
+                        generateKey:      'new',
+                        generateAmount:   1,
+                        checkLength:      100,
+                        checkResultArray: {
+                            0:  'new0',
+                            1:  'gen99',
+                            99: 'gen1'
+                        },
+                        lastText:         'gen99'
+                    },
+                    done
+                );
+
+            } );
+
+            it( 'D. Add another one -> new + new + 98gen', function ( done ) {
+
+                testTemplates.findMessages.shouldFind(
+                    {
+                        generateKey:      'next',
+                        generateAmount:   2,
+                        checkLength:      100,
+                        checkResultArray: {
+                            0:  'next1',
+                            1:  'next0',
+                            2:  'new0',
+                            3:  'gen99',
+                            99: 'gen3'
+                        },
+                        lastText:         'gen99'
+                    },
+                    done
+                );
+
+            } );
+
+            it( 'E. Remove one', function ( done ) {
+
+                async.series( [
+
+                    // . Remove message
+                    function ( scb ) {
+
+                        MessageModel.findOneAndRemove( { text: 'next0' }, scb );
+
+                    },
+
+                    // . Check
+                    function ( scb ) {
+
+                        testTemplates.findMessages.shouldFind(
+                            {
+                                checkLength:      100,
+                                checkResultArray: {
+                                    0:  'next1',
+                                    1:  'new0',
+                                    2:  'gen99',
+                                    99: 'gen2'
+                                },
+                                lastText:         'gen99'
+                            },
+                            scb
+                        );
+
+                    }
+
+                ], function ( err ) {
+
                     should.not.exist( err );
                     done();
+
                 } );
 
             } );
 
-            // D
-            it( 'should use default limit and return last 100 messages ( no limit, 200 total )', function ( done ) {
+            it( 'F. Add 50', function ( done ) {
 
                 testTemplates.findMessages.shouldFind(
                     {
-                        generate:    200,
-                        length:      100,
-                        textOfFirst: 150,
-                        textOfLast:  199
+                        generateKey:      'at',
+                        generateAmount:   50,
+                        checkLength:      100,
+                        checkResultArray: {
+                            0:  'at49',
+                            49: 'at0',
+                            50: 'next1',
+                            51: 'new0',
+                            52: 'gen99',
+                            99: 'gen52'
+                        },
+                        lastText:         'gen99'
                     },
                     done
                 );
 
             } );
 
-            // E
-            it( 'should return last 50 messages ( limit=50, 200 total )', function ( done ) {
+            it( 'G. Add 70 -> 70 + 30', function ( done ) {
 
                 testTemplates.findMessages.shouldFind(
                     {
-                        generate:    200,
-                        length:      50,
-                        textOfFirst: 150,
-                        textOfLast:  199,
-                        limit:       50
+                        generateKey:      'x',
+                        generateAmount:   70,
+                        checkLength:      100,
+                        checkResultArray: {
+                            0:  'x69',
+                            69: 'x0',
+                            70: 'at49',
+                            99: 'at20'
+                        },
+                        lastText:         'gen99'
                     },
                     done
                 );
 
             } );
 
-            // F
-            it( 'should return last 50 messages ( limit=100, 50 total )', function ( done ) {
-
+            it( 'H. Change last to x69', function ( done ) {
 
                 testTemplates.findMessages.shouldFind(
                     {
-                        generate:    50,
-                        length:      50,
-                        textOfFirst: 0,
-                        textOfLast:  49,
-                        limit:       100
-                    },
-                    done
-                );
-
-
-            } );
-
-            // G
-            it( 'should return first 100 messages ( limit=-100, 200 total )', function ( done ) {
-
-
-                testTemplates.findMessages.shouldFind(
-                    {
-                        generate:    200,
-                        length:      100,
-                        textOfFirst: 0,
-                        textOfLast:  99,
-                        limit:       -100
-                    },
-                    done
-                );
-
-
-            } );
-
-        } );
-
-        describe( 'after', function () {
-
-            // H
-            it( 'should return 50 messages after someone ( after=.49, 100 total )', function ( done ) {
-
-
-                testTemplates.findMessages.shouldFind(
-                    {
-                        generate:    100,
-                        length:      50,
-                        after:       49,
-                        textOfFirst: 50,
-                        textOfLast:  99
-                    },
-                    done
-                );
-
-            } );
-
-            // I
-            it( 'should return last 100 messages if |someone| is far than 100 ( after=.49, 300 total )', function ( done ) {
-
-
-                testTemplates.findMessages.shouldFind(
-                    {
-                        generate:    300,
-                        length:      100,
-                        textOfFirst: 200,
-                        textOfLast:  299,
-                        after:       49
-                    },
-                    done
-                );
-
-            } );
-
-            // J
-            it( 'should return one new message ( after=.49, 50 total )', function ( done ) {
-
-
-                testTemplates.findMessages.shouldFind(
-                    {
-                        generate:    50,
-                        length:      1,
-                        textOfFirst: 49,
-                        after:       48
-                    },
-                    done
-                );
-
-
-            } );
-
-            // K
-            it( 'should return empty array if no any new messages', function ( done ) {
-
-
-                testTemplates.findMessages.shouldFind(
-                    {
-                        generate: 50,
-                        length:   0,
-                        after:    49
-                    },
-                    done
-                );
-
-
-            } );
-
-            // L
-            it( 'should return messages after someone e.t. this someone was removed ( after=.49, 100 total, .49 to remove )', function ( done ) {
-
-
-                testTemplates.findMessages.shouldFind(
-                    {
-                        generate:                  100,
-                        length:                    50,
-                        after:                     49,
-                        numbersOfMessagesToRemove: [ 49 ],
-                        textOfFirst:               50,
-                        textOfLast:                99
-                    },
-                    done
-                );
-
-
-            } );
-
-
-            // M
-            it( 'should return last-1 messages if someone and the next message was removed ( 100 total )', function ( done ) {
-
-
-                testTemplates.findMessages.shouldFind(
-                    {
-                        generate:                  100,
-                        length:                    49,
-                        after:                     49,
-                        numbersOfMessagesToRemove: [ 49, 52 ],
-                        textOfFirst:               50,
-                        textOfLast:                99
-                    },
-                    done
-                );
-
-
-            } );
-
-
-            // N
-            it( 'should return empty array if we try to find after last-1, but last-1 and last was removed', function ( done ) {
-
-
-                testTemplates.findMessages.shouldFind(
-                    {
-                        generate:                  50,
-                        length:                    0,
-                        after:                     48,
-                        numbersOfMessagesToRemove: [ 48, 49 ]
-                    },
-                    done
-                );
-
-
-            } );
-
-        } );
-
-        describe( 'limit & after', function () {
-
-
-            it( 'should return error when limit > 1000 and correct after', function ( done ) {
-
-                testTemplates.findMessages.shouldReturnError( {
-                        limit: 1001,
-                        after: '000000000000000000000000'
-                    },
-                    done );
-
-            } );
-
-            it( 'should return error when limit == 0 and after is correct', function ( done ) {
-
-                testTemplates.findMessages.shouldReturnError( { limit: 0, after: '000000000000000000000000' }, done );
-
-            } );
-
-            // last
-
-            // O
-            it( 'should return no more than 5 last messages after someone ( after=.60, limit=5, 100 total )', function ( done ) {
-
-                testTemplates.findMessages.shouldFind(
-                    {
-                        generate: 100,
-                        length:   5,
-                        limit:    5,
-                        after:    60
-                    },
-                    done
-                );
-
-            } );
-
-            // P
-            it( 'should return last 5 messages after someone e.t. limit is greater ( after=.39, limit=200, 50 total )', function ( done ) {
-
-                testTemplates.findMessages.shouldFind(
-                    {
-                        generate: 50,
-                        length:   5,
-                        limit:    200,
-                        after:    44
-                    },
-                    done
-                );
-
-            } );
-
-            // first
-
-            // Q
-            it( 'should return no more than 5 first messages after someone ( after=.40, limit=5, 100 total )', function ( done ) {
-
-                testTemplates.findMessages.shouldFind(
-                    {
-                        generate: 100,
-                        length:   5,
-                        limit:    -5,
-                        after:    44
-                    },
-                    done
-                );
-
-            } );
-
-            // R
-            it( 'should return first 5 messages after someone e.t. limit is greater ( after=.39, limit=200, 50 total )', function ( done ) {
-
-                testTemplates.findMessages.shouldFind(
-                    {
-                        generate: 50,
-                        length:   5,
-                        limit:    200,
-                        after:    44
+                        checkLength: 0,
+                        lastText:    'x69'
                     },
                     done
                 );
@@ -740,15 +623,205 @@ describe( 'Message class', function () {
 
         } );
 
-        it( 'should return empty error if no messages found by filter', function ( done ) {
+        describe( 'no parameters', function () {
 
-            testTemplates.findMessages.shouldFind(
-                {
-                    generate: 0,
-                    length:   0
-                },
-                done
-            );
+            before( function ( done ) {
+
+                cleanUp.messages( done );
+
+            } );
+
+            it( 'J. No any new -> 100', function ( done ) {
+
+                testTemplates.findMessages.shouldFind(
+                    {
+                        generateKey:      'gen',
+                        generateAmount:   100,
+                        checkLength:      100,
+                        checkResultArray: {
+                            0:  'gen99',
+                            99: 'gen0'
+                        }
+                    },
+                    done
+                );
+
+            } );
+
+            it( 'K. 1 new', function ( done ) {
+
+                testTemplates.findMessages.shouldFind(
+                    {
+                        generateKey:      'new',
+                        generateAmount:   1,
+                        checkLength:      100,
+                        checkResultArray: {
+                            0:  'new0',
+                            1:  'gen99',
+                            99: 'gen1'
+                        }
+                    },
+                    done
+                );
+
+            } );
+
+            it( 'L. 70 new', function ( done ) {
+
+                testTemplates.findMessages.shouldFind(
+                    {
+                        generateKey:      'next',
+                        generateAmount:   70,
+                        checkLength:      100,
+                        checkResultArray: {
+                            0:  'next69',
+                            69: 'next0',
+                            70: 'new0',
+                            71: 'gen99',
+                            99: 'gen71'
+                        }
+                    },
+                    done
+                );
+
+            } );
+
+        } );
+
+        describe( 'with limit', function () {
+
+            before( function ( done ) {
+
+                cleanUp.messages( done );
+
+            } );
+
+            it( 'N. No new', function ( done ) {
+
+                testTemplates.findMessages.shouldFind(
+                    {
+                        generateKey:      'gen',
+                        generateAmount:   150,
+                        checkLength:      50,
+                        checkResultArray: {
+                            0:  'gen149',
+                            49: 'gen100'
+                        },
+                        limit:            50
+                    },
+                    done
+                );
+
+            } );
+
+            it( 'O. 30 new', function ( done ) {
+
+                testTemplates.findMessages.shouldFind(
+                    {
+                        generateKey:      'new',
+                        generateAmount:   30,
+                        checkLength:      50,
+                        checkResultArray: {
+                            0:  'new29',
+                            29: 'new0',
+                            30: 'gen149',
+                            49: 'gen130'
+                        },
+                        limit:            50
+                    },
+                    done
+                );
+
+            } );
+
+        } );
+
+        describe( 'with limit and last', function () {
+
+            before( function ( done ) {
+
+                cleanUp.messages( done );
+
+            } );
+
+            it( 'Q. No new', function ( done ) {
+
+                testTemplates.findMessages.shouldFind(
+                    {
+                        generateKey:    'gen',
+                        generateAmount: 100,
+                        checkLength:    0,
+                        limit:          50,
+                        last:           'gen99'
+                    },
+                    done
+                );
+
+            } );
+
+            it( 'R. 10 new', function ( done ) {
+
+                testTemplates.findMessages.shouldFind(
+                    {
+                        generateKey:      'new',
+                        generateAmount:   10,
+                        checkLength:      50,
+                        checkResultArray: {
+                            0:  'new9',
+                            9:  'new0',
+                            10: 'gen99',
+                            49: 'gen60'
+                        },
+                        limit:            50,
+                        lastText:         'gen99'
+                    },
+                    done
+                );
+
+            } );
+
+            it( 'S. 60 new', function ( done ) {
+
+                testTemplates.findMessages.shouldFind(
+                    {
+                        generateKey:      'next',
+                        generateAmount:   60,
+                        checkLength:      50,
+                        checkResultArray: {
+                            0:  'next59',
+                            49: 'next10'
+                        },
+                        limit:            50,
+                        lastText:         'gen99'
+                    },
+                    done
+                );
+
+            } );
+
+        } );
+
+        it( 'should return empty array if no messages', function ( done ) {
+
+            async.series( [
+
+                cleanUp.messages,
+                function ( scb ) {
+
+                    findMessagesArray = [];
+                    findMessagesArray.findMessages( null, function ( err ) {
+
+                        should.not.exist( err );
+
+                        findMessagesArray.length.should.eql( 0 );
+
+                        scb();
+
+                    } );
+
+                }
+
+            ], done );
 
         } );
 

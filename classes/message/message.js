@@ -194,12 +194,14 @@ Message.prototype.remove = function ( next ) {
  *
  * @param filter
  * @param filter.limit
- * @param filter.after
+ * @param filter.last
  * @param next
  */
 Array.prototype.findMessages = function ( filter, next ) {
 
     var arrayInstance = this,
+
+        emptyResult = null,
 
         limit, after, sort,
         query = {},
@@ -207,124 +209,121 @@ Array.prototype.findMessages = function ( filter, next ) {
 
     async.series( [
 
-        // . Validate and parse parameters
+        // . Validate filter
         function ( scb ) {
 
-            async.series( [
+            if ( !filter ) return scb();
 
-                // limit
-                function ( vscb ) {
 
-                    if ( !filter.limit ) {
-                        limit = defaultLimit;
-                        return vscb();
-                    }
+            if ( filter.last && !mf.isObjectId( filter.last ) )
+                return scb( new restify.InvalidArgumentError( 'last|invalid' ) );
 
-                    if ( typeof filter.limit !== 'string' && typeof filter.limit !== 'number' )
-                        return vscb( new restify.InvalidArgumentError( 'filter.limit|invalid' ) );
 
-                    if ( typeof filter.limit === 'string' ) {
+            if ( filter.limit ) {
 
-                        if ( parseInt( filter.limit ) )
-                            filter.limit = parseInt( filter.limit );
-                        else
-                            return vscb( new restify.InvalidArgumentError( 'filter.limit|invalid string number' ) );
+                if ( typeof filter.limit === 'string' && parseInt( filter.limit ) ) {
 
-                    }
+                    filter.limit = parseInt( filter.limit );
 
-                    if ( filter.limit > maxLimit )
-                        return vscb( new restify.InvalidArgumentError( 'filter.limit|invalid. should be less or equal ' + maxLimit ) );
+                } else if ( typeof filter.limit === 'string' )
+                    return scb( new restify.InvalidArgumentError( 'limit|invalid string number' ) );
 
-                    limit = filter.limit;
 
-                    vscb();
+                if ( filter.limit > 1000 ) return scb( new restify.InvalidArgumentError( 'limit|too big' ) );
 
-                },
 
-                // after
-                function ( vscb ) {
+            } else
+                filter.limit = defaultLimit;
 
-                    if ( !filter.after ) {
-                        return vscb();
-                    }
-
-                    if ( !mf.isObjectId( filter.after ) )
-                        return vscb( new restify.InvalidArgumentError( 'filter.after|invalid. should be an ObjectId' ) );
-
-                    after = filter.after;
-
-                    vscb();
-                },
-
-                // sort
-                function ( vscb ) {
-
-                    // limit positive - find last
-                    // limit negative - find first
-
-                    //sort = { _id: limit > 0 ? -1 : 1 };
-
-                    sort = { _id: 1 };
-
-                    vscb();
-
-                }
-
-            ], scb );
-
-        },
-
-        // . Prepare query
-        function ( scb ) {
-
-            query = after ? { _id: { $gt: new mf.ObjectId( after ) } } : {};
             scb();
 
         },
 
-        // . Find in DB
+        // . Check last
         function ( scb ) {
 
-            console.log( 'query: ' + JSON.stringify( query ) +
-                         ' limit: ' + limit +
-                         ' sort: ' + JSON.stringify( sort ) );
+            MessageModel
+                .find()
+                .sort( { _id: -1 } )
+                .limit( 1 )
+                .exec( function ( err, docs ) {
 
-            MessageModel.find( query ).limit( limit ).sort( sort ).exec( function ( err, docs ) {
+                    if ( err ) return scb( new restify.InternalError( 'Check last. Mongo: ' + err.message ) );
 
-                if ( err ) return scb( new restify.InternalError( 'Find in DB: Mongo error: ' + err.message ) );
+                    if ( docs.length == 0 ) {
 
-                receivedDocuments = docs.reverse();
+                        // No ANY messages
 
-                scb();
+                        emptyResult = true;
+                        return scb();
 
-            } );
+                    }
+
+                    if ( filter.last && filter.last === docs[ 0 ]._id.toString() ) {
+
+                        // Passed last message is equal to the last message in DB
+
+                        emptyResult = true;
+                        return scb();
+
+                    }
+
+                    emptyResult = false;
+                    scb();
+
+                } );
+
 
         },
 
-        // . Convert to objects
+        // . Request to DB
         function ( scb ) {
 
-            if ( receivedDocuments.length === 0 )
-                return scb();
+            if ( emptyResult ) return scb();
 
+            MessageModel
+                .find()
+                .sort( { _id: -1 } )
+                .limit( filter.limit )
+                .exec( function ( err, docs ) {
+
+                    if ( err ) return scb( new restify.InvalidArgumentError( 'Request to DB. Mongo: ' + err.message ) );
+
+                    if ( docs.length === 0 ) {
+
+                        emptyResult = true;
+                        return scb();
+
+                    }
+
+                    receivedDocuments = docs;
+
+                    scb();
+
+                } );
+
+        },
+
+        // . Convert documents
+        function ( scb ) {
+
+            if ( emptyResult ) return scb();
 
             async.each(
                 receivedDocuments,
                 function ( document, ecb ) {
 
-                    var messageToPushToResultArray = new Message();
+                    var messageToPush = {
+                        id:       document._id.toString(),
+                        text:     document.text,
+                        clientId: document.client.toString()
+                    };
 
-                    messageToPushToResultArray._documentToObject( document, function ( err ) {
-                        if ( err ) return ecb( new restify.InternalError( 'Documents to object converting error: ' + err.message ) );
+                    arrayInstance.push( messageToPush );
 
-                        arrayInstance.push( messageToPushToResultArray );
+                    ecb();
 
-                        ecb();
-
-                    } );
-
-                },
-                scb
+                }, scb
             );
 
         }
