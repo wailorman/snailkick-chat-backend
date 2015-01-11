@@ -2,94 +2,30 @@ var ObjectId = require( 'mongoose' ).Types.ObjectId;
 
 var restify = require( 'restify' );
 
-
-module.exports.is = function ( variable ) {
-    var isVariable = {};
-
-    var isVariableStringObjectId = new RegExp( "^[0-9a-fA-F]{24}$" );
-
-    isVariable.stringObjectId = typeof variable === 'string' &&
-                                isVariableStringObjectId.test( variable );
-
-    // not working!
-    isVariable.ObjectId = typeof variable !== 'boolean' &&
-                          (!variable !== true) &&  // not null
-                          variable.hasOwnProperty( 'toString' ) &&
-                          isVariableStringObjectId.test( variable.toString() );
-
-
-    var isVariableStringNumber = new RegExp( '^\\d+$' );
-
-
-    /**
-     * ObjectId string. 24-byte hex. Example: "54669de0dee0f05018e5538a"
-     *
-     * @typedef {string} stringObjectId
-     */
-
-    var isToken = new RegExp( "^[0-9a-zA-Z]{24}$" );
-
-    isVariable.stringToken = isToken.test( variable );
-
-
-    isVariable.stringNumber = typeof variable === 'string' &&
-                              isVariableStringNumber.test( variable );
-
-    isVariable.Date = variable instanceof Date;
-
-    isVariable.null = typeof variable === 'object' &&
-                      typeof variable !== 'boolean' &&
-                      (!variable === true);
-
-    // some magic checking for null variable
-    isVariable.object = typeof variable === 'object' &&
-                        typeof variable !== 'boolean' &&
-                        (!variable !== true);
-
-    isVariable.undefined = typeof variable == 'undefined';
-
-
-    isVariable.string = typeof variable !== 'undefined' &&
-                        typeof variable === 'string';
-
-    isVariable.number = typeof variable == 'number';
-
-    isVariable.boolean = typeof variable == 'boolean';
-
-    return {
-        stringObjectId: isVariable.stringObjectId,
-        stringNumber:   isVariable.stringNumber,
-        Date:           isVariable.Date,
-        null:           isVariable.null,
-        object:         isVariable.object,
-        undefined:      isVariable.undefined,
-        string:         isVariable.string,
-        number:         isVariable.number,
-        boolean:        isVariable.boolean,
-
-        not: {
-            stringObjectId: !isVariable.stringObjectId,
-            stringNumber:   !isVariable.stringNumber,
-            Date:           !isVariable.Date,
-            null:           !isVariable.null,
-            object:         !isVariable.object,
-            undefined:      !isVariable.undefined,
-            string:         !isVariable.string,
-            number:         !isVariable.number,
-            boolean:        !isVariable.boolean
-        }
-    };
-};
-
-module.exports.isObjectId = function ( variable ) {
+var isObjectId = function ( variable ) {
     var isVariableStringObjectId = new RegExp( "^[0-9a-f]{24}$" );
     return typeof variable === 'string' && isVariableStringObjectId.test( variable );
 };
+String.prototype.isObjectId = isObjectId;
+module.exports.isObjectId = isObjectId;
 
-module.exports.isToken = function ( variable ) {
+
+var isKey = function ( variable ) {
+    var isToken = new RegExp( "^[0-9a-zA-Z]{16}$" );
+    return typeof variable === 'string' && isToken.test( variable );
+};
+String.prototype.isKey = isKey;
+module.exports.isKey = isKey;
+
+
+var isToken = function ( variable ) {
     var isToken = new RegExp( "^[0-9a-zA-Z]{24}$" );
     return typeof variable === 'string' && isToken.test( variable );
 };
+String.prototype.isToken = isToken;
+module.exports.isToken = isToken;
+
+
 
 module.exports.isNull = function ( variable ) {
     return typeof variable != 'boolean' && (!variable != true);
@@ -103,34 +39,6 @@ module.exports.isNull = function ( variable ) {
  * @param {object}      obj2    Second object. Primary object
  */
 var mergePerms = function ( obj1, obj2 ) {
-
-    /*var result;
-
-     if ( obj1 ){
-
-     result = obj1;
-
-     if ( obj2 ) {
-     for ( var k in obj2 ){
-
-     if ( obj2.hasOwnProperty(k) ) {
-     if ( typeof obj2[k] == 'object' ) {
-     result[k] = mergePerms(obj1[k], obj2[k]);
-     }
-     if( typeof obj2[k] == 'boolean' ){
-     result[k] = obj2[k];
-     }
-     }else{
-     result[k] = obj1[k];
-     }
-
-     }
-     }
-     }else{
-     result = null;
-     }
-
-     return result;*/
 
     var groupPerms = obj1;
     var individualPerms = obj2;
@@ -239,7 +147,7 @@ module.exports.validatePerms = function ( perms ) {
                 // If the property not next level
                 // and not normal permission value (boolean)
                 // it's incorrect property. Then we should
-                // break checking, because one of the property
+                // break checking, because one of the properties
                 // is invalid
 
                 return false;

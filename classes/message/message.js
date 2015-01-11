@@ -12,9 +12,12 @@ var mongoose     = require( 'mongoose' ),
 
     defaultLimit = 100,
 
-    maxLimit     = 1000;
+    maxLimit     = 1000,
+
+    self         = this;
 
 var Message = function () {
+    self = this;
 };
 
 Message.prototype._validators = {};
@@ -52,8 +55,6 @@ Message.prototype._validators.client = function ( value, next ) {
  */
 Message.prototype._documentToObject = function ( document, next ) {
 
-    var self = this;
-
     self.id = document._id.toString();
     self.text = document.text;
 
@@ -72,8 +73,6 @@ Message.prototype._documentToObject = function ( document, next ) {
 
 Message.prototype.clean = function () {
 
-    var self = this;
-
     delete self.id;
     delete self.text;
     delete self.posted;
@@ -91,8 +90,7 @@ Message.prototype.clean = function () {
  */
 Message.prototype.post = function ( data, next ) {
 
-    var self = this,
-        receivedDocument;
+    var receivedDocument;
 
     async.series( [
 
@@ -146,7 +144,7 @@ Message.prototype.post = function ( data, next ) {
 
 Message.prototype.remove = function ( next ) {
 
-    var self = this;
+    //var self = this;
 
     async.series( [
 
@@ -200,11 +198,7 @@ Message.prototype.remove = function ( next ) {
 Array.prototype.findMessages = function ( filter, next ) {
 
     var arrayInstance = this,
-
         emptyResult = null,
-
-        limit, after, sort,
-        query = {},
         receivedDocuments;
 
     async.series( [
@@ -212,11 +206,10 @@ Array.prototype.findMessages = function ( filter, next ) {
         // . Validate filter
         function ( scb ) {
 
-            if ( !filter ) return scb();
-
-
-            if ( filter.last && !mf.isObjectId( filter.last ) )
-                return scb( new restify.InvalidArgumentError( 'last|invalid' ) );
+            if ( !filter ) {
+                filter = { limit: defaultLimit };
+                return scb();
+            }
 
 
             if ( filter.limit ) {
@@ -229,50 +222,13 @@ Array.prototype.findMessages = function ( filter, next ) {
                     return scb( new restify.InvalidArgumentError( 'limit|invalid string number' ) );
 
 
-                if ( filter.limit > 1000 ) return scb( new restify.InvalidArgumentError( 'limit|too big' ) );
+                if ( filter.limit > maxLimit ) return scb( new restify.InvalidArgumentError( 'limit|too big' ) );
 
 
             } else
                 filter.limit = defaultLimit;
 
             scb();
-
-        },
-
-        // . Check last
-        function ( scb ) {
-
-            MessageModel
-                .find()
-                .sort( { _id: -1 } )
-                .limit( 1 )
-                .exec( function ( err, docs ) {
-
-                    if ( err ) return scb( new restify.InternalError( 'Check last. Mongo: ' + err.message ) );
-
-                    if ( docs.length == 0 ) {
-
-                        // No ANY messages
-
-                        emptyResult = true;
-                        return scb();
-
-                    }
-
-                    if ( filter.last && filter.last === docs[ 0 ]._id.toString() ) {
-
-                        // Passed last message is equal to the last message in DB
-
-                        emptyResult = true;
-                        return scb();
-
-                    }
-
-                    emptyResult = false;
-                    scb();
-
-                } );
-
 
         },
 
@@ -325,6 +281,48 @@ Array.prototype.findMessages = function ( filter, next ) {
 
                 }, scb
             );
+
+        }
+
+    ], next );
+
+};
+
+Message.prototype.findOne = function ( filter, next ) {
+
+    var receivedDocument;
+
+    async.series( [
+
+        // . Validate id
+        function ( scb ) {
+
+            if ( !mf.isObjectId( filter.id ) ) return scb( new restify.InvalidArgumentError( 'id|invalid' ) );
+
+            scb();
+
+        },
+
+        // . Request to DB
+        function ( scb ) {
+
+            MessageModel.findOne( { _id: new mf.ObjectId( filter.id ) }, function ( err, doc ) {
+
+                if ( err ) return scb( new restify.InternalError( 'Mongo: ' + err.message ) );
+                if ( !doc ) return scb( new restify.ResourceNotFoundError( '404' ) );
+
+                receivedDocument = doc;
+
+                scb();
+
+            } );
+
+        },
+
+        // . Convert document
+        function ( scb ) {
+
+            self._documentToObject( receivedDocument, scb );
 
         }
 
