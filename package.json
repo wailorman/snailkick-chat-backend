@@ -8,6 +8,7 @@
     "mongodb": "^1.4.26",
     "mongoose": "^3.8.21",
     "password-hash": "^1.2.2",
+    "rand-token": "^0.2.1",
     "restify": "^2.8.4",
     "should": "^4.4.2",
     "sugar": "^1.4.1"

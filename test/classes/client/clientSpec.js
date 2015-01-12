@@ -3,6 +3,7 @@ var mongoose              = require( 'mongoose' ),
     async                 = require( 'async' ),
     sugar                 = require( 'sugar' ),
     restify               = require( 'restify' ),
+    mf                    = require( '../../../libs/mini-funcs.js' ),
 
     Client                = require( '../../../classes/client/client.js' ),
     ClientModel           = require( '../../../classes/client/client-model.js' ).ClientModel,
@@ -11,10 +12,16 @@ var mongoose              = require( 'mongoose' ),
 
     theNewClient,
     theNewClientArguments = {
-        name:       'Name Surname',
-        avatarUrl:  'http://google.com/',
-        profileUrl: 'http://google.com/',
-        provider:   'google'
+        name:    'Name Surname',
+        avatar:  'http://google.com/',
+        profile: {
+            vk: {
+                id:         '68161840684',
+                first_name: 'Name',
+                last_name:  'Last',
+                photo_max:  'http://google.com/'
+            }
+        }
     },
 
     theNewClientsArray,
@@ -32,23 +39,18 @@ var mongoose              = require( 'mongoose' ),
                     should.not.exist( err );
 
                     theNewClient.id.should.be.type( 'string' );
+                    mf.isObjectId( theNewClient.id ).should.eql( true );
 
                     theNewClient.name.should.be.type( 'string' );
                     theNewClient.name.should.eql( data.name );
 
-                    if ( data.avatarUrl ) {
-                        theNewClient.avatarUrl.should.be.type( 'string' );
-                        theNewClient.avatarUrl.should.eql( data.avatarUrl );
+                    if ( data.avatar ) {
+                        theNewClient.avatar.should.be.type( 'string' );
+                        theNewClient.avatar.should.eql( data.avatar );
                     }
 
-                    if ( data.profileUrl ) {
-                        theNewClient.profileUrl.should.be.type( 'string' );
-                        theNewClient.profileUrl.should.eql( data.profileUrl );
-                    }
-
-                    if ( data.provider ) {
-                        theNewClient.provider.should.be.type( 'string' );
-                        theNewClient.provider.should.eql( data.provider );
+                    if ( data.profile ) {
+                        theNewClient.profile.should.eql( data.profile );
                     }
 
                     next();
@@ -108,7 +110,9 @@ var mongoose              = require( 'mongoose' ),
 
                     should.not.exist( err );
 
-                    theNewClient.id.should.eql( filter.id );
+                    if ( filter.id ) theNewClient.id.should.eql( filter.id );
+
+                    mf.isObjectId( theNewClient.id ).should.eql( true );
 
                     should.exist( theNewClient.name );
 
@@ -262,7 +266,12 @@ describe( 'Client class', function () {
 
             it( 'with name', function ( done ) {
 
-                testTemplates.create.shouldCreate( { name: 'The Name' }, done );
+                testTemplates.create.shouldCreate(
+                    {
+                        name: 'The Name'
+                    },
+                    done
+                );
 
             } );
 
@@ -270,8 +279,8 @@ describe( 'Client class', function () {
 
                 testTemplates.create.shouldCreate(
                     {
-                        name:      'The Name',
-                        avatarUrl: 'http://google.com/'
+                        name:   'The Name',
+                        avatar: 'http://google.com/'
                     },
                     done
                 );
@@ -282,23 +291,16 @@ describe( 'Client class', function () {
 
                 testTemplates.create.shouldCreate(
                     {
-                        name:       'The Name',
-                        avatarUrl:  'http://google.com/',
-                        profileUrl: 'http://google.com/'
-                    },
-                    done
-                );
-
-            } );
-
-            it( 'with name, avatar, profile, provider', function ( done ) {
-
-                testTemplates.create.shouldCreate(
-                    {
-                        name:       'The Name',
-                        avatarUrl:  'http://google.com/',
-                        profileUrl: 'http://google.com/',
-                        provider:   'google'
+                        name:    'The Name',
+                        avatar:  'http://google.com/',
+                        profile: {
+                            vk: {
+                                id:         '20205566',
+                                first_name: 'Имя',
+                                last_name:  'Фамилия',
+                                photo_max:  'http://google.com/'
+                            }
+                        }
                     },
                     done
                 );
@@ -315,11 +317,17 @@ describe( 'Client class', function () {
 
             } );
 
+            it( 'with null data', function ( done ) {
+
+                testTemplates.create.shouldReturnError( null, done );
+
+            } );
+
             it( 'with avatar', function ( done ) {
 
                 testTemplates.create.shouldReturnError(
                     {
-                        avatarUrl: 'http://google.com/'
+                        avatar: 'http://google.com/'
                     },
                     done
                 );
@@ -330,21 +338,15 @@ describe( 'Client class', function () {
 
                 testTemplates.create.shouldReturnError(
                     {
-                        avatarUrl:  'http://google.com/',
-                        profileUrl: 'http://google.com/'
-                    },
-                    done
-                );
-
-            } );
-
-            it( 'with avatar, profile, provider', function ( done ) {
-
-                testTemplates.create.shouldReturnError(
-                    {
-                        avatarUrl:  'http://google.com/',
-                        profileUrl: 'http://google.com/',
-                        provider:   'google'
+                        avatar:  'http://google.com/',
+                        profile: {
+                            vk: {
+                                id:         '68161840684',
+                                first_name: 'Name',
+                                last_name:  'Last',
+                                photo_max:  'http://google.com/'
+                            }
+                        }
                     },
                     done
                 );
@@ -400,6 +402,151 @@ describe( 'Client class', function () {
 
         } );
 
+        describe( 'should find by token', function () {
+
+            beforeEach( function ( done ) {
+
+                reCreate.Client( done );
+
+            } );
+
+            it( 'by single token', function ( done ) {
+
+                var tokenToFind;
+
+                async.series( [
+
+                    // attach
+                    function ( scb ) {
+
+                        theNewClient.attachToken( function ( err, token ) {
+
+                            should.not.exist( err );
+
+                            tokenToFind = token;
+
+                            scb();
+
+                        } );
+
+                    },
+
+                    // find
+                    function ( scb ) {
+
+                        testTemplates.findOne.shouldFind( { token: tokenToFind }, scb );
+
+                    }
+
+                ], done );
+
+            } );
+
+            it( 'by diff tokens', function ( done ) {
+
+                var firstToken, secondToken;
+
+                async.series( [
+
+                    // first token gen
+                    function ( scb ) {
+
+                        theNewClient.attachToken( function ( err, token ) {
+
+                            should.not.exist( err );
+                            firstToken = token;
+                            scb();
+
+                        } );
+
+                    },
+
+                    // second token gen
+                    function ( scb ) {
+
+                        theNewClient.attachToken( function ( err, token ) {
+
+                            should.not.exist( err );
+                            secondToken = token;
+                            scb();
+
+                        } );
+
+                    },
+
+                    // try to find by first token
+                    function ( scb ) {
+
+                        testTemplates.findOne.shouldFind( { token: firstToken }, scb );
+
+                    },
+
+                    // try to find by second token
+                    function ( scb ) {
+
+                        testTemplates.findOne.shouldFind( { token: secondToken }, scb );
+
+                    }
+
+                ], done );
+
+            } );
+
+        } );
+
+        describe( 'should not find by token', function () {
+
+            beforeEach( function ( done ) {
+
+                reCreate.Client( done );
+
+            } );
+
+            it( 'by nonexistent token', function ( done ) {
+
+                testTemplates.findOne.shouldReturn404( { token: '00000000000000000000' }, done );
+
+            } );
+
+            it( 'removed Client by existent token', function ( done ) {
+
+                var tokenForFind;
+
+                async.series( [
+
+                    // attach token
+                    function ( scb ) {
+
+                        theNewClient.attachToken( function ( err, token ) {
+
+                            should.not.exist( err );
+                            tokenForFind = token;
+                            scb();
+
+                        } );
+
+                    },
+
+                    // remove Client
+                    function ( scb ) {
+
+                        theNewClient.remove( scb );
+
+                    },
+
+                    // try to find by token
+                    function ( scb ) {
+
+                        testTemplates.findOne.shouldReturn404( { token: tokenForFind }, scb );
+
+                    }
+
+                ], done );
+
+            } );
+
+        } );
+
         describe( 'should not find', function () {
 
             it( 'nonexistent Client', function ( done ) {
@@ -447,337 +594,100 @@ describe( 'Client class', function () {
 
     } );
 
-    xdescribe( '.Array.findClients()', function () {
+    describe( '.attachToken()', function () {
 
-        describe( 'should find', function () {
+        describe( 'should attach', function () {
 
             beforeEach( function ( done ) {
-
-                cleanUp.Clients( function () {
-
-                    async.times( 10, function ( n, tcb ) {
-
-                            theNewClient = new Client();
-
-                            theNewClient.create( theNewClientArguments, function ( err ) {
-
-                                should.not.exist( err );
-                                tcb();
-
-                            } );
-
-                        },
-                        done
-                    );
-
-                } );
-
-            } );
-
-            describe( '1', function () {
-
-                beforeEach( function ( done ) {
-
-                    reCreate.Client( done );
-
-                } );
-
-                it( 'by id', function ( done ) {
-
-                    testTemplates.findClients.shouldFind( { id: theNewClientArguments.id }, 1, done );
-
-                } );
-
-                it( 'by name', function ( done ) {
-
-                    testTemplates.findClients.shouldFind( { name: theNewClientArguments.name }, 1, done );
-
-                } );
-
-                it( 'by provider', function ( done ) {
-
-                    testTemplates.findClients.shouldFind( { provider: theNewClientArguments.provider }, 1, done );
-
-                } );
-
-            } );
-
-            describe( '2', function () {
-
-                beforeEach( function ( done ) {
-
-                    cleanUp.Clients( function () {
-
-                        async.times( 2, function ( n, tcb ) {
-
-                                theNewClient = new Client();
-
-                                theNewClient.create( theNewClientArguments, function ( err ) {
-
-                                    should.not.exist( err );
-                                    tcb();
-
-                                } );
-
-                            },
-                            done
-                        );
-
-                    } );
-                } );
-
-                it( 'with the same names', function ( done ) {
-
-                    testTemplates.findClients.shouldFind( { name: theNewClientArguments.name }, 2, done );
-
-                } );
-
-                it( 'with the same provider', function ( done ) {
-
-                    testTemplates.findClients.shouldFind( { provider: theNewClientArguments.provider }, 2, done );
-
-                } );
-
-            } );
-
-            it( '5 clients even though totally are 10 clients', function ( done ) {
-
-                async.series(
-                    [
-
-                        // . Create 10 Clients
-                        function ( scb ) {
-
-                            async.times( 10, function ( n, tcb ) {
-
-                                    theNewClient = new Client();
-
-                                    theNewClient.create( theNewClientArguments, function ( err ) {
-
-                                        should.not.exist( err );
-                                        tcb();
-
-                                    } );
-
-                                },
-                                scb
-                            );
-
-                        },
-
-                        // . Try to find
-                        function ( scb ) {
-
-                            testTemplates.findClients.shouldFind(
-                                { name: theNewClientArguments.name, limit: 5 },
-                                5,
-                                scb
-                            );
-
-                        }
-
-                    ],
-                    done
-                );
-
-            } );
-
-            it( 'empty array if limit == 0', function ( done ) {
-
-                async.series(
-                    [
-
-                        // . Create 10 Clients
-                        function ( scb ) {
-
-                            async.times( 10, function ( n, tcb ) {
-
-                                    theNewClient = new Client();
-
-                                    theNewClient.create( theNewClientArguments, function ( err ) {
-
-                                        should.not.exist( err );
-                                        tcb();
-
-                                    } );
-
-                                },
-                                scb
-                            );
-
-                        },
-
-                        // . Try to find
-                        function ( scb ) {
-
-                            testTemplates.findClients.shouldFind(
-                                { name: theNewClientArguments.name, limit: 0 },
-                                0,
-                                scb
-                            );
-
-                        }
-
-                    ],
-                    done
-                );
-
-            } );
-
-            it( 'if limit is a string value', function ( done ) {
-
-                testTemplates.findClients.shouldFind(
-                    {
-                        name:  theNewClientArguments.name,
-                        limit: "5"
-                    },
-                    5,
-                    done
-                );
-
-            } );
-
-            it( 'if filter is null, return all Clients', function ( done ) {
-
-                testTemplates.findClients.shouldFind(
-                    null,
-                    10,
-                    done
-                );
-
-            } );
-
-        } );
-
-        describe( 'should return 404 if', function () {
-
-            beforeEach( function ( done ) {
-
                 reCreate.Client( done );
+            } );
+
+            it( 'token to Client', function ( done ) {
+
+                theNewClient.attachToken( function ( err, token ) {
+
+                    should.not.exist( err );
+                    should.exist( token );
+
+                    token.should.type( 'string' );
+                    mf.isToken( token ).should.eql( true );
+
+                    done();
+
+                } );
 
             } );
 
-            it( 'find by nonexistent id', function ( done ) {
+            it( 'different tokens on second attach', function ( done ) {
 
-                testTemplates.findClients.shouldReturn404(
-                    { id: '000000000000000000000000' },
-                    done
-                );
+                var firstToken, secondToken;
 
-            } );
+                async.series( [
 
-            it( 'find by nonexistent name', function ( done ) {
-
-                testTemplates.findClients.shouldReturn404(
-                    { name: '000000000000000000000000' },
-                    done
-                );
-
-            } );
-
-            it( 'find by nonexistent provider', function ( done ) {
-
-                testTemplates.findClients.shouldReturn404(
-                    { provider: '000000000000000000000000' },
-                    done
-                );
-
-            } );
-
-            it( 'no Clients any more', function ( done ) {
-
-                async.series(
-                    [
-
-                        cleanUp.Clients,
-                        function ( scb ) {
-
-                            testTemplates.findClients.shouldReturn404( { name: theNewClientArguments.name }, scb );
-
-                        }
-
-                    ],
-                    done
-                );
-
-            } );
-
-        } );
-
-        describe( 'should return error if passed invalid params', function () {
-
-            it( 'not string id', function ( done ) {
-
-                testTemplates.findClients.shouldReturn404(
-                    { id: 200000200000 },
-                    done
-                );
-
-            } );
-
-            it( 'not string name', function ( done ) {
-
-                testTemplates.findClients.shouldReturn404(
-                    { name: 200000 },
-                    done
-                );
-
-            } );
-
-            it( 'not string provider', function ( done ) {
-
-                testTemplates.findClients.shouldReturn404(
-                    { provider: 200000200000 },
-                    done
-                );
-
-            } );
-
-            it( 'not int|string limit', function ( done ) {
-
-                testTemplates.findClients.shouldReturn404(
-                    { limit: true },
-                    done
-                );
-
-            } );
-
-        } );
-
-        it( 'if limit did not passed, should return no more than default limit', function ( done ) {
-
-            async.series(
-                [
-
-                    cleanUp.Clients,
-
-                    // . Create many Clients
+                    // generate first token
                     function ( scb ) {
 
-                        async.times( 70, function ( n, tcb ) {
+                        theNewClient.attachToken( function ( err, token ) {
 
-                                theNewClient = new Client();
+                            should.not.exist( err );
+                            should.exist( token );
 
-                                theNewClient.create( theNewClientArguments, function ( err ) {
+                            firstToken = token;
 
-                                    should.not.exist( err );
-                                    tcb();
+                            scb();
 
-                                } );
+                        } );
 
-                            },
-                            scb
-                        );
+                    },
+
+                    // generate second token
+                    function ( scb ) {
+
+                        theNewClient.attachToken( function ( err, token ) {
+
+                            should.not.exist( err );
+                            should.exist( token );
+
+                            secondToken = token;
+
+                            scb();
+
+                        } );
+
+                    },
+
+                    // compare
+                    function ( scb ) {
+
+                        firstToken.should.not.eql( secondToken );
+                        scb();
 
                     }
 
-                ],
-                done
-            );
+                ], done );
+
+            } );
 
         } );
 
-        xit( 'should use offset if it was passed' );
+        describe( 'should not attach', function () {
+
+            beforeEach( function ( done ) {
+                reCreate.Client( done );
+            } );
+
+            it( 'to nonexistent Client', function ( done ) {
+
+                theNewClient.id = '000000000000000000000000';
+
+                theNewClient.attachToken( function ( err ) {
+                    should.exist( err );
+                    done();
+                } );
+
+            } );
+
+        } );
 
     } );
 

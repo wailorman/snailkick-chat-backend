@@ -3,6 +3,9 @@ var ObjectId = require( 'mongoose' ).Types.ObjectId;
 var restify = require( 'restify' );
 
 var isObjectId = function ( variable ) {
+
+    if ( !variable ) variable = this;
+
     var isVariableStringObjectId = new RegExp( "^[0-9a-f]{24}$" );
     return typeof variable === 'string' && isVariableStringObjectId.test( variable );
 };
@@ -19,7 +22,10 @@ module.exports.isKey = isKey;
 
 
 var isToken = function ( variable ) {
-    var isToken = new RegExp( "^[0-9a-zA-Z]{24}$" );
+
+    if ( !variable ) variable = this;
+
+    var isToken = new RegExp( "^[0-9a-zA-Z]{20}$" );
     return typeof variable === 'string' && isToken.test( variable );
 };
 String.prototype.isToken = isToken;
