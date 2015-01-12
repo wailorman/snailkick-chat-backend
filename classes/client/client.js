@@ -4,8 +4,15 @@ var mongoose    = require( 'mongoose' ),
     sugar       = require( 'sugar' ),
     mf          = require( '../../libs/mini-funcs.js' ),
     restify     = require( 'restify' ),
+    randToken   = require( 'rand-token' ),
 
-    ClientModel = require( './client-model.js' ).ClientModel;
+    ClientModel = require( './client-model.js' ).ClientModel,
+    TokenModel  = require( './token-model.js' ).TokenModel,
+
+    self;
+
+
+/* TODO Add a key property to the object which will random-generated */
 
 
 /**
@@ -16,13 +23,14 @@ var mongoose    = require( 'mongoose' ),
  *
  * @property { string } id
  * @property { string } name
- * @property { string } avatarUrl
+ * @property { string } avatar
  * @property { string } profileUrl
  * @property { string } provider
  *
  * @constructor
  */
 var Client = function () {
+    self = this;
 };
 
 
@@ -34,11 +42,9 @@ Client.prototype._documentToObject = function ( document, next ) {
 
     self.name = document.name;
 
-    if ( document.avatarUrl ) self.avatarUrl = document.avatarUrl;
+    if ( document.avatar ) self.avatar = document.avatar;
 
-    if ( document.profileUrl ) self.profileUrl = document.profileUrl;
-
-    if ( document.provider ) self.provider = document.provider;
+    if ( document.profile ) self.profile = document.profile;
 
     next();
 
@@ -59,7 +65,8 @@ Client.prototype._validators = {
 
     },
 
-    url: function ( value ) {
+    // TODO
+    url:  function ( value ) {
 
         return typeof value === 'string';
 
@@ -79,7 +86,7 @@ Client.prototype.clean = function () {
 
     delete self.id;
     delete self.name;
-    delete self.avatarUrl;
+    delete self.avatar;
     delete self.profileUrl;
     delete self.provider;
 
@@ -93,9 +100,8 @@ Client.prototype.clean = function () {
  *
  * @param               data
  * @param {string}      data.name
- * @param {string}      [data.avatarUrl]
- * @param {string}      [data.profileUrl]
- * @param {string}      [data.provider]
+ * @param {string}      [data.avatar]
+ * @param {Object}      [data.profile]
  * @param {function}    next
  */
 Client.prototype.create = function ( data, next ) {
@@ -109,17 +115,14 @@ Client.prototype.create = function ( data, next ) {
             // . Validate parameters
             function ( scb ) {
 
+                if ( !data )
+                    return scb( new restify.InvalidArgumentError( 'data|invalid' ) );
+
                 if ( !self._validators.name( data.name ) )
                     return scb( new restify.InvalidArgumentError( 'name|invalid' ) );
 
-                if ( data.avatarUrl && !self._validators.url( data.avatarUrl ) )
-                    return scb( new restify.InvalidArgumentError( 'avatarUrl|invalid' ) );
-
-                if ( data.profileUrl && !self._validators.url( data.profileUrl ) )
-                    return scb( new restify.InvalidArgumentError( 'profileUrl|invalid' ) );
-
-                if ( data.provider && !self._validators.provider( data.provider ) )
-                    return scb( new restify.InvalidArgumentError( 'provider|invalid' ) );
+                if ( data.avatar && !self._validators.url( data.avatar ) )
+                    return scb( new restify.InvalidArgumentError( 'avatar|invalid' ) );
 
                 scb();
 
@@ -132,13 +135,13 @@ Client.prototype.create = function ( data, next ) {
 
                 dataForWrite.name = data.name;
 
-                if ( data.avatarUrl ) dataForWrite.avatarUrl = data.avatarUrl;
-                if ( data.profileUrl ) dataForWrite.profileUrl = data.profileUrl;
-                if ( data.provider ) dataForWrite.provider = data.provider;
+                if ( data.avatar )   dataForWrite.avatar = data.avatar;
+                if ( data.profile )  dataForWrite.profile = data.profile;
 
                 var newDocument = new ClientModel( dataForWrite );
 
                 newDocument.save( function ( err, doc ) {
+
 
                     if ( err ) return scb( new restify.InternalError( 'Mongo: ' + err.message ) );
 
@@ -169,6 +172,71 @@ Client.prototype.create = function ( data, next ) {
 
 };
 
+Client.prototype.attachToken = function ( next ) {
+
+    var generatedToken,
+        self = this;
+
+    async.series( [
+
+        // . Validate Client
+        function ( scb ) {
+
+            var validateClient = new Client();
+
+            validateClient.findOne( { id: self.id }, function ( err ) {
+
+                if ( err && err instanceof restify.ResourceNotFoundError )
+                    return scb( new restify.InvalidArgumentError( 'this client does not exist' ) );
+
+                if ( err )
+                    return scb( new restify.InternalError( 'Validate Client: ' + err.message ) );
+
+                scb();
+
+            } );
+
+        },
+
+        // . Generate token
+        function ( scb ) {
+
+            generatedToken = randToken.generate( 20 );
+            scb();
+
+        },
+
+        // . Write token to DB
+        function ( scb ) {
+
+            var newTokenDocument = new TokenModel( {
+
+                token:  generatedToken,
+                client: new mf.ObjectId( self.id )
+
+            } );
+
+            newTokenDocument.save( function ( err ) {
+
+                if ( err ) return scb( new restify.InternalError( 'Write token to DB. Mongo: ' + err.message ) );
+
+                scb();
+
+            } );
+
+        }
+
+    ], function ( err ) {
+
+        next(
+            err,
+            err ? null : generatedToken
+        );
+
+    } );
+
+};
+
 /**
  * Remove Client from database
  *
@@ -177,6 +245,8 @@ Client.prototype.create = function ( data, next ) {
 Client.prototype.remove = function ( next ) {
 
     var self = this;
+
+    if ( !self.id ) return next( new restify.InvalidArgumentError( 'self.id - undefined' ) );
 
     async.series(
         [
@@ -228,13 +298,13 @@ Client.prototype.remove = function ( next ) {
  * Find one Client
  *
  * @param               filter          Should be not null
- * @param {string}      filter.id
+ * @param {string}      [filter.id]
+ * @param {string}      [filter.token]
  * @param {function}    next
  */
 Client.prototype.findOne = function ( filter, next ) {
 
-    var self = this,
-        receivedDocument;
+    var receivedDocument;
 
     async.series(
         [
@@ -245,12 +315,33 @@ Client.prototype.findOne = function ( filter, next ) {
                 if ( !filter )
                     return scb( new restify.InvalidArgumentError( 'filter can not be null' ) );
 
+                if ( filter.token && ( typeof filter.token !== 'string' || mf.isToken( filter.token ) == false ) )
+                    return scb( new restify.InvalidArgumentError( 'token|invalid' ) );
 
-                if ( !self._validators.id( filter.id ) )
+                if ( filter.id && ( typeof filter.id !== 'string' || mf.isObjectId( filter.id ) == false ) )
                     return scb( new restify.InvalidArgumentError( 'id|invalid' ) );
 
 
                 scb();
+
+            },
+
+            // . Prepare token
+            function ( scb ) {
+
+                if ( !filter.token ) return scb();
+
+                TokenModel.findOne( { token: filter.token }, function ( err, doc ) {
+
+                    if ( err ) return scb( new restify.InternalError( 'Prepare token. Mongo: ' + err.message ) );
+
+                    if ( !doc ) return scb( new restify.ResourceNotFoundError( 'token is not found' ) );
+
+                    filter.id = doc.client.toString();
+
+                    scb();
+
+                } );
 
             },
 
@@ -260,7 +351,7 @@ Client.prototype.findOne = function ( filter, next ) {
                 ClientModel.findOne( { _id: new mf.ObjectId( filter.id ) }, function ( err, doc ) {
 
                     if ( err ) return scb( new restify.InternalError( 'Mongo: ' + err.message ) );
-                    if ( ! doc ) return scb( new restify.ResourceNotFoundError( '404' ) );
+                    if ( !doc ) return scb( new restify.ResourceNotFoundError( '404' ) );
 
                     receivedDocument = doc;
 
@@ -298,8 +389,6 @@ Client.prototype.findOne = function ( filter, next ) {
  */
 Array.prototype.findClients = function ( filter, next ) {
 };
-
-
 
 
 module.exports = Client;
