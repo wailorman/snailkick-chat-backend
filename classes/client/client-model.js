@@ -15,7 +15,7 @@ module.exports.ClientModel = mongoose.model( 'ClientModel',
         },
 
         profile: {
-            type: Schema.Types.Mixed
+            type: Object
         }
 
     }, {
