@@ -7,6 +7,8 @@
     "mocha": "^2.1.0",
     "mongodb": "^1.4.26",
     "mongoose": "^3.8.21",
+    "passport": "^0.2.1",
+    "passport-vkontakte": "^0.3.0",
     "password-hash": "^1.2.2",
     "rand-token": "^0.2.1",
     "restify": "^2.8.4",
