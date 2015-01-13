@@ -5,7 +5,7 @@ var mongoose = require( 'mongoose' ),
     restify  = require( 'restify' ),
     mf       = require( '../../../../libs/mini-funcs.js' ),
 
-    vkAuth = require('../../../../modules/auth/vk-auth.js');
+    vkAuth   = require( '../../../../modules/auth/vk-auth.js' );
 
 describe( 'vk authentication', function () {
 
@@ -32,42 +32,15 @@ describe( 'vk authentication', function () {
 
                 should.not.exist( err );
 
-                client.profile.vk.id.should.eql( profileToCheck.id );
+                // client.id
+                should.exist( client.id );
 
+                // client.name
+                should.exist( client.name );
                 client.name.should.match( /NoName/i );
 
-                should.not.exist( client.profile.vk.first_name );
-                should.not.exist( client.profile.vk.last_name );
-
+                // client.avatar
                 should.not.exist( client.avatar );
-                should.not.exist( client.profile.vk.avatar );
-
-                done();
-
-            } );
-
-        } );
-
-        it( 'should use NoName e.t. we passed first_name', function ( done ) {
-
-            var profileToCheck = {
-                id: 1554168565434,
-                first_name: 'Name'
-            };
-
-            vkAuth.getClientByVkProfile( profileToCheck, function ( err, client ) {
-
-                should.not.exist( err );
-
-                client.profile.vk.id.should.eql( profileToCheck.id );
-
-                client.name.should.match( /NoName/i );
-
-                should.exist( client.profile.vk.first_name );
-                should.not.exist( client.profile.vk.last_name );
-
-                should.not.exist( client.avatar );
-                should.not.exist( client.profile.vk.avatar );
 
                 done();
 
@@ -78,27 +51,19 @@ describe( 'vk authentication', function () {
         it( 'should return correct name', function ( done ) {
 
             var profileToCheck = {
-                id: 1554168565434,
-                first_name: 'Name',
-                last_name: 'Last'
+                id:          155416856543,
+                displayName: 'The Name'
             };
 
             vkAuth.getClientByVkProfile( profileToCheck, function ( err, client ) {
 
                 should.not.exist( err );
 
-                client.profile.vk.id.should.eql( profileToCheck.id );
+                // client.name
+                client.name.should.eql( 'The Name' );
 
-                client.name.should.eql( 'Name Last' );
-
-                should.exist( client.profile.vk.first_name );
-                should.exist( client.profile.vk.last_name );
-
-                client.profile.vk.first_name.should.eql( profileToCheck.first_name );
-                client.profile.vk.last_name.should.eql( profileToCheck.last_name );
-
+                // client.avatar
                 should.not.exist( client.avatar );
-                should.not.exist( client.profile.vk.avatar );
 
                 done();
 
@@ -109,25 +74,45 @@ describe( 'vk authentication', function () {
         it( 'should return correct name and avatar', function ( done ) {
 
             var profileToCheck = {
-                id: 1554168565434,
-                first_name: 'Name',
-                last_name: 'Last',
-                photo_max: 'http://google.com/1.png'
+                id:         1554160856544,
+                displayName: 'The Name',
+                photos:  [ { type: 'photo_max', value: 'http://cs314730.vk.me/v314730142/c473/UFnidpMxrQM.jpg' } ]
             };
 
             vkAuth.getClientByVkProfile( profileToCheck, function ( err, client ) {
 
                 should.not.exist( err );
 
-                client.profile.vk.id.should.eql( profileToCheck.id );
+                // client.name
+                client.name.should.eql( 'The Name' );
 
-                client.name.should.eql( 'Name Last' );
+                // client.avatar
+                client.avatar.should.eql( 'http://cs314730.vk.me/v314730142/c473/UFnidpMxrQM.jpg' );
 
-                should.exist( client.profile.vk.first_name );
-                should.exist( client.profile.vk.last_name );
+                done();
 
-                client.avatar.should.eql( profileToCheck.photo_max );
-                client.profile.vk.photo_max.should.eql( profileToCheck.photo_max );
+            } );
+
+        } );
+
+
+        it( 'should update Client data', function ( done ) {
+
+            var profileToCheck = {
+                id:         1554160856544,
+                displayName: 'The Newname',
+                photos:  [ { type: 'photo_max', value: 'http://cs314730.vk.me/v314730142/c473/UFnidpMxrq.jpg' } ]
+            };
+
+            vkAuth.getClientByVkProfile( profileToCheck, function ( err, client ) {
+
+                should.not.exist( err );
+
+                // client.name
+                client.name.should.eql( 'The Newname' );
+
+                // client.avatar
+                client.avatar.should.eql( 'http://cs314730.vk.me/v314730142/c473/UFnidpMxrq.jpg' );
 
                 done();
 

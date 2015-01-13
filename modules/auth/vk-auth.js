@@ -4,9 +4,17 @@ var mongoose          = require( 'mongoose' ),
     randToken         = require( 'rand-token' ),
     passport          = require( 'passport' ),
     VKontakteStrategy = require( 'passport-vkontakte' ).Strategy,
+    sugar             = require( 'sugar' ),
 
     Client            = require( '../../classes/client/client.js' ),
-    ClientModel       = require( '../../classes/client/client-model.js' ).ClientModel;
+    ClientModel       = require( '../../classes/client/client-model.js' ).ClientModel,
+
+
+    CLIENT_ID         = '4727212',
+    CLIENT_SECRET     = 'vJkxSwCYnioefOP7qZ1b',
+    LOGIN_PAGE_URL    = '/auth/vk',
+    CALLBACK_URL      = '/auth/vk/callback',
+    API_VERSION       = '5.27';
 
 
 var getClientByVkProfile = function ( profile, next ) {
@@ -37,47 +45,48 @@ var getClientByVkProfile = function ( profile, next ) {
 
                     if ( !doc ) { // not found -> create new Client
 
-                        var newClientDocument = new ClientModel( {
+                        doc = new ClientModel();
 
-                            name: ( profile.first_name && profile.last_name ) ?
-                            profile.first_name + ' ' + profile.last_name : 'NoName ' + randToken.uid( 4 ),
+                    }  // found -> update Client
 
-                            avatar: profile.photo_max ? profile.photo_max : null,
 
-                            profile: { vk: profile }
+                    // name
 
-                        } );
+                    doc.name = ( profile.displayName ) ? profile.displayName : 'NoName ' + randToken.uid( 4 );
 
-                        newClientDocument.save( function ( err, doc ) {
 
-                            if ( err ) return scb( new restify.InternalError( 'Save new client to DB. Mongo: ' + err.message ) );
+                    // avatar
 
-                            receivedDocument = doc;
+                    if ( profile.photos ) {
 
-                            scb();
+                        if ( profile.photos[ 1 ] && profile.photos[ 1 ].value )
+                            doc.avatar = profile.photos[ 1 ].value;
 
-                        } );
+                        else if ( profile.photos[ 0 ] && profile.photos[ 0 ].value )
+                            doc.avatar = profile.photos[ 0 ].value;
 
-                    } else { // found -> update Client
+                        else
+                            doc.avatar = null;
 
-                        doc.name = ( profile.first_name && profile.last_name ) ?
-                        profile.first_name + ' ' + profile.last_name : 'NoName ' + randToken.uid( 4 );
+                    } else
+                        doc.avatar = null;
 
-                        doc.avatar = profile.photo_max ? profile.photo_max : null;
 
-                        doc.profile.vk = profile;
+                    // profile
 
-                        doc.save( function ( err, doc ) {
+                    doc.profile = { vk: profile };
 
-                            if ( err ) return scb( new restify.InternalError( 'Save new client to DB. Mongo: ' + err.message ) );
 
-                            receivedDocument = doc;
+                    doc.save( function ( err, doc ) {
 
-                            scb();
+                        if ( err ) return scb( new restify.InternalError( 'Save new client to DB. Mongo: ' + err.message ) );
 
-                        } );
+                        receivedDocument = doc;
 
-                    }
+                        scb();
+
+                    } );
+
 
                 } );
 
@@ -103,27 +112,10 @@ var getClientByVkProfile = function ( profile, next ) {
 
 };
 
-
-/*passport.use( new VKontakteStrategy( {
-        clientID:      "", // VK.com docs call it 'API ID'
-        clientSecret:  "",
-        callbackURL:   "http://localhost:3000/auth/vkontakte/callback",
-        profileFields: [ 'first_name', 'last_name', 'photo_max' ]
-    },
-    function ( accessToken, refreshToken, profile, done ) {
-        User.findOrCreate( { vkontakteId: profile.id }, function ( err, user ) {
-            return done( err, user );
-        } );
-    }
-) );*/
+var initiateVkAuth = function ( req, res, next ) {
 
 
-var authInterface = function ( req, res, next ) {
-};
 
-var authCallbackInterface = function ( req, res, next ) {
 };
 
 module.exports.getClientByVkProfile = getClientByVkProfile;
-module.exports.authInterface = authInterface;
-module.exports.authCallbackInterface = authCallbackInterface;
