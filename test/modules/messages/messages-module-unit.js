@@ -4,9 +4,9 @@ var mongoose       = require( 'mongoose' ),
     sugar          = require( 'sugar' ),
     async          = require( 'async' ),
 
-    MessageModel   = require( '../../../classes/message/message-model.js' ).MessageModel,
+    MessageModel   = require( '../../../objects/message/message-model.js' ).MessageModel,
 
-    Client         = require( '../../../classes/client/client.js' ),
+    Client         = require( '../../../objects/client/client.js' ),
 
     MessagesModule = require( '../../../modules/messages-module.js' ),
 
@@ -409,5 +409,8 @@ describe( 'MessagesModule', function () {
         } );
 
 
+    after( function ( done ) {
+        mongoose.connection.close( done );
+    } );
 
 } );

@@ -7,7 +7,8 @@ var restify           = require( 'restify' ),
     userProfile,
 
     vkAuth            = require( './modules/auth/vk-auth.js' ),
-    messagesModule    = require( './modules/messages-module.js' );
+    MessagesModule    = require( './modules/messages-module.js' ),
+    ClientsModule     = require( './modules/clients-module.js' );
 
 mongoose.connect( 'mongodb://localhost/test' );
 
@@ -27,8 +28,10 @@ server.use( function ( req, res, next ) {
 
 } );
 
-server.get( '/messages', messagesModule.findMessages );
-server.post( '/messages', messagesModule.postMessage );
+server.get( '/messages', MessagesModule.findMessages );
+server.post( '/messages', MessagesModule.postMessage );
+
+server.get( '/clients/:id', ClientsModule.getClientById );
 
 server.get( '/auth/vk', vkAuth.passportHandler );
 server.get( '/auth/vk/callback', vkAuth.passportHandler, vkAuth.authResultMiddleware );

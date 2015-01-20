@@ -5,8 +5,8 @@ var mongoose              = require( 'mongoose' ),
     restify               = require( 'restify' ),
     mf                    = require( '../../../libs/mini-funcs.js' ),
 
-    Client                = require( '../../../classes/client/client.js' ),
-    ClientModel           = require( '../../../classes/client/client-model.js' ).ClientModel,
+    Client                = require( '../../../objects/client/client.js' ),
+    ClientModel           = require( '../../../objects/client/client-model.js' ).ClientModel,
 
     defaultLimit          = 50,
 
@@ -689,6 +689,10 @@ describe( 'Client class', function () {
 
         } );
 
+    } );
+
+    after( function ( done ) {
+        mongoose.connection.close( done );
     } );
 
 } );

@@ -8,6 +8,7 @@
             <path value="file://$PROJECT_DIR$/libs" />
             <path value="file://$PROJECT_DIR$/modules" />
             <path value="file://$PROJECT_DIR$/classes" />
+            <path value="file://$PROJECT_DIR$/objects" />
           </resourceRoots>
         </entryData>
       </entry>
