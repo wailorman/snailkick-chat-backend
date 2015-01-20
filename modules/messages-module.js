@@ -11,6 +11,14 @@ var mongoose = require( 'mongoose' ),
 var defaultLimit = 100,
     maxLimit     = 1000;
 
+/**
+ *
+ * @param req
+ * @param [req.params]
+ * @param [req.params.limit]
+ * @param res
+ * @param next
+ */
 var findMessages = function ( req, res, next ) {
 
     var limit, resultArrayOfMessages = [];
@@ -20,9 +28,11 @@ var findMessages = function ( req, res, next ) {
             // . Prepare limit
             function ( scb ) {
 
-                if ( typeof req.params.limit === 'string' && !parseInt( req.params.limit ) ) return scb( new restify.InvalidArgumentError( 'limit|invalid' ) );
-
                 limit = req.params.limit ? req.params.limit : defaultLimit;
+
+                if ( !req.params.limit ) return scb();
+
+                if ( typeof req.params.limit === 'string' && !parseInt( req.params.limit ) ) return scb( new restify.InvalidArgumentError( 'limit|invalid' ) );
 
                 if ( limit > maxLimit ) return scb( new restify.InvalidArgumentError( 'limit|greater than ' + maxLimit ) );
 
@@ -43,7 +53,7 @@ var findMessages = function ( req, res, next ) {
 
                         if ( !docs || docs.length === 0 ) return scb();
 
-                        async.each(
+                        async.eachSeries(
                             docs,
                             function ( doc, ecb ) {
 
@@ -57,6 +67,9 @@ var findMessages = function ( req, res, next ) {
 
                                 } );
 
+                            },
+                            function( ){
+                                return scb();
                             }
                         );
 
@@ -73,17 +86,18 @@ var findMessages = function ( req, res, next ) {
 
         ],
 
-        function ( err, resultArray ) {
+        function ( err ) {
 
             if ( err ) return next( err );
 
-            res.send( 200, resultArray );
+            res.send( 200, resultArrayOfMessages );
 
             return next();
 
         } );
 
 };
+
 
 var postMessage = function ( req, res, next ) {
 

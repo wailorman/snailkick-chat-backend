@@ -99,7 +99,7 @@ var mongoose             = require( 'mongoose' ),
 
                     Object.each( parameters.checkResultArray, function ( index, value ) {
 
-                        data[ index ].should.eql( value );
+                        data[ index ].text.should.eql( value );
 
                     } );
 
@@ -124,11 +124,11 @@ var mongoose             = require( 'mongoose' ),
 
             if ( ! parameters.amount ) return next();
 
-            async.times(
+            async.timesSeries(
                 parameters.amount,
                 function ( n, tcb ) {
 
-                    var messageTextStr = parameters.strKey ? parameters.strKey : null + n;
+                    var messageTextStr = (parameters.strKey ? parameters.strKey : null) + n;
 
                     restifyClient.post( '/messages', { text: messageTextStr }, function ( err, req, res, data ) {
 
@@ -170,7 +170,7 @@ describe( 'Messages REST', function () {
 
     before( function ( done ) {
 
-     attachTokenToHeaders( done );
+        attachTokenToHeaders( done );
 
     } );
 

@@ -7,7 +7,7 @@ var restify           = require( 'restify' ),
     userProfile,
 
     vkAuth            = require( './modules/auth/vk-auth.js' ),
-    messagesModule    = require( './modules/messagesModule.js' );
+    messagesModule    = require( './modules/messages-module.js' );
 
 mongoose.connect( 'mongodb://localhost/test' );
 
