@@ -1,7 +1,6 @@
 var mongoose = require( 'mongoose' ),
     Schema   = mongoose.Schema;
 
-
 module.exports.ClientModel = mongoose.model( 'ClientModel',
     new Schema( {
 
@@ -15,7 +14,7 @@ module.exports.ClientModel = mongoose.model( 'ClientModel',
         },
 
         profile: {
-            type: Schema.Types.Mixed
+            type: Object
         }
 
     }, {
