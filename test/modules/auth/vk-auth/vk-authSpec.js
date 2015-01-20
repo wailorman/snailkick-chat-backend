@@ -122,4 +122,8 @@ describe( 'vk authentication', function () {
 
     } );
 
+    after( function ( done ) {
+        mongoose.connection.close( done );
+    } );
+
 } );

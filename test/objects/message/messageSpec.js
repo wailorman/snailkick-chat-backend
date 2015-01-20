@@ -4,11 +4,11 @@ var mongoose     = require( 'mongoose' ),
     sugar        = require( 'sugar' ),
     restify      = require( 'restify' ),
 
-    Message      = require( '../../../classes/message/message.js' ),
-    MessageModel = require( '../../../classes/message/message-model.js' ).MessageModel,
+    Message      = require( '../../../objects/message/message.js' ),
+    MessageModel = require( '../../../objects/message/message-model.js' ).MessageModel,
 
-    ClientModel  = require( '../../../classes/client/client-model.js' ).ClientModel,
-    Client       = require( '../../../classes/client/client.js' );
+    ClientModel  = require( '../../../objects/client/client-model.js' ).ClientModel,
+    Client       = require( '../../../objects/client/client.js' );
 
 
 var theNewMessage,
@@ -690,6 +690,10 @@ describe( 'Message', function () {
 
         } );
 
+    } );
+
+    after( function ( done ) {
+        mongoose.connection.close( done );
     } );
 
 } );

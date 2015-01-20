@@ -4,9 +4,9 @@ var mongoose = require( 'mongoose' ),
     sugar    = require( 'sugar' ),
     mf       = require( '../libs/mini-funcs.js' ),
 
-    MessageModel = require( '../classes/message/message-model.js' ).MessageModel,
-    Message      = require( '../classes/message/message.js' ),
-    Client       = require( '../classes/client/client.js' );
+    MessageModel = require( '../objects/message/message-model.js' ).MessageModel,
+    Message      = require( '../objects/message/message.js' ),
+    Client       = require( '../objects/client/client.js' );
 
 var defaultLimit = 100,
     maxLimit     = 1000;

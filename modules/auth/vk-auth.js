@@ -7,8 +7,8 @@ var mongoose          = require( 'mongoose' ),
     sugar             = require( 'sugar' ),
     CookieParser      = require( 'restify-cookies' ),
 
-    Client            = require( '../../classes/client/client.js' ),
-    ClientModel       = require( '../../classes/client/client-model.js' ).ClientModel,
+    Client            = require( '../../objects/client/client.js' ),
+    ClientModel       = require( '../../objects/client/client-model.js' ).ClientModel,
 
     receivedVkProfile,
 
