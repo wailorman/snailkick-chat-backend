@@ -5,10 +5,12 @@ var mongoose          = require( 'mongoose' ),
     passport          = require( 'passport' ),
     VKontakteStrategy = require( 'passport-vkontakte' ).Strategy,
     sugar             = require( 'sugar' ),
+    CookieParser      = require( 'restify-cookies' ),
 
     Client            = require( '../../classes/client/client.js' ),
     ClientModel       = require( '../../classes/client/client-model.js' ).ClientModel,
 
+    receivedVkProfile,
 
     CLIENT_ID         = '4727212',
     CLIENT_SECRET     = 'vJkxSwCYnioefOP7qZ1b',
@@ -17,10 +19,34 @@ var mongoose          = require( 'mongoose' ),
     API_VERSION       = '5.27';
 
 
+passport.use(
+    new VKontakteStrategy(
+        {
+            clientID:      "4727212",
+            clientSecret:  "vJkxSwCYnioefOP7qZ1b",
+            callbackURL:   "http://pc.wailorman.ru:1515/auth/vk/callback",
+            profileFields: [ 'first_name', 'last_name', 'photo_max' ]
+        },
+        function ( accessToken, refreshToken, profile, next ) {
+
+            //console.log( '1 ' + accessToken );
+
+            //console.log( profile );
+
+            //console.log( profile.photo_max );
+
+            receivedVkProfile = profile;
+
+            return next( null, profile );
+
+        }
+    )
+);
+
+
 var getClientByVkProfile = function ( profile, next ) {
 
-    var defaultParams = {},
-        receivedDocument,
+    var receivedDocument,
         resultClientObject;
 
     async.series( [
@@ -112,10 +138,61 @@ var getClientByVkProfile = function ( profile, next ) {
 
 };
 
-var initiateVkAuth = function ( req, res, next ) {
+var authResultMiddleware = function ( req, res, next ) {
 
+    var generatedClient, grantedToken;
 
+    async.series( [
+
+        // . Get Client by received Vk profile
+        function ( scb ) {
+
+            getClientByVkProfile( receivedVkProfile, function ( err, client ) {
+
+                if ( err ) return scb( err );
+
+                generatedClient = client;
+
+                scb();
+
+            } );
+
+        },
+
+        // . Attach token
+        function ( scb ) {
+
+            generatedClient.attachToken( function ( err, token ) {
+
+                if ( err ) return scb( err );
+
+                grantedToken = token;
+
+                scb();
+
+            } );
+
+        },
+
+        // . Write cookies and redirect
+        function ( scb ) {
+
+            console.log( req.cookies );
+
+            res.setCookie( 'token', grantedToken );
+
+            res.send( 200, 'Token: ' + grantedToken );
+
+            scb();
+
+        }
+
+    ], next );
+
+//    res.send( 200, 'Success! Hello, ' + receivedVkProfile.displayName );
 
 };
 
+module.exports.passportHandler = passport.authenticate( 'vkontakte', { session: false } );
+module.exports.authResultMiddleware = authResultMiddleware;
 module.exports.getClientByVkProfile = getClientByVkProfile;
