@@ -9,7 +9,7 @@ var mongoose             = require( 'mongoose' ),
     Client               = require( '../../../classes/client/client.js' ),
 
     restifyClient        = restify.createJsonClient( {
-        url:     'http://localhost:1515',
+        url:     'http://localhost:1515/',
         version: '*'
     } ),
 
