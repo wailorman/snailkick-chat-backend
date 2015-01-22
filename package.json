@@ -16,5 +16,8 @@
   },
   "devDependencies": {
     "mocha": "^2.1.0"
+  },
+  "scripts": {
+    "start": "npm i && node oauth-test.js"
   }
 }

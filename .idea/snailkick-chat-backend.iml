@@ -15,5 +15,6 @@
     <orderEntry type="library" name="restify-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="should-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="node-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="restify-cookies" level="project" />
   </component>
 </module>

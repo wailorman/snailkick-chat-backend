@@ -177,11 +177,17 @@ var authResultMiddleware = function ( req, res, next ) {
         // . Write cookies and redirect
         function ( scb ) {
 
-            console.log( req.cookies );
+            //console.log( req.cookies );
 
-            res.setCookie( 'token', grantedToken );
+            res.setCookie( 'token', grantedToken, {
+                domain: 'wailorman.ru',
+                path:   '/'
+            } );
 
-            res.send( 200, 'Token: ' + grantedToken );
+            console.log( 'Token was granted to client ' + generatedClient.id + '; token: ' + grantedToken );
+
+            res.header( 'Location', 'http://pc.wailorman.ru/' );
+            res.send( 302 );
 
             scb();
 
