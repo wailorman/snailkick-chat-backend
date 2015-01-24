@@ -23,6 +23,7 @@ var getClientById = function ( req, res, next ) {
 
         if ( err ) return next( new restify.InternalError( err.message ) );
 
+        res.header( "Access-Control-Allow-Origin", "*" );
         res.send( 200, resultClient );
 
         return next();
