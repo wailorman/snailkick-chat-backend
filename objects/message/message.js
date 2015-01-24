@@ -60,13 +60,9 @@ Message.prototype._documentToObject = function ( document, next ) {
 
     self.posted = document.posted;
 
-    self.client = new Client();
+    self.client = document.client.toString();
 
-    self.client.findOne( { id: document.client.toString() }, function ( err ) {
-        if ( err ) return next( new restify.InternalError( 'Document to object: attach client error: ' + err.message ) );
-
-        next();
-    } );
+    return next();
 
 };
 

@@ -1,8 +1,8 @@
-var mongoose = require( 'mongoose' ),
-    async    = require( 'async' ),
-    restify  = require( 'restify' ),
-    sugar    = require( 'sugar' ),
-    mf       = require( '../libs/mini-funcs.js' ),
+var mongoose     = require( 'mongoose' ),
+    async        = require( 'async' ),
+    restify      = require( 'restify' ),
+    sugar        = require( 'sugar' ),
+    mf           = require( '../libs/mini-funcs.js' ),
 
     MessageModel = require( '../objects/message/message-model.js' ).MessageModel,
     Message      = require( '../objects/message/message.js' ),
@@ -68,7 +68,7 @@ var findMessages = function ( req, res, next ) {
                                 } );
 
                             },
-                            function( ){
+                            function () {
                                 return scb();
                             }
                         );
@@ -90,6 +90,7 @@ var findMessages = function ( req, res, next ) {
 
             if ( err ) return next( err );
 
+            res.header( "Access-Control-Allow-Origin", "*" );
             res.send( 200, resultArrayOfMessages );
 
             return next();
@@ -160,6 +161,7 @@ var postMessage = function ( req, res, next ) {
 
             if ( err ) return next( err );
 
+            res.header( "Access-Control-Allow-Origin", "*" );
             res.send( 200, 'Success! Message posted' );
 
             return next();
