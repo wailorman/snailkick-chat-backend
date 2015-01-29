@@ -90,7 +90,6 @@ var findMessages = function ( req, res, next ) {
 
             if ( err ) return next( err );
 
-            res.header( "Access-Control-Allow-Origin", "*" );
             res.send( 200, resultArrayOfMessages );
 
             return next();
@@ -121,11 +120,11 @@ var postMessage = function ( req, res, next ) {
             // . Check token and attach client
             function ( scb ) {
 
-                if ( !req.header( 'token' ) ) return scb( new restify.InvalidArgumentError( 'Security error! You have not passed token to verify you' ) );
+                if ( !req.params.token ) return scb( new restify.InvalidArgumentError( 'Security error! You have not passed token to verify you' ) );
 
                 client = new Client();
 
-                client.findOne( { token: req.header( 'token' ) }, function ( err ) {
+                client.findOne( { token: req.params.token }, function ( err ) {
 
                     if ( err ) return scb( new restify.InternalError( 'Can\'t find Client with such token!' ) );
 
@@ -161,7 +160,6 @@ var postMessage = function ( req, res, next ) {
 
             if ( err ) return next( err );
 
-            res.header( "Access-Control-Allow-Origin", "*" );
             res.send( 200, 'Success! Message posted' );
 
             return next();

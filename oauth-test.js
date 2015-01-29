@@ -16,6 +16,7 @@ var server = restify.createServer();
 
 server.use( restify.queryParser() );
 server.use( restify.bodyParser() );
+server.use( restify.fullResponse() );
 
 server.use( passport.initialize() );
 

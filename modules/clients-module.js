@@ -17,13 +17,13 @@ var getClientById = function ( req, res, next ) {
 
     resultClient.findOne( { id: req.params.id }, function ( err ) {
 
-        console.log( '11111' );
+        //console.log( '11111' );
 
         if ( err && err instanceof restify.ResourceNotFoundError ) return next( new restify.ResourceNotFoundError( 'no client with such id' ) );
 
         if ( err ) return next( new restify.InternalError( err.message ) );
 
-        res.header( "Access-Control-Allow-Origin", "*" );
+        //res.header( "Access-Control-Allow-Origin", "*" );
         res.send( 200, resultClient );
 
         return next();
