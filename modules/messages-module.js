@@ -126,7 +126,7 @@ var postMessage = function ( req, res, next ) {
 
                 client.findOne( { token: req.params.token }, function ( err ) {
 
-                    if ( err ) return scb( new restify.InternalError( 'Can\'t find Client with such token!' ) );
+                    if ( err ) return scb( new restify.ForbiddenError( 'Can\'t find Client with such token!' ) );
 
                     return scb();
 

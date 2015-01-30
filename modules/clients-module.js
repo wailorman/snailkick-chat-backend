@@ -7,17 +7,27 @@ var mongoose = require( 'mongoose' ),
     Client   = require( '../objects/client/client.js' );
 
 
-var getClientById = function ( req, res, next ) {
+var getClient = function ( req, res, next ) {
+
+   var query = {};
 
     if ( ! req.params.id ) return next( new restify.InvalidArgumentError( 'id require' ) );
 
-    if ( ! mf.isObjectId( req.params.id ) ) return next( new restify.InvalidArgumentError( 'invalid id' ) );
+    if ( ! mf.isObjectId( req.params.id ) && ! mf.isToken( req.params.id ) ) return next( new restify.InvalidArgumentError( 'invalid id' ) );
+
+
+    if ( mf.isToken( req.params.id ) ) query = { token: req.params.id };
+    else if ( mf.isObjectId( req.params.id ) ) query = { id: req.params.id };
+
+
 
     var resultClient = new Client();
 
-    resultClient.findOne( { id: req.params.id }, function ( err ) {
+    resultClient.findOne( query, function ( err ) {
 
-        //console.log( '11111' );
+        console.log( '\n' );
+        console.log( 'req.params.id: ' + req.params.id );
+        console.log( 'resultClient.id: ' + resultClient.id );
 
         if ( err && err instanceof restify.ResourceNotFoundError ) return next( new restify.ResourceNotFoundError( 'no client with such id' ) );
 
@@ -32,4 +42,4 @@ var getClientById = function ( req, res, next ) {
 
 };
 
-module.exports.getClientById = getClientById;
+module.exports.getClient = getClient;

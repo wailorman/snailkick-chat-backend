@@ -137,13 +137,8 @@ var mongoose       = require( 'mongoose' ),
                     var req = {
 
                         params: {
-                            text: messageTextStr
-                        },
-
-                        header: function( headerStr ){
-
-                            if ( headerStr === 'token' ) return clientToken;
-
+                            text: messageTextStr,
+                            token: clientToken
                         }
 
                     };

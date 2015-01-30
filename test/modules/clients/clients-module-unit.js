@@ -84,7 +84,7 @@ describe( 'Clients module unit', function () {
 
                 };
 
-                ClientsModule.getClientById( req, res, nextCallback );
+                ClientsModule.getClient( req, res, nextCallback );
 
             } );
 
@@ -101,7 +101,8 @@ describe( 'Clients module unit', function () {
         };
 
         var res = {
-            send: function ( code, data ) {}
+            send: function ( code, data ) {
+            }
         };
 
         var nextCallback = function ( err ) {
@@ -111,7 +112,7 @@ describe( 'Clients module unit', function () {
 
         };
 
-        ClientsModule.getClientById( req, res, nextCallback );
+        ClientsModule.getClient( req, res, nextCallback );
 
     } );
 

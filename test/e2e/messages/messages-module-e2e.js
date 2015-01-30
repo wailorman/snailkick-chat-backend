@@ -13,6 +13,8 @@ var mongoose             = require( 'mongoose' ),
         version: '*'
     } ),
 
+    clientToken,
+
 
     attachTokenToHeaders = function ( next ) {
 
@@ -31,7 +33,7 @@ var mongoose             = require( 'mongoose' ),
 
                     should.not.exist( err );
 
-                    restifyClient.headers[ 'token' ] = token;
+                    clientToken = token;
 
                     return next();
 
@@ -130,7 +132,7 @@ var mongoose             = require( 'mongoose' ),
 
                     var messageTextStr = (parameters.strKey ? parameters.strKey : null) + n;
 
-                    restifyClient.post( '/messages', { text: messageTextStr }, function ( err, req, res, data ) {
+                    restifyClient.post( '/messages', { text: messageTextStr, token: clientToken }, function ( err, req, res, data ) {
 
                         if ( parameters.shouldReturnError ) {
                             should.exist( err );

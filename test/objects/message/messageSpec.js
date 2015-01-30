@@ -84,7 +84,8 @@ var testTemplates = {
 
                 theNewMessage.text.should.be.type( 'string' );
 
-                theNewMessage.client.should.be.instanceof( Client );
+                theNewMessage.client.should.be.type( 'string' );
+                //theNewMessage.client.should.be.instanceof( Client );
 
                 theNewMessage.posted.should.be.instanceof( Date );
 

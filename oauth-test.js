@@ -32,7 +32,7 @@ server.use( function ( req, res, next ) {
 server.get( '/messages', MessagesModule.findMessages );
 server.post( '/messages', MessagesModule.postMessage );
 
-server.get( '/clients/:id', ClientsModule.getClientById );
+server.get( '/clients/:id', ClientsModule.getClient );
 
 server.get( '/auth/vk', vkAuth.passportHandler );
 server.get( '/auth/vk/callback', vkAuth.passportHandler, vkAuth.authResultMiddleware );

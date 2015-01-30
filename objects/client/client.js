@@ -228,9 +228,9 @@ Client.prototype.attachToken = function ( next ) {
 
     ], function ( err ) {
 
-        next(
+        return next(
             err,
-            err ? null : generatedToken
+            generatedToken
         );
 
     } );
@@ -304,7 +304,8 @@ Client.prototype.remove = function ( next ) {
  */
 Client.prototype.findOne = function ( filter, next ) {
 
-    var receivedDocument;
+    var receivedDocument,
+        self = this;
 
     async.series(
         [
