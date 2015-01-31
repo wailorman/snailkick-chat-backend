@@ -180,12 +180,14 @@ var authResultMiddleware = function ( req, res, next ) {
             //console.log( req.cookies );
 
             res.setCookie( 'token', grantedToken, {
-                domain: 'wailorman.ru',
-                path:   '/'
-            } );
+                path: '/',
+                domain: 'pc.wailorman.ru',
+                maxAge: 10
+            });
 
             console.log( 'Token was granted to client ' + generatedClient.id + '; token: ' + grantedToken );
 
+            //res.header( 'Set-Cookie', 'token='+grantedToken+'; path=/; domain=pc.wailorman.ru' );
             res.header( 'Location', 'http://pc.wailorman.ru/' );
             res.send( 302 );
 
