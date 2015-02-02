@@ -24,7 +24,7 @@ passport.use(
         {
             clientID:      "4727212",
             clientSecret:  "vJkxSwCYnioefOP7qZ1b",
-            callbackURL:   "http://chat.wailorman.ru:1515/auth/vk/callback",
+            callbackURL:   "http://api.chat.snailkick.ru:1515/auth/vk/callback",
             profileFields: [ 'first_name', 'last_name', 'photo_max' ]
         },
         function ( accessToken, refreshToken, profile, next ) {
@@ -181,13 +181,13 @@ var authResultMiddleware = function ( req, res, next ) {
 
             res.setCookie( 'token', grantedToken, {
                 path: '/',
-                domain: 'wailorman.ru',
+                domain: 'snailkick.ru',
                 maxAge: 10
             });
 
             console.log( 'Token was granted to client ' + generatedClient.id + '; token: ' + grantedToken );
 
-            res.header( 'Location', 'http://chat.wailorman.ru/' );
+            res.header( 'Location', 'http://chat.snailkick.ru/' );
             res.send( 302 );
 
             scb();
