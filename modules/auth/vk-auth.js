@@ -19,31 +19,6 @@ var mongoose          = require( 'mongoose' ),
     API_VERSION       = '5.27';
 
 
-passport.use(
-    new VKontakteStrategy(
-        {
-            clientID:      "4727212",
-            clientSecret:  "vJkxSwCYnioefOP7qZ1b",
-            callbackURL:   "http://api.chat.snailkick.ru:1515/auth/vk/callback",
-            profileFields: [ 'first_name', 'last_name', 'photo_max' ]
-        },
-        function ( accessToken, refreshToken, profile, next ) {
-
-            //console.log( '1 ' + accessToken );
-
-            //console.log( profile );
-
-            //console.log( profile.photo_max );
-
-            receivedVkProfile = profile;
-
-            return next( null, profile );
-
-        }
-    )
-);
-
-
 var getClientByVkProfile = function ( profile, next ) {
 
     var receivedDocument,
@@ -177,17 +152,16 @@ var authResultMiddleware = function ( req, res, next ) {
         // . Write cookies and redirect
         function ( scb ) {
 
-            //console.log( req.cookies );
-
             res.setCookie( 'token', grantedToken, {
-                path: '/',
+                path:   '/',
                 domain: 'snailkick.ru',
                 maxAge: 10
-            });
+            } );
 
-            console.log( 'Token was granted to client ' + generatedClient.id + '; token: ' + grantedToken );
+            /** @namespace req.params.rkey */
+            var redirectTo = req.params.rto ? req.params.rto : 'http://chat.snailkick.ru/';
 
-            res.header( 'Location', 'http://chat.snailkick.ru/' );
+            res.header( 'Location', redirectTo );
             res.send( 302 );
 
             scb();
@@ -196,10 +170,44 @@ var authResultMiddleware = function ( req, res, next ) {
 
     ], next );
 
-//    res.send( 200, 'Success! Hello, ' + receivedVkProfile.displayName );
-
 };
 
-module.exports.passportHandler = passport.authenticate( 'vkontakte', { session: false } );
+
+function passportHandler( req, res, next ) {
+
+    var redirectUri;
+
+    /** @namespace req.params.rto */
+
+    if ( req.params.rto ) {
+        redirectUri = "http://api.chat.snailkick.ru:1515/auth/vk/callback?rto=" + req.params.rto;
+    } else {
+        redirectUri = "http://api.chat.snailkick.ru:1515/auth/vk/callback";
+    }
+
+    passport.use(
+        new VKontakteStrategy(
+            {
+                clientID:      "4727212",
+                clientSecret:  "vJkxSwCYnioefOP7qZ1b",
+                callbackURL:   redirectUri,
+                profileFields: [ 'first_name', 'last_name', 'photo_max' ]
+            },
+            function ( accessToken, refreshToken, profile, next ) {
+
+                receivedVkProfile = profile;
+
+                return next( null, profile );
+
+            }
+        )
+    );
+
+    passport.authenticate( 'vkontakte', { session: false } )( req, res, next );
+
+
+}
+
+module.exports.passportHandler = passportHandler;
 module.exports.authResultMiddleware = authResultMiddleware;
 module.exports.getClientByVkProfile = getClientByVkProfile;

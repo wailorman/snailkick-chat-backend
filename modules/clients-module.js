@@ -25,15 +25,10 @@ var getClient = function ( req, res, next ) {
 
     resultClient.findOne( query, function ( err ) {
 
-        //console.log( '\n' );
-        //console.log( 'req.params.id: ' + req.params.id );
-        //console.log( 'resultClient.id: ' + resultClient.id );
-
         if ( err && err instanceof restify.ResourceNotFoundError ) return next( new restify.ResourceNotFoundError( 'no client with such id' ) );
 
         if ( err ) return next( new restify.InternalError( err.message ) );
 
-        //res.header( "Access-Control-Allow-Origin", "*" );
         res.send( 200, resultClient );
 
         return next();
