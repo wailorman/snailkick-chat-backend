@@ -46,6 +46,8 @@ Client.prototype._documentToObject = function ( document, next ) {
 
     if ( document.profile ) self.profile = document.profile;
 
+    if ( document.statuses ) self.statuses = document.statuses;
+
     next();
 
 };

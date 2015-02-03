@@ -3,8 +3,10 @@ var mongoose      = require( 'mongoose' ),
     should        = require( 'should' ),
     sugar         = require( 'sugar' ),
     async         = require( 'async' ),
+    mf            = require( '../../../libs/mini-funcs.js' ),
 
     Client        = require( '../../../objects/client/client.js' ),
+    ClientModel   = require( '../../../objects/client/client-model.js' ).ClientModel,
 
     ClientsModule = require( '../../../modules/clients-module.js' ),
 
@@ -194,6 +196,75 @@ describe( 'Clients module e2e', function () {
         } );
 
     } );
+
+    it( 'should attach and show statuses', function ( done ) {
+
+        var createdClient;
+
+        async.series([
+
+            // Create Client
+            function ( scb ) {
+
+                createdClient = new Client();
+
+                createdClient.create(
+                    {
+                        name: 'The Client'
+                    },
+                    function ( err ) {
+                        should.not.exist( err );
+                        scb();
+                    }
+                );
+
+            },
+
+            // Find Client and attach statuses
+            function ( scb ) {
+
+                ClientModel.findOne( { _id: new mf.ObjectId( createdClient.id ) }, function ( err, doc ) {
+
+                    should.not.exist( err );
+
+                    doc.statuses = {
+                        king: true,
+                        elf:  false
+                    };
+
+                    doc.save( function ( err ) {
+
+                        should.not.exist( err );
+                        scb();
+
+                    } );
+
+                } );
+
+            },
+
+            // Check statuses
+            function ( scb ) {
+
+                restifyClient.get( '/clients/' + createdClient.id, function ( err, req, res, data ) {
+
+                    should.not.exist( err );
+
+                    ( data.statuses.king ).should.eql(true);
+                    ( !data.statuses.elf ).should.eql(true);
+
+                    scb();
+
+                } );
+
+            }
+
+        ],done);
+
+
+
+    } );
+
 
     after( function ( done ) {
         mongoose.connection.close( done );
