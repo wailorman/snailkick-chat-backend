@@ -16,6 +16,7 @@ module.exports.TokenModel = mongoose.model( 'TokenModel', new Schema( {
 
 }, {
 
-    collection: 'tokens'
+    collection: 'tokens',
+    capped: 10240
 
 } ) );
