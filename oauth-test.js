@@ -10,6 +10,15 @@ var restify           = require( 'restify' ),
     MessagesModule    = require( './modules/messages-module.js' ),
     ClientsModule     = require( './modules/clients-module.js' );
 
+/*
+
+ docker kill mongo && docker rm mongo && \
+ docker run -d --name mongo mongo:latest --smallfiles && \
+ docker kill snail-back && docker rm snail-back && \
+ docker run -d --name snail-back --link mongo:mongo.local wailorman/snailkick-chat-backend:dev
+
+*/
+
 mongoose.connect( 'mongodb://mongo.local/test' );
 
 var server = restify.createServer();
