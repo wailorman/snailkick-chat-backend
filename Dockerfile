@@ -5,4 +5,7 @@ RUN mkdir /snail
 ADD . /snail
 RUN cd /snail && npm install
 
-#CMD ["node", "/snail/oauth-test.js"]
+EXPOSE 27017
+EXPOSE 1515
+
+CMD ["node", "/snail/oauth-test.js"]
