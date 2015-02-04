@@ -10,7 +10,7 @@ var restify           = require( 'restify' ),
     MessagesModule    = require( './modules/messages-module.js' ),
     ClientsModule     = require( './modules/clients-module.js' );
 
-mongoose.connect( 'mongodb://localhost/test' );
+mongoose.connect( 'mongodb://mongo.local/test' );
 
 var server = restify.createServer();
 
