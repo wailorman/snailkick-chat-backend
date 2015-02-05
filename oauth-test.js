@@ -15,7 +15,7 @@ var restify           = require( 'restify' ),
  docker kill mongo && docker rm mongo && \
  docker run -d --name mongo mongo:latest --smallfiles && \
  docker kill snail-back && docker rm snail-back && \
- docker run -d --name snail-back --link mongo:mongo.local wailorman/snailkick-chat-backend:dev
+ docker run -d --name snail-back --link mongo:mongo.local -p 1515:1515 wailorman/snailkick-chat-backend:dev
 
 */
 

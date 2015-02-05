@@ -7,6 +7,6 @@ WORKDIR /snail
 RUN npm install
 
 EXPOSE 27017
-EXPOSE 1515 1515
+EXPOSE 1515:1515
 
 CMD ["node", "oauth-test.js"]
