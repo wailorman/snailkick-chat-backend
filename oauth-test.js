@@ -12,14 +12,17 @@ var restify           = require( 'restify' ),
 
 /*
 
- docker kill mongo && docker rm mongo && \
- docker run -d --name mongo mongo:latest --smallfiles && \
- docker kill snail-back && docker rm snail-back && \
+ docker kill mongo || true  && \
+ docker rm mongo || true && \
+ docker run -d --name mongo -p 27017:27017 mongo:latest --smallfiles --noprealloc && \
+ \
+ docker kill snail-back || true && \
+ docker rm snail-back || true && \
  docker run -d --name snail-back --link mongo:mongo.local -p 1515:1515 wailorman/snailkick-chat-backend:dev
 
 */
 
-mongoose.connect( 'mongodb://mongo.local/test' );
+mongoose.connect( 'mongodb://mongo.local/snailkick-chat' );
 
 var server = restify.createServer();
 
