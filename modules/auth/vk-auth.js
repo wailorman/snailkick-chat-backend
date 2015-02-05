@@ -152,9 +152,11 @@ var authResultMiddleware = function ( req, res, next ) {
         // . Write cookies and redirect
         function ( scb ) {
 
+            var domain = req.params.rto.split( '/' )[ 2 ];
+
             res.setCookie( 'token', grantedToken, {
                 path:   '/',
-                domain: 'snailkick.ru',
+                domain: domain,
                 maxAge: 10
             } );
 
@@ -175,14 +177,20 @@ var authResultMiddleware = function ( req, res, next ) {
 
 function passportHandler( req, res, next ) {
 
-    var redirectUri;
+    var redirectUri, apiHost;
+
+    if ( ( req.params.rto.match( /local/gi ) ).length > 0 ) {
+        apiHost = 'api.chat.snailkick.local';
+    } else {
+        apiHost = 'api.chat.snailkick.ru';
+    }
 
     /** @namespace req.params.rto */
 
     if ( req.params.rto ) {
-        redirectUri = "http://api.chat.snailkick.ru:1515/auth/vk/callback?rto=" + req.params.rto;
+        redirectUri = "http://" + apiHost + ":1515/auth/vk/callback?rto=" + req.params.rto;
     } else {
-        redirectUri = "http://api.chat.snailkick.ru:1515/auth/vk/callback";
+        redirectUri = "http://" + apiHost + ":1515/auth/vk/callback";
     }
 
     passport.use(
