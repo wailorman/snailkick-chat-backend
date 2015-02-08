@@ -391,7 +391,7 @@ describe( 'Messages REST', function () {
 
                 should.not.exist( err );
 
-                result( data.kingOnline );
+                result( data );
 
             } );
 
@@ -483,7 +483,7 @@ describe( 'Messages REST', function () {
 
                 isKingOnline( function ( result ) {
 
-                    result.should.eql( false );
+                    result.should.eql( {} );
                     done();
 
                 } );
@@ -498,5 +498,7 @@ describe( 'Messages REST', function () {
     after( function ( done ) {
         mongoose.connection.close( done );
     } );
+
+
 
 } );

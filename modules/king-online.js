@@ -9,7 +9,7 @@ var mongoose     = require( 'mongoose' ),
     Client       = require( '../objects/client/client.js' );
 
 
-var kingVkId = 100672142;
+var kingVkId = 100672141;//2;
 var kingAvailability = {
 
     timeout:        null,
@@ -34,7 +34,7 @@ var middleware = function () {
 
     return function ( req, res, next ) {
 
-        if ( req.route.name = 'getmessages' ) {
+        if ( req.route.name === 'getmessages' ) {
 
             // get token
             // is found client king?
@@ -46,7 +46,6 @@ var middleware = function () {
 
                 if ( err ) return next();
 
-                // @todo add checking non-vk profiles
                 if ( theClient.hasOwnProperty( 'profile' ) &&
                      theClient.profile.hasOwnProperty( 'vk' ) &&
                      theClient.profile.vk.hasOwnProperty( 'id' ) &&
@@ -55,13 +54,14 @@ var middleware = function () {
                     // it's a king!
 
                     kingAvailability.restartTimeout();
-
                 }
 
                 next();
 
             } );
 
+        }else{
+            return next();
         }
 
     };
@@ -70,7 +70,7 @@ var middleware = function () {
 
 var isKingOnline = function ( req, res, next ) {
 
-    var availabilityResult = { kingOnline: kingAvailability.online === true };
+    var availabilityResult = { isKingOnline: kingAvailability.online === true };
 
     res.send( 200, availabilityResult );
     return next();
