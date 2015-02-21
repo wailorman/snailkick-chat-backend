@@ -23,7 +23,18 @@ var restify           = require( 'restify' ),
 
  */
 
-mongoose.connect( 'mongodb://mongo.local/snailkick-chat' );
+var mongoHost;
+
+/** @namespace process.env.MONGO_HOST */
+if ( process.env.MONGO_HOST ) {
+    mongoHost = 'mongodb://' + process.env.MONGO_HOST + '/snailkick-chat';
+}else{
+    mongoHost = 'mongodb://mongo.local/snailkick-chat';
+}
+
+console.log( 'Connecting to MongoDB server: ' + mongoHost );
+
+mongoose.connect( mongoHost );
 
 var server = restify.createServer();
 

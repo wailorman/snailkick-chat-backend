@@ -21,9 +21,7 @@ var messageSchema = new Schema( {
 
 }, {
 
-    collection: 'messages',
-    capped: 10240
-
+    collection: 'messages'
 } );
 
 
