@@ -152,9 +152,12 @@ var authResultMiddleware = function ( req, res, next ) {
         // . Write cookies and redirect
         function ( scb ) {
 
-            var domain = req.params.rto.split( '/' )[ 2 ];
+            var domain;
+            domain = req.params.rto.split( '/' )[ 2 ];
+            domain = domain.split( '.' );
+            domain = domain[ domain.length - 2 ] + '.' + domain[ domain.length - 1 ];
 
-            console.log( 'domain: '+domain );
+            console.log( 'domain: ' + domain );
 
             res.setCookie( 'token', grantedToken, {
                 path:   '/',
