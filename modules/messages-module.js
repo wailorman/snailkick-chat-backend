@@ -51,7 +51,7 @@ var findMessages = function ( req, res, next ) {
 
                         if ( err ) return scb( new restify.InternalError( 'Mongo error: ' + err.message ) );
 
-                        if ( !docs || docs.length === 0 ) return scb();
+                        if ( !docs ) return scb();
 
                         async.eachSeries(
                             docs,

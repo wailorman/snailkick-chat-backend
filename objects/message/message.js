@@ -241,7 +241,7 @@ Array.prototype.findMessages = function ( filter, next ) {
 
                     if ( err ) return scb( new restify.InvalidArgumentError( 'Request to DB. Mongo: ' + err.message ) );
 
-                    if ( docs.length === 0 ) {
+                    if ( !docs ) {
 
                         emptyResult = true;
                         return scb();
