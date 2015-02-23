@@ -154,6 +154,8 @@ var authResultMiddleware = function ( req, res, next ) {
 
             var domain = req.params.rto.split( '/' )[ 2 ];
 
+            console.log( 'domain: '+domain );
+
             res.setCookie( 'token', grantedToken, {
                 path:   '/',
                 domain: domain,
