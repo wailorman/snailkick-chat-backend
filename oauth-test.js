@@ -69,3 +69,7 @@ server.get( '/is-king-online', KingOnline.isKingOnline );
 server.listen( 1515, function () {
     console.log( 'Server started!' );
 } );
+
+process.on('uncaughtException', function (error) {
+    console.log(error.stack);
+});
