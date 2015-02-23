@@ -9,7 +9,7 @@ var mongoose     = require( 'mongoose' ),
     Client       = require( '../objects/client/client.js' );
 
 
-var kingVkId = 100672141;//2;
+var kingVkId = 13605301;
 var kingAvailability = {
 
     timeout:        null,
