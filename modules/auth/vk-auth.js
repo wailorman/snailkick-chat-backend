@@ -179,7 +179,7 @@ function passportHandler( req, res, next ) {
 
     var redirectUri, apiHost;
 
-    if ( ( req.params.rto.match( /local/gi ) ).length > 0 ) {
+    if ( req.params.rto.match( /local/gi ) ) {
         apiHost = 'api.chat.snailkick.local';
     } else {
         apiHost = 'api.chat.snailkick.ru';
