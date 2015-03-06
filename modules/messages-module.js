@@ -128,7 +128,7 @@ var postMessage = function ( req, res, next ) {
             // Check ban
             function ( scb ) {
 
-                if ( req.client.banned ) return scb( new restify.ForbiddenError( "You have been banned" ) );
+                if ( req.client.banned ) return scb( new restify.ForbiddenError( "You have been banned. You are not able to post messages" ) );
 
                 return scb();
 
@@ -139,7 +139,7 @@ var postMessage = function ( req, res, next ) {
 
                 var newMessage = new MessageModel();
 
-                newMessage.client = new mf.ObjectId( client.id );
+                newMessage.client = new mf.ObjectId( req.client.id );
 
                 newMessage.text = text;
 

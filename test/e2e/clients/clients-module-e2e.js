@@ -23,10 +23,10 @@ describe( 'Clients module e2e', function () {
     before( function ( done ) {
 
         mongoose.connect(
-            'mongodb://localhost/test', {},
+            'mongodb://mongo.local/snailkick-chat', {},
             function ( err ) {
                 should.not.exist( err );
-                done();
+                ClientModel.remove().exec( done );
             }
         );
 

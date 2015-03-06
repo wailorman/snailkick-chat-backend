@@ -19,6 +19,10 @@ module.exports.ClientModel = mongoose.model( 'ClientModel',
 
         statuses: {
             type: Object
+        },
+
+        banned: {
+            type: Schema.Types.Mixed
         }
 
     }, {

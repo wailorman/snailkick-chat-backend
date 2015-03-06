@@ -10,7 +10,7 @@ var mongoose             = require( 'mongoose' ),
     Client               = require( '../../../objects/client/client.js' ),
 
     restifyClient        = restify.createJsonClient( {
-        url: 'http://localhost:1515/',
+        url:     'http://localhost:1515/',
         version: '*'
     } ),
 
@@ -23,13 +23,14 @@ var mongoose             = require( 'mongoose' ),
 
         theClient.create(
             {
-                name: 'Сергей Попов',
+                name:   'Сергей Попов',
                 avatar: 'http://cs314730.vk.me/v314730142/c46b/xF8PzAU0l_8.jpg'
             },
             function ( err ) {
 
                 should.not.exist( err );
 
+                clientToken = theClient.token;
                 clientId = theClient.id;
 
                 theClient.attachToken( function ( err, token ) {
@@ -52,20 +53,20 @@ var mongoose             = require( 'mongoose' ),
 
         Messages: function ( next ) {
 
-            //MessageModel.find().remove().exec( function ( err ) {
-            //    should.not.exist( err );
-            //    next();
-            //} );
-
-            mongoose.connection.db.dropCollection( 'messages', function ( err ) {
-
-                if ( err && err.message != 'ns not found' ) {
-                    next( err );
-                } else {
-                    next( null );
-                }
-
+            MessageModel.find().remove().exec( function ( err ) {
+                should.not.exist( err );
+                next();
             } );
+
+            //mongoose.connection.db.dropCollection( 'messages', function ( err ) {
+            //
+            //    if ( err && err.message != 'ns not found' ) {
+            //        next( err );
+            //    } else {
+            //        next( null );
+            //    }
+            //
+            //} );
 
         }
 
@@ -151,7 +152,7 @@ var mongoose             = require( 'mongoose' ),
 
                         if ( parameters.shouldReturnError ) {
                             should.exist( err );
-                            return next();
+                            return tcb();
                         } else {
                             should.not.exist( err );
                             res.statusCode.should.eql( 200 );
@@ -178,8 +179,8 @@ describe( 'Messages REST', function () {
             'mongodb://mongo.local/snailkick-chat', {},
             function ( err ) {
                 should.not.exist( err );
-                //cleanUp.Messages( done );
-                done();
+                cleanUp.Messages( done );
+                //done();
             }
         );
 
@@ -217,7 +218,7 @@ describe( 'Messages REST', function () {
             function ( scb ) {
 
                 testTemplates.getMessages( {
-                    length: 1,
+                    length:           1,
                     checkResultArray: {
                         0: '1_0'
                     }
@@ -247,7 +248,7 @@ describe( 'Messages REST', function () {
             function ( scb ) {
 
                 testTemplates.getMessages( {
-                    length: 2,
+                    length:           2,
                     checkResultArray: {
                         0: '2_0',
                         1: '1_0'
@@ -278,9 +279,9 @@ describe( 'Messages REST', function () {
             function ( scb ) {
 
                 testTemplates.getMessages( {
-                    length: 52,
+                    length:           52,
                     checkResultArray: {
-                        0: '50_49',
+                        0:  '50_49',
                         49: '50_0',
                         50: '2_0',
                         51: '1_0'
@@ -311,9 +312,9 @@ describe( 'Messages REST', function () {
             function ( scb ) {
 
                 testTemplates.getMessages( {
-                    length: 100,
+                    length:           100,
                     checkResultArray: {
-                        0: '150_149',
+                        0:  '150_149',
                         99: '150_50'
                     }
                 }, scb );
@@ -328,10 +329,10 @@ describe( 'Messages REST', function () {
 
 
         testTemplates.getMessages( {
-            limit: 1000,
-            length: 202,
+            limit:            1000,
+            length:           202,
             checkResultArray: {
-                0: '150_149',
+                0:   '150_149',
                 149: '150_0',
                 150: '50_49',
                 199: '50_0',
@@ -346,7 +347,7 @@ describe( 'Messages REST', function () {
     it( 'should return error when try to get messages with limit 1001', function ( done ) {
 
         testTemplates.getMessages( {
-            limit: 1001,
+            limit:             1001,
             shouldReturnError: true
         }, done );
 
@@ -355,7 +356,7 @@ describe( 'Messages REST', function () {
     it( 'should return empty array if limit=0', function ( done ) {
 
         testTemplates.getMessages( {
-            limit: 0,
+            limit:  0,
             length: 0
         }, done );
 
@@ -364,7 +365,7 @@ describe( 'Messages REST', function () {
     it( 'should return array if we passed string to limit', function ( done ) {
 
         testTemplates.getMessages( {
-            limit: 'zero',
+            limit:             'zero',
             shouldReturnError: true
         }, done );
 
@@ -378,7 +379,7 @@ describe( 'Messages REST', function () {
 
         var getMessagesByTokenTpl = function ( onLoaded ) {
 
-            restifyClient.get( '/messages?token=' + kingToken, function ( err, req, res, data ) {
+            restifyClient.get( '/messages?token=' + kingToken, function ( err ) {
 
                 should.not.exist( err );
                 onLoaded();
@@ -412,11 +413,11 @@ describe( 'Messages REST', function () {
                     kingClient = new Client();
                     kingClient.create(
                         {
-                            name: 'The King',
-                            avatar: 'http://google.com/1.png',
+                            name:    'The King',
+                            avatar:  'http://google.com/1.png',
                             profile: {
                                 vk: {
-                                    id: 100672142
+                                    id: 13605301
                                 }
                             }
                         },
@@ -453,7 +454,7 @@ describe( 'Messages REST', function () {
 
                 isKingOnline( function ( result ) {
 
-                    result.should.eql( true );
+                    result.should.eql( { isKingOnline: true } );
                     done();
 
                 } );
@@ -469,7 +470,7 @@ describe( 'Messages REST', function () {
 
                 isKingOnline( function ( result ) {
 
-                    result.should.eql( true );
+                    result.should.eql( { isKingOnline: true } );
                     done();
 
                 } );
@@ -486,7 +487,7 @@ describe( 'Messages REST', function () {
 
                 isKingOnline( function ( result ) {
 
-                    result.should.eql( {} );
+                    result.should.eql( { isKingOnline: false } );
                     done();
 
                 } );
@@ -507,6 +508,7 @@ describe( 'Messages REST', function () {
 
                 should.not.exist( err );
                 should.exist( doc );
+                //should.exist( doc.banned );
 
                 doc.banned = true;
                 doc.save( done );
@@ -517,11 +519,16 @@ describe( 'Messages REST', function () {
 
         it( 'should not post message by banned client', function ( done ) {
 
-            testTemplates.postMessages( {
-                amount: 1,
-                strKey: 'ban_',
-                shouldReturnError: true
-            }, done );
+            restifyClient.post(
+                '/messages?token=' + clientToken,
+                { text: '345' },
+                function ( err ) {
+
+                    should.exist( err );
+
+                    done();
+
+                } );
 
         } );
 
@@ -542,8 +549,8 @@ describe( 'Messages REST', function () {
         it( 'should post message after unban', function ( done ) {
 
             testTemplates.postMessages( {
-                amount: 1,
-                strKey: 'unban_',
+                amount:            1,
+                strKey:            'unban_',
                 shouldReturnError: false
             }, done );
 
