@@ -98,7 +98,6 @@ var findMessages = function ( req, res, next ) {
 
 };
 
-
 var postMessage = function ( req, res, next ) {
 
     var text, client;
@@ -117,20 +116,21 @@ var postMessage = function ( req, res, next ) {
 
             },
 
-            // . Check token and attach client
+            // . Check client
             function ( scb ) {
 
-                if ( !req.params.token ) return scb( new restify.InvalidArgumentError( 'Security error! You have not passed token to verify you' ) );
+                if ( !req.client ) return scb( new restify.InvalidArgumentError( 'Security error! You have not passed token to verify you' ) );
 
-                client = new Client();
+                return scb();
 
-                client.findOne( { token: req.params.token }, function ( err ) {
+            },
 
-                    if ( err ) return scb( new restify.ForbiddenError( "Can't find Client with such token!" ) );
+            // Check ban
+            function ( scb ) {
 
-                    return scb();
+                if ( req.client.banned ) return scb( new restify.ForbiddenError( "You have been banned" ) );
 
-                } );
+                return scb();
 
             },
 

@@ -5,15 +5,16 @@ var mongoose             = require( 'mongoose' ),
     async                = require( 'async' ),
 
     MessageModel         = require( '../../../objects/message/message-model.js' ).MessageModel,
+    ClientModel          = require( '../../../objects/client/client-model.js' ).ClientModel,
 
     Client               = require( '../../../objects/client/client.js' ),
 
     restifyClient        = restify.createJsonClient( {
-        url:     'http://localhost:1515/',
+        url: 'http://localhost:1515/',
         version: '*'
     } ),
 
-    clientToken,
+    clientToken, clientId,
 
 
     attachTokenToHeaders = function ( next ) {
@@ -22,12 +23,14 @@ var mongoose             = require( 'mongoose' ),
 
         theClient.create(
             {
-                name:   'Сергей Попов',
+                name: 'Сергей Попов',
                 avatar: 'http://cs314730.vk.me/v314730142/c46b/xF8PzAU0l_8.jpg'
             },
             function ( err ) {
 
                 should.not.exist( err );
+
+                clientId = theClient.id;
 
                 theClient.attachToken( function ( err, token ) {
 
@@ -188,7 +191,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should return empty array', function ( done ) {
+    it( 'should return empty array', function ( done ) {
 
         testTemplates.getMessages( {
             length: 0
@@ -196,7 +199,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should post 1 message and find it', function ( done ) {
+    it( 'should post 1 message and find it', function ( done ) {
 
         async.series( [
 
@@ -214,7 +217,7 @@ describe( 'Messages REST', function () {
             function ( scb ) {
 
                 testTemplates.getMessages( {
-                    length:           1,
+                    length: 1,
                     checkResultArray: {
                         0: '1_0'
                     }
@@ -226,7 +229,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should post another message and find 2 messages', function ( done ) {
+    it( 'should post another message and find 2 messages', function ( done ) {
 
         async.series( [
 
@@ -244,7 +247,7 @@ describe( 'Messages REST', function () {
             function ( scb ) {
 
                 testTemplates.getMessages( {
-                    length:           2,
+                    length: 2,
                     checkResultArray: {
                         0: '2_0',
                         1: '1_0'
@@ -257,7 +260,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should post 50 messages and find 52 last messages', function ( done ) {
+    it( 'should post 50 messages and find 52 last messages', function ( done ) {
 
         async.series( [
 
@@ -275,9 +278,9 @@ describe( 'Messages REST', function () {
             function ( scb ) {
 
                 testTemplates.getMessages( {
-                    length:           52,
+                    length: 52,
                     checkResultArray: {
-                        0:  '50_49',
+                        0: '50_49',
                         49: '50_0',
                         50: '2_0',
                         51: '1_0'
@@ -290,7 +293,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should post another 150 messages and find last 100', function ( done ) {
+    it( 'should post another 150 messages and find last 100', function ( done ) {
 
         async.series( [
 
@@ -308,9 +311,9 @@ describe( 'Messages REST', function () {
             function ( scb ) {
 
                 testTemplates.getMessages( {
-                    length:           100,
+                    length: 100,
                     checkResultArray: {
-                        0:  '150_149',
+                        0: '150_149',
                         99: '150_50'
                     }
                 }, scb );
@@ -321,14 +324,14 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should get (limit=1000) last 202 messages', function ( done ) {
+    it( 'should get (limit=1000) last 202 messages', function ( done ) {
 
 
         testTemplates.getMessages( {
-            limit:            1000,
-            length:           202,
+            limit: 1000,
+            length: 202,
             checkResultArray: {
-                0:   '150_149',
+                0: '150_149',
                 149: '150_0',
                 150: '50_49',
                 199: '50_0',
@@ -340,28 +343,28 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should return error when try to get messages with limit 1001', function ( done ) {
+    it( 'should return error when try to get messages with limit 1001', function ( done ) {
 
         testTemplates.getMessages( {
-            limit:             1001,
+            limit: 1001,
             shouldReturnError: true
         }, done );
 
     } );
 
-    xit( 'should return empty array if limit=0', function ( done ) {
+    it( 'should return empty array if limit=0', function ( done ) {
 
         testTemplates.getMessages( {
-            limit:  0,
+            limit: 0,
             length: 0
         }, done );
 
     } );
 
-    xit( 'should return array if we passed string to limit', function ( done ) {
+    it( 'should return array if we passed string to limit', function ( done ) {
 
         testTemplates.getMessages( {
-            limit:             'zero',
+            limit: 'zero',
             shouldReturnError: true
         }, done );
 
@@ -409,8 +412,8 @@ describe( 'Messages REST', function () {
                     kingClient = new Client();
                     kingClient.create(
                         {
-                            name:    'The King',
-                            avatar:  'http://google.com/1.png',
+                            name: 'The King',
+                            avatar: 'http://google.com/1.png',
                             profile: {
                                 vk: {
                                     id: 100672142
@@ -495,10 +498,62 @@ describe( 'Messages REST', function () {
 
     } );
 
+    describe( 'ban list', function () {
+
+        // ban client
+        it( 'should ban client', function ( done ) {
+
+            ClientModel.findById( clientId, function ( err, doc ) {
+
+                should.not.exist( err );
+                should.exist( doc );
+
+                doc.banned = true;
+                doc.save( done );
+
+            } );
+
+        } );
+
+        it( 'should not post message by banned client', function ( done ) {
+
+            testTemplates.postMessages( {
+                amount: 1,
+                strKey: 'ban_',
+                shouldReturnError: true
+            }, done );
+
+        } );
+
+        it( 'should unban client', function ( done ) {
+
+            ClientModel.findById( clientId, function ( err, doc ) {
+
+                should.not.exist( err );
+                should.exist( doc );
+
+                doc.banned = false;
+                doc.save( done );
+
+            } );
+
+        } );
+
+        it( 'should post message after unban', function ( done ) {
+
+            testTemplates.postMessages( {
+                amount: 1,
+                strKey: 'unban_',
+                shouldReturnError: false
+            }, done );
+
+        } );
+
+    } );
+
     after( function ( done ) {
         mongoose.connection.close( done );
     } );
-
 
 
 } );
