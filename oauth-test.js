@@ -44,6 +44,7 @@ server.use( restify.fullResponse() );
 server.use( restify.CORS() );
 
 server.use( KingOnline.middleware() );
+server.use( ClientsModule.attachClientToRequest );
 
 server.use( passport.initialize() );
 

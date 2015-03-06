@@ -5,6 +5,7 @@ var mongoose             = require( 'mongoose' ),
     async                = require( 'async' ),
 
     MessageModel         = require( '../../../objects/message/message-model.js' ).MessageModel,
+    ClientModel          = require( '../../../objects/client/client-model.js' ).ClientModel,
 
     Client               = require( '../../../objects/client/client.js' ),
 
@@ -13,7 +14,7 @@ var mongoose             = require( 'mongoose' ),
         version: '*'
     } ),
 
-    clientToken,
+    clientToken, clientId,
 
 
     attachTokenToHeaders = function ( next ) {
@@ -28,6 +29,9 @@ var mongoose             = require( 'mongoose' ),
             function ( err ) {
 
                 should.not.exist( err );
+
+                clientToken = theClient.token;
+                clientId = theClient.id;
 
                 theClient.attachToken( function ( err, token ) {
 
@@ -49,20 +53,20 @@ var mongoose             = require( 'mongoose' ),
 
         Messages: function ( next ) {
 
-            //MessageModel.find().remove().exec( function ( err ) {
-            //    should.not.exist( err );
-            //    next();
-            //} );
-
-            mongoose.connection.db.dropCollection( 'messages', function ( err ) {
-
-                if ( err && err.message != 'ns not found' ) {
-                    next( err );
-                } else {
-                    next( null );
-                }
-
+            MessageModel.find().remove().exec( function ( err ) {
+                should.not.exist( err );
+                next();
             } );
+
+            //mongoose.connection.db.dropCollection( 'messages', function ( err ) {
+            //
+            //    if ( err && err.message != 'ns not found' ) {
+            //        next( err );
+            //    } else {
+            //        next( null );
+            //    }
+            //
+            //} );
 
         }
 
@@ -148,7 +152,7 @@ var mongoose             = require( 'mongoose' ),
 
                         if ( parameters.shouldReturnError ) {
                             should.exist( err );
-                            return next();
+                            return tcb();
                         } else {
                             should.not.exist( err );
                             res.statusCode.should.eql( 200 );
@@ -175,8 +179,8 @@ describe( 'Messages REST', function () {
             'mongodb://mongo.local/snailkick-chat', {},
             function ( err ) {
                 should.not.exist( err );
-                //cleanUp.Messages( done );
-                done();
+                cleanUp.Messages( done );
+                //done();
             }
         );
 
@@ -188,7 +192,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should return empty array', function ( done ) {
+    it( 'should return empty array', function ( done ) {
 
         testTemplates.getMessages( {
             length: 0
@@ -196,7 +200,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should post 1 message and find it', function ( done ) {
+    it( 'should post 1 message and find it', function ( done ) {
 
         async.series( [
 
@@ -226,7 +230,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should post another message and find 2 messages', function ( done ) {
+    it( 'should post another message and find 2 messages', function ( done ) {
 
         async.series( [
 
@@ -257,7 +261,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should post 50 messages and find 52 last messages', function ( done ) {
+    it( 'should post 50 messages and find 52 last messages', function ( done ) {
 
         async.series( [
 
@@ -290,7 +294,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should post another 150 messages and find last 100', function ( done ) {
+    it( 'should post another 150 messages and find last 100', function ( done ) {
 
         async.series( [
 
@@ -321,7 +325,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should get (limit=1000) last 202 messages', function ( done ) {
+    it( 'should get (limit=1000) last 202 messages', function ( done ) {
 
 
         testTemplates.getMessages( {
@@ -340,7 +344,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should return error when try to get messages with limit 1001', function ( done ) {
+    it( 'should return error when try to get messages with limit 1001', function ( done ) {
 
         testTemplates.getMessages( {
             limit:             1001,
@@ -349,7 +353,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should return empty array if limit=0', function ( done ) {
+    it( 'should return empty array if limit=0', function ( done ) {
 
         testTemplates.getMessages( {
             limit:  0,
@@ -358,7 +362,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xit( 'should return array if we passed string to limit', function ( done ) {
+    it( 'should return array if we passed string to limit', function ( done ) {
 
         testTemplates.getMessages( {
             limit:             'zero',
@@ -375,7 +379,7 @@ describe( 'Messages REST', function () {
 
         var getMessagesByTokenTpl = function ( onLoaded ) {
 
-            restifyClient.get( '/messages?token=' + kingToken, function ( err, req, res, data ) {
+            restifyClient.get( '/messages?token=' + kingToken, function ( err ) {
 
                 should.not.exist( err );
                 onLoaded();
@@ -413,7 +417,7 @@ describe( 'Messages REST', function () {
                             avatar:  'http://google.com/1.png',
                             profile: {
                                 vk: {
-                                    id: 100672142
+                                    id: 13605301
                                 }
                             }
                         },
@@ -450,7 +454,7 @@ describe( 'Messages REST', function () {
 
                 isKingOnline( function ( result ) {
 
-                    result.should.eql( true );
+                    result.should.eql( { isKingOnline: true } );
                     done();
 
                 } );
@@ -466,7 +470,7 @@ describe( 'Messages REST', function () {
 
                 isKingOnline( function ( result ) {
 
-                    result.should.eql( true );
+                    result.should.eql( { isKingOnline: true } );
                     done();
 
                 } );
@@ -483,7 +487,7 @@ describe( 'Messages REST', function () {
 
                 isKingOnline( function ( result ) {
 
-                    result.should.eql( {} );
+                    result.should.eql( { isKingOnline: false } );
                     done();
 
                 } );
@@ -495,10 +499,68 @@ describe( 'Messages REST', function () {
 
     } );
 
+    describe( 'ban list', function () {
+
+        // ban client
+        it( 'should ban client', function ( done ) {
+
+            ClientModel.findById( clientId, function ( err, doc ) {
+
+                should.not.exist( err );
+                should.exist( doc );
+                //should.exist( doc.banned );
+
+                doc.banned = true;
+                doc.save( done );
+
+            } );
+
+        } );
+
+        it( 'should not post message by banned client', function ( done ) {
+
+            restifyClient.post(
+                '/messages?token=' + clientToken,
+                { text: '345' },
+                function ( err ) {
+
+                    should.exist( err );
+
+                    done();
+
+                } );
+
+        } );
+
+        it( 'should unban client', function ( done ) {
+
+            ClientModel.findById( clientId, function ( err, doc ) {
+
+                should.not.exist( err );
+                should.exist( doc );
+
+                doc.banned = false;
+                doc.save( done );
+
+            } );
+
+        } );
+
+        it( 'should post message after unban', function ( done ) {
+
+            testTemplates.postMessages( {
+                amount:            1,
+                strKey:            'unban_',
+                shouldReturnError: false
+            }, done );
+
+        } );
+
+    } );
+
     after( function ( done ) {
         mongoose.connection.close( done );
     } );
-
 
 
 } );

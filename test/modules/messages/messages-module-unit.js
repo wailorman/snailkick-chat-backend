@@ -24,7 +24,7 @@ var mongoose       = require( 'mongoose' ),
 
     },
 
-    clientToken,
+    clientToken, clientForTesting,
     attachToken = function ( next ) {
 
         var theClient = new Client();
@@ -42,6 +42,7 @@ var mongoose       = require( 'mongoose' ),
 
                     should.not.exist( err );
 
+                    clientForTesting = theClient;
                     clientToken = token;
                     return next();
 
@@ -139,7 +140,9 @@ var mongoose       = require( 'mongoose' ),
                         params: {
                             text: messageTextStr,
                             token: clientToken
-                        }
+                        },
+
+                        client: clientForTesting
 
                     };
 

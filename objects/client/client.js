@@ -48,6 +48,8 @@ Client.prototype._documentToObject = function ( document, next ) {
 
     if ( document.statuses ) self.statuses = document.statuses;
 
+    if ( document.banned ) self.banned = document.banned;
+
     next();
 
 };
