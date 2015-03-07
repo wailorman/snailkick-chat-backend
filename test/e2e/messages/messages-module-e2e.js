@@ -371,7 +371,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    describe( 'king online', function () {
+    xdescribe( 'king online', function () {
 
         this.timeout( 15000 );
 
@@ -553,6 +553,61 @@ describe( 'Messages REST', function () {
                 strKey:            'unban_',
                 shouldReturnError: false
             }, done );
+
+        } );
+
+    } );
+
+    describe( 'stickers', function () {
+
+        it( 'should post message only with sticker', function ( done ) {
+
+            async.series( [], done );
+
+            restifyClient.post(
+                '/messages?token=' + clientToken,
+                {
+                    sticker: "01008"
+                },
+                function ( err, req, res, data ) {
+
+                    should.not.exist( err );
+
+                    should.not.exist( data.text );
+                    should.exist( data.sticker );
+
+                    data.client.should.eql( clientId );
+                    data.sticker.should.eql( "01008" );
+
+                    done();
+
+                }
+            );
+
+        } );
+
+        it( 'should post message with text & sticker', function ( done ) {
+
+            restifyClient.post(
+                '/messages?token=' + clientToken,
+                {
+                    text: 'Message with text and sticker',
+                    sticker: "01008"
+                },
+                function ( err, req, res, data ) {
+
+                    should.not.exist( err );
+
+                    should.not.exist( data.text );
+                    should.exist( data.sticker );
+
+                    data.client.should.eql( clientId );
+                    data.sticker.should.eql( "01008" );
+
+                    done();
+
+                }
+            );
 
         } );
 

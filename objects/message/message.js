@@ -56,7 +56,9 @@ Message.prototype._validators.client = function ( value, next ) {
 Message.prototype._documentToObject = function ( document, next ) {
 
     self.id = document._id.toString();
-    self.text = document.text;
+
+    if ( document.text ) self.text = document.text;
+    if ( document.sticker ) self.sticker = document.sticker;
 
     self.posted = document.posted;
 

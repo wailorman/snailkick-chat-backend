@@ -100,7 +100,7 @@ var findMessages = function ( req, res, next ) {
 
 var postMessage = function ( req, res, next ) {
 
-    var text, client;
+    var text, sticker;
 
     async.series(
         [
@@ -108,9 +108,10 @@ var postMessage = function ( req, res, next ) {
             // . Prepare message
             function ( scb ) {
 
-                if ( !req.params.text ) return scb( new restify.InvalidArgumentError( 'text|null' ) );
-
                 text = req.params.text;
+                sticker = req.params.sticker;
+
+                if ( !( text || sticker ) ) return scb( new restify.InvalidArgumentError( "Text or sticker missing" ) );
 
                 return scb();
 
@@ -142,12 +143,13 @@ var postMessage = function ( req, res, next ) {
                 newMessage.client = new mf.ObjectId( req.client.id );
 
                 newMessage.text = text;
+                newMessage.sticker = sticker;
 
                 newMessage.posted = new Date();
 
                 newMessage.save( function ( err ) {
 
-                    if ( err ) return scb( new restify.InternalError( 'Post the message to db Mongo error: ' + err.message ) );
+                    if ( err ) return scb( new restify.InternalError( 'Post message to db. Mongo error: ' + err.message ) );
 
                     return scb();
 
