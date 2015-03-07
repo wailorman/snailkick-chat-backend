@@ -558,6 +558,104 @@ describe( 'Messages REST', function () {
 
     } );
 
+    describe( 'stickers', function () {
+
+        it( 'should post message only with sticker', function ( done ) {
+
+            async.series( [
+
+                function ( scb ) {
+
+                    restifyClient.post(
+                        '/messages?token=' + clientToken,
+                        {
+                            sticker: "01008"
+                        },
+                        function ( err ) {
+
+                            should.not.exist( err );
+                            scb();
+
+                        }
+                    );
+
+                },
+
+                function ( scb ) {
+
+                    restifyClient.get(
+                        '/messages?limit=1',
+                        function ( err, req, res, data ) {
+
+                            var message = data[ 0 ];
+
+                            should.not.exist( err );
+                            should.not.exist( message.text );
+                            should.exist( message.sticker );
+
+                            message.sticker.should.eql( "01008" );
+
+                            scb();
+
+                        }
+                    );
+
+                }
+
+            ], done );
+
+        } );
+
+        it( 'should post message with text & sticker', function ( done ) {
+
+            async.series( [
+
+                function ( scb ) {
+
+                    restifyClient.post(
+                        '/messages?token=' + clientToken,
+                        {
+                            text: 'Message with text and sticker',
+                            sticker: "01008"
+                        },
+                        function ( err ) {
+
+                            should.not.exist( err );
+                            scb();
+
+                        }
+                    );
+
+                },
+
+                function ( scb ) {
+
+                    restifyClient.get(
+                        '/messages?limit=1',
+                        function ( err, req, res, data ) {
+
+                            var message = data[ 0 ];
+
+                            should.not.exist( err );
+                            should.exist( message.text );
+                            should.exist( message.sticker );
+
+                            message.text.should.eql( 'Message with text and sticker' );
+                            message.sticker.should.eql( "01008" );
+
+                            scb();
+
+                        }
+                    );
+
+                }
+
+            ], done );
+
+        } );
+
+    } );
+
     after( function ( done ) {
         mongoose.connection.close( done );
     } );

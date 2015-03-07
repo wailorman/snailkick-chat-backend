@@ -5,17 +5,20 @@ var mongoose = require( 'mongoose' ),
 var messageSchema = new Schema( {
 
     text: {
-        type:     String,
-        required: true
+        type: String
+    },
+
+    sticker: {
+        type: String
     },
 
     client: {
-        type:     Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         required: true
     },
 
     posted: {
-        type:     Date,
+        type: Date,
         required: true
     }
 
