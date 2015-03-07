@@ -371,7 +371,7 @@ describe( 'Messages REST', function () {
 
     } );
 
-    xdescribe( 'king online', function () {
+    describe( 'king online', function () {
 
         this.timeout( 15000 );
 
@@ -562,52 +562,95 @@ describe( 'Messages REST', function () {
 
         it( 'should post message only with sticker', function ( done ) {
 
-            async.series( [], done );
+            async.series( [
 
-            restifyClient.post(
-                '/messages?token=' + clientToken,
-                {
-                    sticker: "01008"
+                function ( scb ) {
+
+                    restifyClient.post(
+                        '/messages?token=' + clientToken,
+                        {
+                            sticker: "01008"
+                        },
+                        function ( err ) {
+
+                            should.not.exist( err );
+                            scb();
+
+                        }
+                    );
+
                 },
-                function ( err, req, res, data ) {
 
-                    should.not.exist( err );
+                function ( scb ) {
 
-                    should.not.exist( data.text );
-                    should.exist( data.sticker );
+                    restifyClient.get(
+                        '/messages?limit=1',
+                        function ( err, req, res, data ) {
 
-                    data.client.should.eql( clientId );
-                    data.sticker.should.eql( "01008" );
+                            var message = data[ 0 ];
 
-                    done();
+                            should.not.exist( err );
+                            should.not.exist( message.text );
+                            should.exist( message.sticker );
+
+                            message.sticker.should.eql( "01008" );
+
+                            scb();
+
+                        }
+                    );
 
                 }
-            );
+
+            ], done );
 
         } );
 
         it( 'should post message with text & sticker', function ( done ) {
 
-            restifyClient.post(
-                '/messages?token=' + clientToken,
-                {
-                    text: 'Message with text and sticker',
-                    sticker: "01008"
+            async.series( [
+
+                function ( scb ) {
+
+                    restifyClient.post(
+                        '/messages?token=' + clientToken,
+                        {
+                            text: 'Message with text and sticker',
+                            sticker: "01008"
+                        },
+                        function ( err ) {
+
+                            should.not.exist( err );
+                            scb();
+
+                        }
+                    );
+
                 },
-                function ( err, req, res, data ) {
 
-                    should.not.exist( err );
+                function ( scb ) {
 
-                    should.not.exist( data.text );
-                    should.exist( data.sticker );
+                    restifyClient.get(
+                        '/messages?limit=1',
+                        function ( err, req, res, data ) {
 
-                    data.client.should.eql( clientId );
-                    data.sticker.should.eql( "01008" );
+                            var message = data[ 0 ];
 
-                    done();
+                            should.not.exist( err );
+                            should.exist( message.text );
+                            should.exist( message.sticker );
+
+                            message.text.should.eql( 'Message with text and sticker' );
+                            message.sticker.should.eql( "01008" );
+
+                            scb();
+
+                        }
+                    );
 
                 }
-            );
+
+            ], done );
 
         } );
 
