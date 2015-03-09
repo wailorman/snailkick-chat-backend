@@ -120,15 +120,7 @@ var postMessage = function ( req, res, next ) {
             // . Check client
             function ( scb ) {
 
-                if ( !req.client ) return scb( new restify.InvalidArgumentError( 'Security error! You have not passed token to verify you' ) );
-
-                return scb();
-
-            },
-
-            // Check ban
-            function ( scb ) {
-
+                if ( !req.client.id ) return scb( new restify.InvalidArgumentError( 'Security error! You have not passed token to verify you' ) );
                 if ( req.client.banned ) return scb( new restify.ForbiddenError( "You have been banned. You are not able to post messages" ) );
 
                 return scb();

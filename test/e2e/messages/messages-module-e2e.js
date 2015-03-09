@@ -51,6 +51,16 @@ var mongoose             = require( 'mongoose' ),
 
     cleanUp              = {
 
+        Clients:  function ( next ) {
+
+            ClientModel.find().remove().exec( function ( err ) {
+
+                should.not.exist( err );
+                next();
+
+            } );
+
+        },
         Messages: function ( next ) {
 
             MessageModel.find().remove().exec( function ( err ) {
@@ -179,8 +189,14 @@ describe( 'Messages REST', function () {
             'mongodb://mongo.local/snailkick-chat', {},
             function ( err ) {
                 should.not.exist( err );
-                cleanUp.Messages( done );
-                //done();
+
+                async.parallel( [
+
+                    cleanUp.Messages,
+                    cleanUp.Clients
+
+                ], done );
+
             }
         );
 
@@ -368,6 +384,107 @@ describe( 'Messages REST', function () {
             limit:             'zero',
             shouldReturnError: true
         }, done );
+
+    } );
+
+    it( 'should not post message if no token passed', function ( done ) {
+
+        restifyClient.post(
+            '/messages',
+            {
+                text: 'no token passed!'
+            },
+            function ( err, req, res, data ) {
+
+                should.exist( err );
+                done();
+
+            }
+        );
+
+    } );
+
+    it( 'should not post message if passed token have no parent client', function ( done ) {
+
+        var theClient, attachedToken;
+
+        async.series( [
+
+            // . create client
+            function ( scb ) {
+
+                theClient = new Client();
+
+                theClient.create( { name: 'Some Client' }, function ( err ) {
+
+                    should.not.exist( err );
+                    scb();
+
+                } );
+
+            },
+
+            // . attach token
+            function ( scb ) {
+
+                theClient.attachToken( function ( err, token ) {
+
+                    should.not.exist( err );
+                    attachedToken = token;
+                    scb();
+
+                } );
+
+            },
+
+            // . remove client
+            function ( scb ) {
+
+                ClientModel.findById( theClient.id ).remove( function ( err ) {
+
+                    should.not.exist( err );
+                    scb();
+
+                } );
+
+            },
+
+            // . try to post message
+            function ( scb ) {
+
+                restifyClient.post(
+                    '/messages?token=' + attachedToken,
+                    {
+                        text: 'nonexistent client'
+                    },
+                    function ( err, req, res, data ) {
+
+                        should.exist( err );
+                        scb();
+
+                    }
+                );
+
+            }
+
+        ], done );
+
+    } );
+
+    it( 'should not post message if passed token not exists', function ( scb ) {
+
+        restifyClient.post(
+            '/messages?token=00000000000000000000',
+            {
+                text: 'nonexistent token'
+            },
+            function ( err ) {
+
+                should.exist( err );
+                scb();
+
+            }
+        );
 
     } );
 

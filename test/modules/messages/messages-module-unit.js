@@ -11,7 +11,7 @@ var mongoose       = require( 'mongoose' ),
     MessagesModule = require( '../../../modules/messages-module.js' ),
 
 
-    cleanUp              = {
+    cleanUp        = {
 
         Messages: function ( next ) {
 
@@ -25,7 +25,7 @@ var mongoose       = require( 'mongoose' ),
     },
 
     clientToken, clientForTesting,
-    attachToken = function ( next ) {
+    attachToken    = function ( next ) {
 
         var theClient = new Client();
 
@@ -54,7 +54,7 @@ var mongoose       = require( 'mongoose' ),
     },
 
 
-    testTemplates = {
+    testTemplates  = {
 
         /**
          *
@@ -66,7 +66,7 @@ var mongoose       = require( 'mongoose' ),
          *
          * @param done
          */
-        getMessages: function( parameters, done ){
+        getMessages: function ( parameters, done ) {
 
             // request
             var req = {
@@ -78,7 +78,7 @@ var mongoose       = require( 'mongoose' ),
             // result
             var res = {
 
-                send: function( code, data ){
+                send: function ( code, data ) {
 
                     if ( parameters.shouldReturnError )
                         code.should.not.eql( 200 );
@@ -94,7 +94,7 @@ var mongoose       = require( 'mongoose' ),
 
                     // Checking result array
 
-                    Object.each( parameters.checkResultArray, function( key, value ){
+                    Object.each( parameters.checkResultArray, function ( key, value ) {
 
                         data[ key ].text.should.eql( value );
 
@@ -127,7 +127,7 @@ var mongoose       = require( 'mongoose' ),
          * @param [parameters.shouldReturnError]
          * @param done
          */
-        postMessages: function( parameters, done ){
+        postMessages: function ( parameters, done ) {
 
             async.timesSeries(
                 parameters.amount,
@@ -138,7 +138,7 @@ var mongoose       = require( 'mongoose' ),
                     var req = {
 
                         params: {
-                            text: messageTextStr,
+                            text:  messageTextStr,
                             token: clientToken
                         },
 
@@ -148,7 +148,7 @@ var mongoose       = require( 'mongoose' ),
 
                     var res = {
 
-                        send: function ( code, text ){
+                        send: function ( code, text ) {
 
                             code.should.eql( 200 );
 
@@ -199,212 +199,208 @@ describe( 'MessagesModule', function () {
     // clean messages collection
     before( function ( done ) {
         cleanUp.Messages( done );
-    });
+    } );
 
 
+    /*it( 'should post a message', function ( done ) {
 
+     var req = {
+     params: {
+     text: 'message text'
+     },
+     header: function(){
+     return clientToken;
+     }
+     };
 
+     var res = {
+     send: function( code, text ) {
+     code.should.eql( 200 );
+     }
+     };
 
-        /*it( 'should post a message', function ( done ) {
+     MessagesModule.postMessage( req, res, done );
 
-            var req = {
-                params: {
-                    text: 'message text'
-                },
-                header: function(){
-                    return clientToken;
-                }
-            };
+     } );*/
 
-            var res = {
-                send: function( code, text ) {
-                    code.should.eql( 200 );
-                }
-            };
+    it( 'should return empty array', function ( done ) {
 
-            MessagesModule.postMessage( req, res, done );
+        testTemplates.getMessages( {
+            length: 0
+        }, done );
 
-        } );*/
+    } );
 
+    it( 'should post 1 message and find it', function ( done ) {
 
-        it( 'should return empty array', function ( done ) {
+        async.series( [
 
-            testTemplates.getMessages( {
-                length: 0
-            }, done );
+            // . Post
+            function ( scb ) {
 
-        } );
+                testTemplates.postMessages( {
+                    amount: 1,
+                    strKey: '1_'
+                }, scb );
 
-        it( 'should post 1 message and find it', function ( done ) {
+            },
 
-            async.series( [
+            // . Find
+            function ( scb ) {
 
-                // . Post
-                function ( scb ) {
+                testTemplates.getMessages( {
+                    length:           1,
+                    checkResultArray: {
+                        0: '1_0'
+                    }
+                }, scb );
 
-                    testTemplates.postMessages( {
-                        amount: 1,
-                        strKey: '1_'
-                    }, scb );
+            }
 
-                },
+        ], done );
 
-                // . Find
-                function ( scb ) {
+    } );
 
-                    testTemplates.getMessages( {
-                        length:           1,
-                        checkResultArray: {
-                            0: '1_0'
-                        }
-                    }, scb );
+    it( 'should post another message and find 2 messages', function ( done ) {
 
-                }
+        async.series( [
 
-            ], done );
+            // . Post
+            function ( scb ) {
 
-        } );
+                testTemplates.postMessages( {
+                    amount: 1,
+                    strKey: '2_'
+                }, scb );
 
-        it( 'should post another message and find 2 messages', function ( done ) {
+            },
 
-            async.series( [
+            // . Find
+            function ( scb ) {
 
-                // . Post
-                function ( scb ) {
+                testTemplates.getMessages( {
+                    length:           2,
+                    checkResultArray: {
+                        0: '2_0',
+                        1: '1_0'
+                    }
+                }, scb );
 
-                    testTemplates.postMessages( {
-                        amount: 1,
-                        strKey: '2_'
-                    }, scb );
+            }
 
-                },
+        ], done );
 
-                // . Find
-                function ( scb ) {
+    } );
 
-                    testTemplates.getMessages( {
-                        length:           2,
-                        checkResultArray: {
-                            0: '2_0',
-                            1: '1_0'
-                        }
-                    }, scb );
+    it( 'should post 50 messages and find 52 last messages', function ( done ) {
 
-                }
+        async.series( [
 
-            ], done );
+            // . Post
+            function ( scb ) {
 
-        } );
+                testTemplates.postMessages( {
+                    amount: 50,
+                    strKey: '50_'
+                }, scb );
 
-        it( 'should post 50 messages and find 52 last messages', function ( done ) {
+            },
 
-            async.series( [
+            // . Find
+            function ( scb ) {
 
-                // . Post
-                function ( scb ) {
+                testTemplates.getMessages( {
+                    length:           52,
+                    checkResultArray: {
+                        0:  '50_49',
+                        49: '50_0',
+                        50: '2_0',
+                        51: '1_0'
+                    }
+                }, scb );
 
-                    testTemplates.postMessages( {
-                        amount: 50,
-                        strKey: '50_'
-                    }, scb );
+            }
 
-                },
+        ], done );
 
-                // . Find
-                function ( scb ) {
+    } );
 
-                    testTemplates.getMessages( {
-                        length:           52,
-                        checkResultArray: {
-                            0:  '50_49',
-                            49: '50_0',
-                            50: '2_0',
-                            51: '1_0'
-                        }
-                    }, scb );
+    it( 'should post another 150 messages and find last 100', function ( done ) {
 
-                }
+        async.series( [
 
-            ], done );
+            // . Post
+            function ( scb ) {
 
-        } );
+                testTemplates.postMessages( {
+                    amount: 150,
+                    strKey: '150_'
+                }, scb );
 
-        it( 'should post another 150 messages and find last 100', function ( done ) {
+            },
 
-            async.series( [
+            // . Find
+            function ( scb ) {
 
-                // . Post
-                function ( scb ) {
+                testTemplates.getMessages( {
+                    length:           100,
+                    checkResultArray: {
+                        0:  '150_149',
+                        99: '150_50'
+                    }
+                }, scb );
 
-                    testTemplates.postMessages( {
-                        amount: 150,
-                        strKey: '150_'
-                    }, scb );
+            }
 
-                },
+        ], done );
 
-                // . Find
-                function ( scb ) {
+    } );
 
-                    testTemplates.getMessages( {
-                        length:           100,
-                        checkResultArray: {
-                            0:  '150_149',
-                            99: '150_50'
-                        }
-                    }, scb );
+    it( 'should get (limit=1000) last 202 messages', function ( done ) {
 
-                }
 
-            ], done );
+        testTemplates.getMessages( {
+            limit:            1000,
+            length:           202,
+            checkResultArray: {
+                0:   '150_149',
+                149: '150_0',
+                150: '50_49',
+                199: '50_0',
+                200: '2_0',
+                201: '1_0'
+            }
+        }, done );
 
-        } );
 
-        it( 'should get (limit=1000) last 202 messages', function ( done ) {
+    } );
 
+    it( 'should return error when try to get messages with limit 1001', function ( done ) {
 
-            testTemplates.getMessages( {
-                limit:            1000,
-                length:           202,
-                checkResultArray: {
-                    0:   '150_149',
-                    149: '150_0',
-                    150: '50_49',
-                    199: '50_0',
-                    200: '2_0',
-                    201: '1_0'
-                }
-            }, done );
+        testTemplates.getMessages( {
+            limit:             1001,
+            shouldReturnError: true
+        }, done );
 
+    } );
 
-        } );
+    it( 'should return empty array if limit=0', function ( done ) {
 
-        it( 'should return error when try to get messages with limit 1001', function ( done ) {
+        testTemplates.getMessages( {
+            limit:  0,
+            length: 0
+        }, done );
 
-            testTemplates.getMessages( {
-                limit:             1001,
-                shouldReturnError: true
-            }, done );
+    } );
 
-        } );
+    it( 'should return array if we passed string to limit', function ( done ) {
 
-        it( 'should return empty array if limit=0', function ( done ) {
+        testTemplates.getMessages( {
+            limit:             'zero',
+            shouldReturnError: true
+        }, done );
 
-            testTemplates.getMessages( {
-                limit:  0,
-                length: 0
-            }, done );
-
-        } );
-
-        it( 'should return array if we passed string to limit', function ( done ) {
-
-            testTemplates.getMessages( {
-                limit:             'zero',
-                shouldReturnError: true
-            }, done );
-
-        } );
+    } );
 
 
     after( function ( done ) {
