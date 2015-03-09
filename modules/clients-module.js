@@ -46,7 +46,10 @@ var getClient = function ( req, res, next ) {
  */
 var attachClientToRequest = function ( req, res, next ) {
 
-    if ( !req.params.token ) return next();
+    if ( !req.params.token ) {
+        delete req.client;
+        return next();
+    }
 
     var client = new Client();
 

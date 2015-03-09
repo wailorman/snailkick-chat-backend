@@ -28,7 +28,7 @@ var mongoHost;
 /** @namespace process.env.MONGO_HOST */
 if ( process.env.MONGO_HOST ) {
     mongoHost = 'mongodb://' + process.env.MONGO_HOST + '/snailkick-chat';
-}else{
+} else {
     mongoHost = 'mongodb://mongo.local/snailkick-chat';
 }
 
@@ -71,6 +71,6 @@ server.listen( 1515, function () {
     console.log( 'Server started!' );
 } );
 
-process.on('uncaughtException', function (error) {
-    console.log(error.stack);
-});
+process.on( 'uncaughtException', function ( error ) {
+    console.log( error.stack );
+} );

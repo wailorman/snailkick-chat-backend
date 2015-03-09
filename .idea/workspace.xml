@@ -1,12 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BuildServerSettings">
+    <option name="LOGIN" value="" />
+    <option name="SERVER_URL" value="http://buildserver" />
+    <option name="PASSWORD" />
+    <option name="REMEMBER_ME" value="true" />
+    <option name="USE_IDEA_PROXY_SETTINGS" value="true" />
+    <option name="INSPECTIONS_BUILD_TYPE_IDS" />
+    <option name="DUPLICATES_BUILD_TYPE_IDS" />
+    <option name="COVERAGE_SETTINGS" />
+    <option name="TEST_STATUS_ENABLED" value="true" />
+    <option name="TEST_STATUS_SHOW_SUCCESSFUL" value="false" />
+    <option name="ARTIFACTS_BUILD_TYPE_IDS" />
+    <option name="PERFORM_COMMIT_IF_SUCCESSFUL" value="true" />
+    <option name="PERFORM_COMMIT_IF_NO_NEW_FAILED_TESTS" value="false" />
+    <option name="REQUEST_CONFIRMATON" value="false" />
+    <option name="PRE_TESTED_COMMIT" value="true" />
+    <option name="PROJECT_STATUS_DIALOG_SPLITTER_DIVIDER_LOCATION" value="500" />
+    <option name="CHANGES_STATUS_DIALOG_SPLITTER_DIVIDER_LOCATION" value="500" />
+    <option name="FILTER_BY_STATUS" value="false" />
+    <option name="FILTER_MARKED_AS_FIXED" value="false" />
+    <option name="SHOW_CLOSE_PROMPT" value="true" />
+    <option name="TOOL_WINDOW_SELECTED_CONTENT_INDEX" value="0" />
+    <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce4f0c56-b7fe-4cf8-a5a0-23200c23c9bd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/objects/message/message-model.js" afterPath="$PROJECT_DIR$/objects/message/message-model.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/objects/message/message.js" afterPath="$PROJECT_DIR$/objects/message/message.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js" afterPath="$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/messages-module.js" afterPath="$PROJECT_DIR$/modules/messages-module.js" />
+    <list default="true" id="90138990-ec94-46aa-b87e-0499b4795de1" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/clients-module.js" afterPath="$PROJECT_DIR$/modules/clients-module.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oauth-test.js" afterPath="$PROJECT_DIR$/oauth-test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="snailkick-chat-backend.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,7 +41,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
+    <option name="PATCH_PATH" value="C:\jetBrainsProjects\snailkick-chat-backend" />
   </component>
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
@@ -29,205 +51,341 @@
     <favorites_list name="snailkick-chat-backend" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="vk-auth.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="3480">
-              <caret line="58" column="27" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="client-model.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/objects/client/client-model.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="585">
-              <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="messages-module-e2e.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7005208" vertical-offset="2491" max-vertical-offset="3255">
-              <caret line="634" column="58" selection-start-line="634" selection-start-column="58" selection-end-line="634" selection-end-column="58" />
-              <folding>
-                <element signature="e#561#632#0" expanded="false" />
-                <element signature="e#711#1334#0" expanded="false" />
-                <element signature="e#791#926#0" expanded="false" />
-                <element signature="e#957#1316#0" expanded="false" />
-                <element signature="e#1154#1298#0" expanded="false" />
-                <element signature="e#1365#1888#0" expanded="false" />
-                <element signature="e#1404#1881#0" expanded="false" />
-                <element signature="e#1471#1551#0" expanded="false" />
-                <element signature="e#1568#1639#0" expanded="false" />
-                <element signature="e#1929#2191#0" expanded="false" />
-                <element signature="e#2243#3249#0" expanded="false" />
-                <element signature="e#2434#3235#0" expanded="false" />
-                <element signature="e#2489#2584#0" expanded="false" />
-                <element signature="e#2590#2708#0" expanded="false" />
-                <element signature="e#2992#3194#0" expanded="false" />
-                <element signature="e#3083#3172#0" expanded="false" />
-                <element signature="e#3260#3463#0" expanded="false" />
-                <element signature="e#3846#3914#0" expanded="false" />
-                <element signature="e#3949#4334#0" expanded="false" />
-                <element signature="e#4012#4130#0" expanded="false" />
-                <element signature="e#4136#4278#0" expanded="false" />
-                <element signature="e#4589#4713#0" expanded="false" />
-                <element signature="e#4766#4813#0" expanded="false" />
-                <element signature="e#4873#4960#0" expanded="false" />
-                <element signature="e#4911#4944#0" expanded="false" />
-                <element signature="e#5028#5565#0" expanded="false" />
-                <element signature="e#5647#6218#0" expanded="false" />
-                <element signature="e#5672#6202#0" expanded="false" />
-                <element signature="e#5726#5879#0" expanded="false" />
-                <element signature="e#5773#5856#0" expanded="false" />
-                <element signature="e#5933#6191#0" expanded="false" />
-                <element signature="e#5979#6168#0" expanded="false" />
-                <element signature="e#6060#6150#0" expanded="false" />
-                <element signature="e#6302#6951#0" expanded="false" />
-                <element signature="e#6327#6935#0" expanded="false" />
-                <element signature="e#6381#6536#0" expanded="false" />
-                <element signature="e#6428#6513#0" expanded="false" />
-                <element signature="e#6590#6924#0" expanded="false" />
-                <element signature="e#6636#6901#0" expanded="false" />
-                <element signature="e#6718#6883#0" expanded="false" />
-                <element signature="e#7036#7622#0" expanded="false" />
-                <element signature="e#7698#8058#0" expanded="false" />
-                <element signature="e#7840#8031#0" expanded="false" />
-                <element signature="e#8153#8291#0" expanded="false" />
-                <element signature="e#8191#8275#0" expanded="false" />
-                <element signature="e#8362#8472#0" expanded="false" />
-                <element signature="e#8400#8456#0" expanded="false" />
-                <element signature="e#8555#8695#0" expanded="false" />
-                <element signature="e#8741#11505#0" expanded="false" />
-                <element signature="e#8870#9054#0" expanded="false" />
-                <element signature="e#8953#9040#0" expanded="false" />
-                <element signature="e#9104#9295#0" expanded="false" />
-                <element signature="e#9190#9281#0" expanded="false" />
-                <element signature="e#9413#10455#0" expanded="false" />
-                <element signature="e#9484#10129#0" expanded="false" />
-                <element signature="e#9597#9927#0" expanded="false" />
-                <element signature="e#9749#9901#0" expanded="false" />
-                <element signature="e#9787#9871#0" expanded="false" />
-                <element signature="e#9970#10087#0" expanded="false" />
-                <element signature="e#10199#10440#0" expanded="false" />
-                <element signature="e#10270#10418#0" expanded="false" />
-                <element signature="e#10672#10786#0" expanded="false" />
-                <element signature="e#10959#11144#0" expanded="false" />
-                <element signature="e#11012#11126#0" expanded="false" />
-                <element signature="e#11288#11474#0" expanded="false" />
-                <element signature="e#11341#11456#0" expanded="false" />
-                <element signature="e#11693#11904#0" expanded="false" />
-                <element signature="e#12311#12560#0" expanded="false" />
-                <element signature="e#12380#12546#0" expanded="false" />
-                <element signature="e#12630#12832#0" expanded="false" />
-                <element signature="e#12673#12812#0" expanded="false" />
-                <element signature="e#15400#15450#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/objects/client/client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4672" max-vertical-offset="6060">
-              <caret line="331" column="0" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="message.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/objects/message/message.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="700" max-vertical-offset="5040">
-              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="message-model.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/objects/message/message-model.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="555">
-              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="oauth-test.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oauth-test.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="637" max-vertical-offset="1215">
-              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="messages-module.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/messages-module.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="940" max-vertical-offset="1545">
-              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-              <folding>
-                <element signature="e#627#2602#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="clients-module.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/clients-module.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="694" max-vertical-offset="1065">
-              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.48009798">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="clients-module.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/modules/clients-module.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.41323793" vertical-offset="519" max-vertical-offset="1110">
+                  <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Dockerfile">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="255">
+                  <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="messages-module.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/modules/messages-module.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="1456" max-vertical-offset="2580">
+                  <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/objects/client/client.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
+                  <caret line="36" column="65" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
+                  <folding>
+                    <element signature="e#432#503#0" expanded="false" />
+                    <element signature="e#506#739#0" expanded="false" />
+                    <element signature="e#765#785#0" expanded="false" />
+                    <element signature="e#854#1210#0" expanded="false" />
+                    <element signature="e#1245#1591#0" expanded="false" />
+                    <element signature="e#1275#1323#0" expanded="false" />
+                    <element signature="e#1355#1406#0" expanded="false" />
+                    <element signature="e#1450#1501#0" expanded="false" />
+                    <element signature="e#1537#1588#0" expanded="false" />
+                    <element signature="e#1631#1778#0" expanded="false" />
+                    <element signature="e#1809#2009#0" expanded="false" />
+                    <element signature="e#2060#3710#0" expanded="false" />
+                    <element signature="e#2137#3686#0" expanded="false" />
+                    <element signature="e#2206#2672#0" expanded="false" />
+                    <element signature="e#2753#3327#0" expanded="false" />
+                    <element signature="e#3115#3309#0" expanded="false" />
+                    <element signature="e#3412#3675#0" expanded="false" />
+                    <element signature="e#3490#3657#0" expanded="false" />
+                    <element signature="e#3762#5070#0" expanded="false" />
+                    <element signature="e#3829#4960#0" expanded="false" />
+                    <element signature="e#3886#4363#0" expanded="false" />
+                    <element signature="e#4007#4349#0" expanded="false" />
+                    <element signature="e#4419#4506#0" expanded="false" />
+                    <element signature="e#4565#4953#0" expanded="false" />
+                    <element signature="e#4619#4727#0" expanded="false" />
+                    <element signature="e#4784#4939#0" expanded="false" />
+                    <element signature="e#4979#5064#0" expanded="false" />
+                    <element signature="e#5073#5129#0" expanded="false" />
+                    <element signature="e#5174#6208#0" expanded="false" />
+                    <element signature="e#5320#6184#0" expanded="false" />
+                    <element signature="e#5394#5586#0" expanded="false" />
+                    <element signature="e#5515#5568#0" expanded="false" />
+                    <element signature="e#5666#6041#0" expanded="false" />
+                    <element signature="e#5809#6007#0" expanded="false" />
+                    <element signature="e#6103#6173#0" expanded="false" />
+                    <element signature="e#6211#6403#0" expanded="false" />
+                    <element signature="e#6457#8359#0" expanded="false" />
+                    <element signature="e#6534#8335#0" expanded="false" />
+                    <element signature="e#6603#7169#0" expanded="false" />
+                    <element signature="e#7232#7713#0" expanded="false" />
+                    <element signature="e#7370#7695#0" expanded="false" />
+                    <element signature="e#7773#8175#0" expanded="false" />
+                    <element signature="e#7874#8157#0" expanded="false" />
+                    <element signature="e#8242#8324#0" expanded="false" />
+                    <element signature="e#8363#8679#0" expanded="false" />
+                    <element signature="e#8736#8739#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="king-online.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/modules/king-online.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1290">
+                  <caret line="50" column="64" selection-start-line="50" selection-start-column="64" selection-end-line="50" selection-end-column="64" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="client-model.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/objects/client/client-model.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="585">
+                  <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="token-model.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/objects/client/token-model.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="405">
+                  <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="message.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/objects/message/message.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="4524" max-vertical-offset="5040">
+                  <caret line="322" column="22" selection-start-line="322" selection-start-column="22" selection-end-line="322" selection-end-column="22" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="message-model.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/objects/message/message-model.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
+                  <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="oauth-test.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/oauth-test.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.8319328" vertical-offset="195" max-vertical-offset="1215">
+                  <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="messages-module-e2e.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="2629" max-vertical-offset="4920">
+                  <caret line="500" column="13" selection-start-line="500" selection-start-column="13" selection-end-line="500" selection-end-column="13" />
+                  <folding>
+                    <element signature="e#561#632#0" expanded="false" />
+                    <element signature="e#711#1334#0" expanded="false" />
+                    <element signature="e#791#926#0" expanded="false" />
+                    <element signature="e#957#1316#0" expanded="false" />
+                    <element signature="e#1154#1298#0" expanded="false" />
+                    <element signature="e#1768#1839#0" expanded="false" />
+                    <element signature="e#2118#4599#0" expanded="false" />
+                    <element signature="e#2129#2391#0" expanded="false" />
+                    <element signature="e#2443#3449#0" expanded="false" />
+                    <element signature="e#2634#3435#0" expanded="false" />
+                    <element signature="e#2689#2784#0" expanded="false" />
+                    <element signature="e#2790#2908#0" expanded="false" />
+                    <element signature="e#3192#3394#0" expanded="false" />
+                    <element signature="e#3283#3372#0" expanded="false" />
+                    <element signature="e#3460#3663#0" expanded="false" />
+                    <element signature="e#3716#4592#0" expanded="false" />
+                    <element signature="e#3875#4556#0" expanded="false" />
+                    <element signature="e#4046#4114#0" expanded="false" />
+                    <element signature="e#4149#4534#0" expanded="false" />
+                    <element signature="e#4212#4330#0" expanded="false" />
+                    <element signature="e#4336#4478#0" expanded="false" />
+                    <element signature="e#5144#5231#0" expanded="false" />
+                    <element signature="e#5299#5836#0" expanded="false" />
+                    <element signature="e#5182#5215#0" expanded="false" />
+                    <element signature="e#5918#6489#0" expanded="false" />
+                    <element signature="e#5943#6473#0" expanded="false" />
+                    <element signature="e#5997#6150#0" expanded="false" />
+                    <element signature="e#6044#6127#0" expanded="false" />
+                    <element signature="e#6204#6462#0" expanded="false" />
+                    <element signature="e#6250#6439#0" expanded="false" />
+                    <element signature="e#6331#6421#0" expanded="false" />
+                    <element signature="e#6573#7222#0" expanded="false" />
+                    <element signature="e#6598#7206#0" expanded="false" />
+                    <element signature="e#6652#6807#0" expanded="false" />
+                    <element signature="e#6699#6784#0" expanded="false" />
+                    <element signature="e#6861#7195#0" expanded="false" />
+                    <element signature="e#6907#7172#0" expanded="false" />
+                    <element signature="e#6989#7154#0" expanded="false" />
+                    <element signature="e#7307#7893#0" expanded="false" />
+                    <element signature="e#7332#7877#0" expanded="false" />
+                    <element signature="e#7386#7543#0" expanded="false" />
+                    <element signature="e#7433#7520#0" expanded="false" />
+                    <element signature="e#7597#7866#0" expanded="false" />
+                    <element signature="e#7643#7843#0" expanded="false" />
+                    <element signature="e#7726#7825#0" expanded="false" />
+                    <element signature="e#7969#8329#0" expanded="false" />
+                    <element signature="e#7332#7877#0" expanded="false" />
+                    <element signature="e#7386#7543#0" expanded="false" />
+                    <element signature="e#7433#7520#0" expanded="false" />
+                    <element signature="e#7597#7866#0" expanded="false" />
+                    <element signature="e#7643#7843#0" expanded="false" />
+                    <element signature="e#7726#7825#0" expanded="false" />
+                    <element signature="e#8424#8562#0" expanded="false" />
+                    <element signature="e#8462#8546#0" expanded="false" />
+                    <element signature="e#8111#8302#0" expanded="false" />
+                    <element signature="e#8633#8743#0" expanded="false" />
+                    <element signature="e#8671#8727#0" expanded="false" />
+                    <element signature="e#8826#8966#0" expanded="false" />
+                    <element signature="e#8864#8950#0" expanded="false" />
+                    <element signature="e#9043#9310#0" expanded="false" />
+                    <element signature="e#8864#8950#0" expanded="false" />
+                    <element signature="e#11549#11740#0" expanded="false" />
+                    <element signature="e#11635#11726#0" expanded="false" />
+                    <element signature="e#14069#14363#0" expanded="false" />
+                    <element signature="e#11858#12900#0" expanded="false" />
+                    <element signature="e#11929#12574#0" expanded="false" />
+                    <element signature="e#12042#12372#0" expanded="false" />
+                    <element signature="e#12194#12346#0" expanded="false" />
+                    <element signature="e#12232#12316#0" expanded="false" />
+                    <element signature="e#12415#12532#0" expanded="false" />
+                    <element signature="e#12644#12885#0" expanded="false" />
+                    <element signature="e#12715#12863#0" expanded="false" />
+                    <element signature="e#14442#14698#0" expanded="false" />
+                    <element signature="e#14593#14684#0" expanded="false" />
+                    <element signature="e#13117#13231#0" expanded="false" />
+                    <element signature="e#14756#15005#0" expanded="false" />
+                    <element signature="e#13404#13589#0" expanded="false" />
+                    <element signature="e#13457#13571#0" expanded="false" />
+                    <element signature="e#15075#15277#0" expanded="false" />
+                    <element signature="e#13733#13919#0" expanded="false" />
+                    <element signature="e#13786#13901#0" expanded="false" />
+                    <element signature="e#15330#17811#0" expanded="false" />
+                    <element signature="e#14069#14363#0" expanded="false" />
+                    <element signature="e#14138#14349#0" expanded="false" />
+                    <element signature="e#14442#14698#0" expanded="false" />
+                    <element signature="e#14593#14684#0" expanded="false" />
+                    <element signature="e#15404#16488#0" expanded="false" />
+                    <element signature="e#14825#14991#0" expanded="false" />
+                    <element signature="e#16566#17801#0" expanded="false" />
+                    <element signature="e#15118#15257#0" expanded="false" />
+                    <element signature="e#17845#17895#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="vk-auth.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="3480">
+                  <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="clients-module-e2e.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/test/e2e/clients/clients-module-e2e.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="3608" max-vertical-offset="4170">
+                  <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="messages-module-unit.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/test/modules/messages/messages-module-unit.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="2965" max-vertical-offset="6225">
+                  <caret line="223" column="11" selection-start-line="223" selection-start-column="11" selection-end-line="223" selection-end-column="11" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="Git.Push.Settings">
+    <option name="myUpdateMethod" value="REBASE" />
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_TYPE" value="REBASE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="stickers" />
+        <entry key="$PROJECT_DIR$" value="ban_list" />
       </map>
     </option>
     <option name="PUSH_TAGS">
       <GitPushTagMode />
     </option>
     <push-targets>
-      <push-target-info repo="$PROJECT_DIR$" source="master" target-remote="gefest-backend" target-branch="master" />
+      <push-target-info repo="$PROJECT_DIR$" source="dev" target-remote="origin" target-branch="dev" />
     </push-targets>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test/modules/auth/vk-auth/vk-authSpec.js" />
         <option value="$PROJECT_DIR$/modules/messagesModule.js" />
-        <option value="$PROJECT_DIR$/test/modules/messages/messagesSpec.js" />
         <option value="$PROJECT_DIR$/test/modules/messages/messagesModuleSpec.js" />
-        <option value="$PROJECT_DIR$/test/rest/messages/messagesRestSpec.js" />
-        <option value="$PROJECT_DIR$/modules/auth/vk-auth.js" />
+        <option value="$PROJECT_DIR$/test/e2e/messages/messages-e2eSpec.js" />
+        <option value="$PROJECT_DIR$/test/objects/client/clientSpec.js" />
+        <option value="$PROJECT_DIR$/test/modules/messages/messages-unit.js" />
+        <option value="$PROJECT_DIR$/test/modules/auth/vk-auth/vk-authSpec.js" />
+        <option value="$PROJECT_DIR$/test/e2e/messages/messages-e2e.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/test/modules/clients/clients-module-unit.js" />
+        <option value="$PROJECT_DIR$/test/objects/message/messageSpec.js" />
+        <option value="$PROJECT_DIR$/wallaby.json" />
+        <option value="$PROJECT_DIR$/objects/message/message-model.js" />
+        <option value="$PROJECT_DIR$/objects/message/message.js" />
+        <option value="$PROJECT_DIR$/Dockerfile" />
+        <option value="$PROJECT_DIR$/modules/king-online.js" />
+        <option value="$PROJECT_DIR$/objects/client/token-model.js" />
+        <option value="$PROJECT_DIR$/test/e2e/clients/clients-module-e2e.js" />
         <option value="$PROJECT_DIR$/objects/client/client-model.js" />
+        <option value="$PROJECT_DIR$/objects/client/client.js" />
+        <option value="$PROJECT_DIR$/test/modules/messages/messages-module-unit.js" />
+        <option value="$PROJECT_DIR$/modules/messages-module.js" />
+        <option value="$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js" />
+        <option value="$PROJECT_DIR$/modules/auth/vk-auth.js" />
         <option value="$PROJECT_DIR$/oauth-test.js" />
         <option value="$PROJECT_DIR$/modules/clients-module.js" />
-        <option value="$PROJECT_DIR$/objects/message/message-model.js" />
-        <option value="$PROJECT_DIR$/modules/messages-module.js" />
-        <option value="$PROJECT_DIR$/objects/message/message.js" />
-        <option value="$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js" />
       </list>
     </option>
   </component>
@@ -235,13 +393,13 @@
     <detection-done>true</detection-done>
   </component>
   <component name="NodeJsMochaPackageDirSetting">
-    <data>C:\jetBrainsProjects\snailkick-chat-backend\node_modules\mocha</data>
+    <data>C:\Users\Сергей\AppData\Roaming\npm\node_modules\mocha</data>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -251,24 +409,24 @@
             <id />
           </State>
           <State>
-            <id>Data flow issuesJavaScript</id>
+            <id>CSS</id>
           </State>
           <State>
-            <id>General</id>
+            <id>Code style issuesCSS</id>
+          </State>
+          <State>
+            <id>Code style issuesJavaScript</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
           </State>
           <State>
             <id>JavaScript</id>
           </State>
-          <State>
-            <id>XPath</id>
-          </State>
-          <State>
-            <id>XSLT</id>
-          </State>
         </expanded-state>
         <selected-state>
           <State>
-            <id>CoffeeScript</id>
+            <id>JSUnnecessarySemicolon</id>
           </State>
         </selected-state>
       </profile-state>
@@ -327,6 +485,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="snailkick-chat-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="snailkick-chat-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="messages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="snailkick-chat-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="snailkick-chat-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -405,6 +603,10 @@
               <option name="myItemId" value="objects" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -444,20 +646,21 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="options.lastSelected" value="editing.templates" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Wallaby.js" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="recentsLimit" value="5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="FullScreen" value="true" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="FullScreen" value="false" />
+    <property name="LayoutCode.rearrangeEntriesJavaScript 1.5" value="false" />
   </component>
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
       <list>
         <RestClientRequest>
-          <option name="httpMethod" value="POST" />
+          <option name="httpMethod" value="GET" />
           <option name="urlBase" value="http://localhost:1515" />
           <option name="urlPath" value="/messages" />
           <option name="headers">
@@ -472,15 +675,58 @@
               </KeyValuePair>
             </list>
           </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="token" />
+                <option name="value" value="1ulHcfNOvGBeDm5lpoTM" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="limit" />
+                <option name="value" value="2" />
+              </KeyValuePair>
+            </list>
+          </option>
           <option name="parametersEnabled" value="true" />
-          <option name="haveTextToSend" value="true" />
-          <option name="textToSend" value="{     &quot;text&quot;: &quot;12345&quot; }" />
+          <option name="textToSend" value="" />
           <option name="filesToSend" value="" />
         </RestClientRequest>
         <RestClientRequest>
-          <option name="httpMethod" value="POST" />
+          <option name="httpMethod" value="GET" />
           <option name="urlBase" value="http://localhost:1515" />
-          <option name="urlPath" value="/" />
+          <option name="urlPath" value="/messages" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="token" />
+                <option name="value" value="1ulHcfNOvGBeDm5lpoTM" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="limit" />
+                <option name="value" value="2" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:1515" />
+          <option name="urlPath" value="/is-king-online" />
           <option name="headers">
             <list>
               <KeyValuePair>
@@ -494,42 +740,48 @@
             </list>
           </option>
           <option name="parametersEnabled" value="true" />
-          <option name="haveTextToSend" value="true" />
-          <option name="textToSend" value="{     &quot;text&quot;: &quot;12345&quot; }" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="OPTIONS" />
+          <option name="urlBase" value="http://pc.wailorman.ru:1515" />
+          <option name="urlPath" value="/messages" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
           <option name="filesToSend" value="" />
         </RestClientRequest>
       </list>
     </option>
   </component>
   <component name="RunManager" selected="Mocha.all">
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
-      <method />
-    </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
-      <setting name="preferredDebugBrowser" value="Chrome" />
+      <setting name="preferredDebugBrowser" value="Chrome Canary" />
       <method />
     </configuration>
-    <configuration default="true" type="meteor-app-runner" factoryName="Meteor">
-      <option name="exePath" value="" />
-      <option name="name" value="Meteor" />
-      <option name="startBrowserSettings">
-        <browser url="http://localhost:3000" />
-      </option>
-      <meteor-runner-state>
-        <option name="startBrowserSettings">
-          <browser url="http://localhost:3000" />
-        </option>
-      </meteor-runner-state>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -555,6 +807,9 @@
       <option name="filePath" />
       <method />
     </configuration>
+    <configuration default="true" type="wallaby" factoryName="Wallaby.js" config="">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
@@ -562,6 +817,90 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="module messages e2e" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>TDD</ui>
+      <extra-mocha-options />
+      <test-directory>$PROJECT_DIR$/test/e2e/messages</test-directory>
+      <recursive>false</recursive>
+      <RunnerSettings RunnerId="RunnerForMochaJavaScript" />
+      <RunnerSettings RunnerId="debuggableProgram" />
+      <ConfigurationWrapper RunnerId="RunnerForMochaJavaScript" />
+      <ConfigurationWrapper RunnerId="debuggableProgram" />
+      <method />
+    </configuration>
+    <configuration default="false" name="module clients e2e" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>TDD</ui>
+      <extra-mocha-options />
+      <test-directory>$PROJECT_DIR$/test/e2e/clients</test-directory>
+      <recursive>false</recursive>
+      <RunnerSettings RunnerId="RunnerForMochaJavaScript" />
+      <RunnerSettings RunnerId="debuggableProgram" />
+      <ConfigurationWrapper RunnerId="RunnerForMochaJavaScript" />
+      <ConfigurationWrapper RunnerId="debuggableProgram" />
+      <method />
+    </configuration>
+    <configuration default="false" name="module messages unit" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>TDD</ui>
+      <extra-mocha-options />
+      <test-directory>$PROJECT_DIR$/test/modules/messages</test-directory>
+      <recursive>false</recursive>
+      <RunnerSettings RunnerId="RunnerForMochaJavaScript" />
+      <RunnerSettings RunnerId="debuggableProgram" />
+      <ConfigurationWrapper RunnerId="RunnerForMochaJavaScript" />
+      <ConfigurationWrapper RunnerId="debuggableProgram" />
+      <method />
+    </configuration>
+    <configuration default="false" name="module clients unit" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>TDD</ui>
+      <extra-mocha-options />
+      <test-directory>$PROJECT_DIR$/test/modules/clients</test-directory>
+      <recursive>false</recursive>
+      <RunnerSettings RunnerId="RunnerForMochaJavaScript" />
+      <ConfigurationWrapper RunnerId="RunnerForMochaJavaScript" />
+      <method />
+    </configuration>
+    <configuration default="false" name="object client unit" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>TDD</ui>
+      <extra-mocha-options />
+      <test-directory>$PROJECT_DIR$/test/objects/client</test-directory>
+      <recursive>false</recursive>
+      <RunnerSettings RunnerId="RunnerForMochaJavaScript" />
+      <ConfigurationWrapper RunnerId="RunnerForMochaJavaScript" />
+      <method />
+    </configuration>
+    <configuration default="false" name="object message unit" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>TDD</ui>
+      <extra-mocha-options />
+      <test-directory>$PROJECT_DIR$/test/objects/message</test-directory>
+      <recursive>false</recursive>
+      <RunnerSettings RunnerId="RunnerForMochaJavaScript" />
+      <ConfigurationWrapper RunnerId="RunnerForMochaJavaScript" />
       <method />
     </configuration>
     <configuration default="false" name="all" type="mocha-javascript-test-runner" factoryName="Mocha">
@@ -579,44 +918,24 @@
       <ConfigurationWrapper RunnerId="debuggableProgram" />
       <method />
     </configuration>
-    <configuration default="false" name="messages module e2e" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-options />
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui>TDD</ui>
-      <extra-mocha-options />
-      <test-directory>$PROJECT_DIR$/test/e2e/messages</test-directory>
-      <recursive>false</recursive>
-      <RunnerSettings RunnerId="RunnerForMochaJavaScript" />
-      <RunnerSettings RunnerId="debuggableProgram" />
-      <ConfigurationWrapper RunnerId="RunnerForMochaJavaScript" />
-      <ConfigurationWrapper RunnerId="debuggableProgram" />
-      <method />
-    </configuration>
-    <configuration default="false" name="vk-auth" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-options />
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui>TDD</ui>
-      <extra-mocha-options />
-      <test-directory>$PROJECT_DIR$/test/modules/auth/vk-auth</test-directory>
-      <recursive>false</recursive>
-      <RunnerSettings RunnerId="RunnerForMochaJavaScript" />
-      <ConfigurationWrapper RunnerId="RunnerForMochaJavaScript" />
-      <method />
-    </configuration>
-    <configuration default="false" name="oauth-tests" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="oauth-test.js" working-dir="$PROJECT_DIR$">
+    <configuration default="false" name="test oauth" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="oauth-test.js" working-dir="$PROJECT_DIR$">
       <RunnerSettings RunnerId="Basic" />
+      <RunnerSettings RunnerId="debuggableProgram" />
+      <RunnerSettings RunnerId="wallaby" />
       <ConfigurationWrapper RunnerId="Basic" />
+      <ConfigurationWrapper RunnerId="debuggableProgram" />
+      <ConfigurationWrapper RunnerId="wallaby" />
       <method />
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Mocha.all" />
-      <item index="1" class="java.lang.String" itemvalue="Mocha.messages module e2e" />
-      <item index="2" class="java.lang.String" itemvalue="Mocha.vk-auth" />
-      <item index="3" class="java.lang.String" itemvalue="Node.js.oauth-tests" />
+    <list size="8">
+      <item index="0" class="java.lang.String" itemvalue="Mocha.module messages e2e" />
+      <item index="1" class="java.lang.String" itemvalue="Mocha.module clients e2e" />
+      <item index="2" class="java.lang.String" itemvalue="Mocha.module messages unit" />
+      <item index="3" class="java.lang.String" itemvalue="Mocha.module clients unit" />
+      <item index="4" class="java.lang.String" itemvalue="Mocha.object client unit" />
+      <item index="5" class="java.lang.String" itemvalue="Mocha.object message unit" />
+      <item index="6" class="java.lang.String" itemvalue="Mocha.all" />
+      <item index="7" class="java.lang.String" itemvalue="Node.js.test oauth" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -625,107 +944,288 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ce4f0c56-b7fe-4cf8-a5a0-23200c23c9bd" name="Default" comment="" />
-      <created>1421191768115</created>
+      <changelist id="90138990-ec94-46aa-b87e-0499b4795de1" name="Default" comment="" />
+      <created>1421756890922</created>
       <option name="number" value="Default" />
-      <updated>1421191768115</updated>
+      <updated>1421756890922</updated>
     </task>
-    <task id="LOCAL-00001" summary="Add .idea directory">
-      <created>1421750109120</created>
+    <task id="LOCAL-00001" summary="+ [v] findMessages. e2e+unit [v]">
+      <created>1421765010585</created>
       <option name="number" value="00001" />
       <option name="project" value="LOCAL" />
-      <updated>1421750109120</updated>
+      <updated>1421765010585</updated>
     </task>
-    <task id="LOCAL-00002" summary="Message module unit testing">
-      <created>1421756566701</created>
+    <task id="LOCAL-00002" summary="+ [v] RESTed Messages ( postMessage, findMessages(limit) )&#10;&#10;commit e0aaed620f1a6b967df19c8d2990ada90c456c52&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Tue Jan 20 17:43:30 2015 +0300&#10;&#10;    + [v] findMessages. e2e+unit [v]&#10;&#10;commit 621fcb1e9d7f64197d2e04129242a30a3e162247&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Tue Jan 20 15:22:46 2015 +0300&#10;&#10;    Message module unit testing&#10;&#10;commit 0a23b355962c7147798dde77a025cabf21fc2b20&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Tue Jan 20 13:35:09 2015 +0300&#10;&#10;    Add .idea directory&#10;&#10;commit d509c44127204d6ae3c99851400eac27d0193121&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Tue Jan 20 12:20:28 2015 +0300&#10;&#10;    +[x] findMessages()&#10;&#10;commit 78be7c42941ff738dfcf5e20e68197b5a00c9d22&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Wed Jan 14 02:24:17 2015 +0300&#10;&#10;    K&#10;&#10;commit 2d5eb62dfdb86b3a37d644acf13b4333363df7c3&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Mon Jan 12 18:00:00 2015 +0300&#10;&#10;    + getClientByVkProfile() 1.0&#10;    &#10;    Write getClientByVkProfile() and tests for it.&#10;&#10;commit be7c6a51c20a3e886cdd0f8af782d50a84f891b6&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Mon Jan 12 17:59:30 2015 +0300&#10;&#10;    ClientModel.profile type now is Object&#10;">
+      <created>1421766046892</created>
       <option name="number" value="00002" />
       <option name="project" value="LOCAL" />
-      <updated>1421756566701</updated>
+      <updated>1421766046892</updated>
     </task>
-    <task id="LOCAL-00003" summary="Start creating ban list">
-      <created>1425664783997</created>
+    <task id="LOCAL-00003" summary="+ Clients module [v]&#10;&#10;Rename 'classes' directory to 'objects'">
+      <created>1421772381003</created>
       <option name="number" value="00003" />
       <option name="project" value="LOCAL" />
-      <updated>1425664783997</updated>
+      <updated>1421772381003</updated>
     </task>
-    <task id="LOCAL-00004" summary="+ attach client to request middleware">
-      <created>1425665077964</created>
+    <task id="LOCAL-00004" summary="+ Clients module [v] full&#10;&#10;commit a72badb9ffa67efcc26a64adb2a87f2bd314df54&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Tue Jan 20 19:46:20 2015 +0300&#10;&#10;    + Clients module [v]&#10;    &#10;    Rename 'classes' directory to 'objects'&#10;">
+      <created>1421772507029</created>
       <option name="number" value="00004" />
       <option name="project" value="LOCAL" />
-      <updated>1425665077964</updated>
+      <updated>1421772507029</updated>
     </task>
-    <task id="LOCAL-00005" summary="+ attach client to request module">
-      <created>1425665136641</created>
+    <task id="LOCAL-00005" summary="fix cookie set">
+      <created>1421948473562</created>
       <option name="number" value="00005" />
       <option name="project" value="LOCAL" />
-      <updated>1425665136641</updated>
+      <updated>1421948473562</updated>
     </task>
-    <task id="LOCAL-00006" summary="Start writing stickers">
-      <created>1425717194844</created>
+    <task id="LOCAL-00006" summary="+ Access-Control-Allow-Origin headers">
+      <created>1422126491869</created>
       <option name="number" value="00006" />
       <option name="project" value="LOCAL" />
-      <updated>1425717194844</updated>
+      <updated>1422126491869</updated>
     </task>
-    <task id="LOCAL-00007" summary="Finish stickers system">
-      <created>1425717896023</created>
+    <task id="LOCAL-00007" summary="+ Access-Control-Allow-Origin headers to clients">
+      <created>1422127175697</created>
       <option name="number" value="00007" />
       <option name="project" value="LOCAL" />
-      <updated>1425717896023</updated>
+      <updated>1422127175697</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Move token from headers to params">
+      <created>1422550366570</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1422550366570</updated>
+    </task>
+    <task id="LOCAL-00009" summary="+ Find Client by token via REST &amp; attaching token now on params&#10;&#10;Change error code on 'Can't find client with such token'&#10;Some bug fixes">
+      <created>1422632738571</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1422632738571</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Change cookie expire to 10sec">
+      <created>1422732542513</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1422732542513</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Set host to chat.wailorman.ru">
+      <created>1422736659723</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1422736659723</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Set redirect host to api.chat.wailorman.ru">
+      <created>1422902381088</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1422902381088</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Make messages &amp; tokens collection capped">
+      <created>1422965622193</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1422965622193</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Remove clients-module logging">
+      <created>1422967899910</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1422967899910</updated>
+    </task>
+    <task id="LOCAL-00015" summary="+ statuses">
+      <created>1422970738957</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1422970738957</updated>
+    </task>
+    <task id="LOCAL-00016" summary="+ rto parameter to /auth/vk&#10;&#10;If you want to redirect not to the default page, you can use this URL form:&#10;http://api.chat.snailkick.ru:1515/auth/vk?rto=http://yandex.ru/">
+      <created>1422987966589</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1422987966589</updated>
+    </task>
+    <task id="LOCAL-00017" summary="+ Dockerfile">
+      <created>1423079463759</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1423079463759</updated>
+    </task>
+    <task id="LOCAL-00018" summary="remove CMD from Dockerfile">
+      <created>1423088129901</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1423088129901</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fix ADD in Dockerfile">
+      <created>1423088287806</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1423088287806</updated>
+    </task>
+    <task id="LOCAL-00020" summary="+ EXPOSE &amp; turn back CMD">
+      <created>1423089010811</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1423089010811</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Change mongo host to mongo.local">
+      <created>1423090595127</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1423090595127</updated>
+    </task>
+    <task id="LOCAL-00022" summary="turn back localhost">
+      <created>1423091735054</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1423091735054</updated>
+    </task>
+    <task id="LOCAL-00023" summary="mongo.local!">
+      <created>1423092214495</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1423092214495</updated>
+    </task>
+    <task id="LOCAL-00024" summary="+ new EXPOSE">
+      <created>1423094398491</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1423094398491</updated>
+    </task>
+    <task id="LOCAL-00025" summary="EXPOSE try to link as : by Dockerfile">
+      <created>1423095107144</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1423095107144</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Move backend DB to /snailkick-chat">
+      <created>1423142017316</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1423142017316</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Made it possible to auth from ANY domain &amp; Use local api if requested from *.local">
+      <created>1423142166653</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1423142166653</updated>
+    </task>
+    <task id="LOCAL-00028" summary="+ isKingOnline">
+      <created>1423355666201</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1423355666201</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Change response scheme of isKingOnline &amp; fix some bugs">
+      <created>1423411355421</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1423411355421</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Made collection non-capped &amp; generate mongo host from ENV variable">
+      <created>1424555599356</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1424555599356</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Fix .local domain detecting">
+      <created>1424708665242</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1424708665242</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Try to fix .length error">
+      <created>1424715817637</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1424715817637</updated>
+    </task>
+    <task id="LOCAL-00033" summary="fixing domain">
+      <created>1424717458083</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1424717458083</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Fixing cookies domain again">
+      <created>1424719443954</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1424719443954</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Turn on error logging">
+      <created>1424721177799</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1424721177799</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Remove cookies domain logging">
+      <created>1424728959261</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1424728959261</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Change King VK ID">
+      <created>1424729118463</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1424729118463</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Remove Mongo auth data from Dockerfile">
+      <created>1424730766617</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1424730766617</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Finish ban-list (without control panel)">
+      <created>1425671166235</created>
+      <option name="number" value="00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1425671166235</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Finish ban-list (without control panel)&#10;&#10;commit 2d5e211cf0414c378018e0fcdca9d4d2af2a94bd&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Fri Mar 6 22:46:06 2015 +0300&#10;&#10;    Finish ban-list (without control panel)&#10;&#10;commit f9854f1e5f27dd84b0ca48a407b7ee90e37b5117&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Fri Mar 6 21:05:36 2015 +0300&#10;&#10;    + attach client to request module&#10;&#10;commit dad9f795b6ccf1fcf20f11c89a587bc833efb5bb&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Fri Mar 6 21:04:37 2015 +0300&#10;&#10;    + attach client to request middleware&#10;&#10;commit 84a4db9e9987f6f4ec468bb08a79075f8aefb88f&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Fri Mar 6 20:59:43 2015 +0300&#10;&#10;    Start creating ban list&#10;">
+      <created>1425671213040</created>
+      <option name="number" value="00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1425671213040</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Fix error: Able to post message without token">
+      <created>1425894498590</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1425894498590</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42973855" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3267974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.50757575" sideWeight="0.65351814" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45238096" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17776097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3962804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46895424" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12953092" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="810" y="208" width="300" height="624" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24242425" sideWeight="0.6273987" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3267974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21331316" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26385927" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1736" height="856" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.265043" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33405405" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21331316" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3982808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3267974" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.265043" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14372164" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33954155" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -739,219 +1239,285 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Add .idea directory" />
-    <MESSAGE value="Message module unit testing" />
-    <MESSAGE value="Start creating ban list" />
-    <MESSAGE value="+ attach client to request middleware" />
-    <MESSAGE value="+ attach client to request module" />
-    <MESSAGE value="Start writing stickers" />
-    <MESSAGE value="Finish stickers system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finish stickers system" />
+    <MESSAGE value="+ Dockerfile" />
+    <MESSAGE value="remove CMD from Dockerfile" />
+    <MESSAGE value="fix ADD in Dockerfile" />
+    <MESSAGE value="+ EXPOSE &amp; turn back CMD" />
+    <MESSAGE value="Change mongo host to mongo.local" />
+    <MESSAGE value="turn back localhost" />
+    <MESSAGE value="mongo.local!" />
+    <MESSAGE value="+ new EXPOSE" />
+    <MESSAGE value="EXPOSE try to link as : by Dockerfile" />
+    <MESSAGE value="Move backend DB to /snailkick-chat" />
+    <MESSAGE value="Made it possible to auth from ANY domain &amp; Use local api if requested from *.local" />
+    <MESSAGE value="+ isKingOnline" />
+    <MESSAGE value="Change response scheme of isKingOnline &amp; fix some bugs" />
+    <MESSAGE value="Made collection non-capped &amp; generate mongo host from ENV variable" />
+    <MESSAGE value="Fix .local domain detecting" />
+    <MESSAGE value="Try to fix .length error" />
+    <MESSAGE value="fixing domain" />
+    <MESSAGE value="Fixing cookies domain again" />
+    <MESSAGE value="Turn on error logging" />
+    <MESSAGE value="Remove cookies domain logging" />
+    <MESSAGE value="Change King VK ID" />
+    <MESSAGE value="Remove Mongo auth data from Dockerfile" />
+    <MESSAGE value="Finish ban-list (without control panel)" />
+    <MESSAGE value="Finish ban-list (without control panel)&#10;&#10;commit 2d5e211cf0414c378018e0fcdca9d4d2af2a94bd&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Fri Mar 6 22:46:06 2015 +0300&#10;&#10;    Finish ban-list (without control panel)&#10;&#10;commit f9854f1e5f27dd84b0ca48a407b7ee90e37b5117&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Fri Mar 6 21:05:36 2015 +0300&#10;&#10;    + attach client to request module&#10;&#10;commit dad9f795b6ccf1fcf20f11c89a587bc833efb5bb&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Fri Mar 6 21:04:37 2015 +0300&#10;&#10;    + attach client to request middleware&#10;&#10;commit 84a4db9e9987f6f4ec468bb08a79075f8aefb88f&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Fri Mar 6 20:59:43 2015 +0300&#10;&#10;    Start creating ban list&#10;" />
+    <MESSAGE value="Fix error: Able to post message without token" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix error: Able to post message without token" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/classes/client/client.js</url>
-          <line>331</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/modules/clients-module.js</url>
+          <line>61</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js</url>
+          <line>398</line>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="47" />
     </breakpoint-manager>
     <watches-manager>
+      <configuration name="NodeJSConfigurationType">
+        <watch expression="client" language="JavaScript" />
+        <watch expression="docs" language="JavaScript" />
+        <watch expression="generatedToken" language="JavaScript" />
+        <watch expression="req.params.token" language="JavaScript" />
+        <watch expression="req.route.name === 'getmessages' " language="JavaScript" />
+      </configuration>
       <configuration name="mocha-javascript-test-runner">
-        <watch expression="!filter.token" language="JavaScript" />
+        <watch expression="client" language="JavaScript" />
+        <watch expression="docs" language="JavaScript" />
+        <watch expression="generatedToken" language="JavaScript" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
+    <entry file="file://$PROJECT_DIR$/modules/messages-module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="3480">
-          <caret line="58" column="27" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1523" max-vertical-offset="2670">
+          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/objects/client/client-model.js">
+    <entry file="file://$PROJECT_DIR$/test/objects/message/messageSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="585">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="941" max-vertical-offset="10575">
+          <caret line="76" column="42" selection-start-line="76" selection-start-column="42" selection-end-line="76" selection-end-column="42" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2085">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#561#632#0" expanded="false" />
-            <element signature="e#711#1334#0" expanded="false" />
-            <element signature="e#791#926#0" expanded="false" />
-            <element signature="e#957#1316#0" expanded="false" />
-            <element signature="e#1154#1298#0" expanded="false" />
-            <element signature="e#1365#1888#0" expanded="false" />
-            <element signature="e#1404#1881#0" expanded="false" />
-            <element signature="e#1471#1551#0" expanded="false" />
-            <element signature="e#1568#1639#0" expanded="false" />
-            <element signature="e#1929#2191#0" expanded="false" />
-            <element signature="e#2243#3249#0" expanded="false" />
-            <element signature="e#2434#3235#0" expanded="false" />
-            <element signature="e#2489#2584#0" expanded="false" />
-            <element signature="e#2590#2708#0" expanded="false" />
-            <element signature="e#2992#3194#0" expanded="false" />
-            <element signature="e#3083#3172#0" expanded="false" />
-            <element signature="e#3260#3463#0" expanded="false" />
-            <element signature="e#3846#3914#0" expanded="false" />
-            <element signature="e#3949#4334#0" expanded="false" />
-            <element signature="e#4012#4130#0" expanded="false" />
-            <element signature="e#4136#4278#0" expanded="false" />
-            <element signature="e#4589#4713#0" expanded="false" />
-            <element signature="e#4766#4813#0" expanded="false" />
-            <element signature="e#4873#4960#0" expanded="false" />
-            <element signature="e#4911#4944#0" expanded="false" />
-            <element signature="e#5028#5565#0" expanded="false" />
-            <element signature="e#5647#6218#0" expanded="false" />
-            <element signature="e#5672#6202#0" expanded="false" />
-            <element signature="e#5726#5879#0" expanded="false" />
-            <element signature="e#5773#5856#0" expanded="false" />
-            <element signature="e#5933#6191#0" expanded="false" />
-            <element signature="e#5979#6168#0" expanded="false" />
-            <element signature="e#6060#6150#0" expanded="false" />
-            <element signature="e#6302#6951#0" expanded="false" />
-            <element signature="e#6327#6935#0" expanded="false" />
-            <element signature="e#6381#6536#0" expanded="false" />
-            <element signature="e#6428#6513#0" expanded="false" />
-            <element signature="e#6590#6924#0" expanded="false" />
-            <element signature="e#6636#6901#0" expanded="false" />
-            <element signature="e#6718#6883#0" expanded="false" />
-            <element signature="e#7036#7622#0" expanded="false" />
-            <element signature="e#7698#8058#0" expanded="false" />
-            <element signature="e#7840#8031#0" expanded="false" />
-            <element signature="e#8153#8291#0" expanded="false" />
-            <element signature="e#8191#8275#0" expanded="false" />
-            <element signature="e#8362#8472#0" expanded="false" />
-            <element signature="e#8400#8456#0" expanded="false" />
-            <element signature="e#8555#8695#0" expanded="false" />
-            <element signature="e#8741#11505#0" expanded="false" />
-            <element signature="e#8870#9054#0" expanded="false" />
-            <element signature="e#8953#9040#0" expanded="false" />
-            <element signature="e#9104#9295#0" expanded="false" />
-            <element signature="e#9190#9281#0" expanded="false" />
-            <element signature="e#9413#10455#0" expanded="false" />
-            <element signature="e#9484#10129#0" expanded="false" />
-            <element signature="e#9597#9927#0" expanded="false" />
-            <element signature="e#9749#9901#0" expanded="false" />
-            <element signature="e#9787#9871#0" expanded="false" />
-            <element signature="e#9970#10087#0" expanded="false" />
-            <element signature="e#10199#10440#0" expanded="false" />
-            <element signature="e#10270#10418#0" expanded="false" />
-            <element signature="e#10672#10786#0" expanded="false" />
-            <element signature="e#10959#11144#0" expanded="false" />
-            <element signature="e#11012#11126#0" expanded="false" />
-            <element signature="e#11288#11474#0" expanded="false" />
-            <element signature="e#11341#11456#0" expanded="false" />
-            <element signature="e#11693#11904#0" expanded="false" />
-            <element signature="e#12311#12560#0" expanded="false" />
-            <element signature="e#12380#12546#0" expanded="false" />
-            <element signature="e#12630#12832#0" expanded="false" />
-            <element signature="e#12673#12812#0" expanded="false" />
-            <element signature="e#15400#15450#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/objects/client/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4672" max-vertical-offset="6060">
-          <caret line="331" column="0" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6000">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#432#503#0" expanded="false" />
+            <element signature="e#506#739#0" expanded="false" />
+            <element signature="e#765#785#0" expanded="false" />
+            <element signature="e#854#1210#0" expanded="false" />
+            <element signature="e#1245#1591#0" expanded="false" />
+            <element signature="e#1275#1323#0" expanded="false" />
+            <element signature="e#1355#1406#0" expanded="false" />
+            <element signature="e#1450#1501#0" expanded="false" />
+            <element signature="e#1537#1588#0" expanded="false" />
+            <element signature="e#1631#1778#0" expanded="false" />
+            <element signature="e#1809#2009#0" expanded="false" />
+            <element signature="e#2060#3710#0" expanded="false" />
+            <element signature="e#2137#3686#0" expanded="false" />
+            <element signature="e#2206#2672#0" expanded="false" />
+            <element signature="e#2753#3327#0" expanded="false" />
+            <element signature="e#3115#3309#0" expanded="false" />
+            <element signature="e#3412#3675#0" expanded="false" />
+            <element signature="e#3490#3657#0" expanded="false" />
+            <element signature="e#3762#5070#0" expanded="false" />
+            <element signature="e#3829#4960#0" expanded="false" />
+            <element signature="e#3886#4363#0" expanded="false" />
+            <element signature="e#4007#4349#0" expanded="false" />
+            <element signature="e#4419#4506#0" expanded="false" />
+            <element signature="e#4565#4953#0" expanded="false" />
+            <element signature="e#4619#4727#0" expanded="false" />
+            <element signature="e#4784#4939#0" expanded="false" />
+            <element signature="e#4979#5064#0" expanded="false" />
+            <element signature="e#5073#5129#0" expanded="false" />
+            <element signature="e#5174#6208#0" expanded="false" />
+            <element signature="e#5320#6184#0" expanded="false" />
+            <element signature="e#5394#5586#0" expanded="false" />
+            <element signature="e#5515#5568#0" expanded="false" />
+            <element signature="e#5666#6041#0" expanded="false" />
+            <element signature="e#5809#6007#0" expanded="false" />
+            <element signature="e#6103#6173#0" expanded="false" />
+            <element signature="e#6211#6403#0" expanded="false" />
+            <element signature="e#6457#8359#0" expanded="false" />
+            <element signature="e#6534#8335#0" expanded="false" />
+            <element signature="e#6603#7169#0" expanded="false" />
+            <element signature="e#7232#7713#0" expanded="false" />
+            <element signature="e#7370#7695#0" expanded="false" />
+            <element signature="e#7773#8175#0" expanded="false" />
+            <element signature="e#7874#8157#0" expanded="false" />
+            <element signature="e#8242#8324#0" expanded="false" />
+            <element signature="e#8363#8679#0" expanded="false" />
+            <element signature="e#8736#8739#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth-test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="109" max-vertical-offset="705">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2251" max-vertical-offset="3150">
+          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/objects/message/message.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="700" max-vertical-offset="5040">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="822" max-vertical-offset="5010">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/messages-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2025" max-vertical-offset="2700">
+          <caret line="163" column="12" selection-start-line="163" selection-start-column="12" selection-end-line="163" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/objects/message/message-model.js">
+    <entry file="file://$PROJECT_DIR$/modules/clients-module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6" max-vertical-offset="555">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/oauth-test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="637" max-vertical-offset="1215">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="109" max-vertical-offset="705">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2251" max-vertical-offset="3150">
+          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/objects/message/message.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="822" max-vertical-offset="5010">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/messages-module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="940" max-vertical-offset="1545">
-          <caret line="111" column="45" selection-start-line="111" selection-start-column="45" selection-end-line="111" selection-end-column="45" />
-          <folding>
-            <element signature="e#627#2602#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="2025" max-vertical-offset="2700">
+          <caret line="163" column="12" selection-start-line="163" selection-start-column="12" selection-end-line="163" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/clients-module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="694" max-vertical-offset="1065">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth-test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="109" max-vertical-offset="705">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3405">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2251" max-vertical-offset="3150">
+          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/objects/message/message.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="822" max-vertical-offset="5010">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/messages-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2025" max-vertical-offset="2700">
+          <caret line="163" column="12" selection-start-line="163" selection-start-column="12" selection-end-line="163" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/clients-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth-test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="110" max-vertical-offset="705">
+          <caret line="36" column="73" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="73" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3405">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2251" max-vertical-offset="3150">
+          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
+    <entry file="file://$PROJECT_DIR$/objects/message/message.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3178">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5070">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
+    <entry file="file://$PROJECT_DIR$/oauth-test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3405">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3405">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="110" max-vertical-offset="705">
+          <caret line="36" column="73" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="73" />
           <folding />
         </state>
       </provider>
@@ -964,6 +1530,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/oauth-test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="110" max-vertical-offset="705">
+          <caret line="36" column="73" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3060">
@@ -972,46 +1546,113 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/passport/lib/middleware/initialize.js">
+    <entry file="file://$PROJECT_DIR$/test/modules/auth/vk-auth/vk-authSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="1050">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1355" max-vertical-offset="2010">
+          <caret line="126" column="8" selection-start-line="126" selection-start-column="8" selection-end-line="126" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
+    <entry file="file://$PROJECT_DIR$/libs/mini-funcs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2565">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3060">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/modules/clients/clients-module-unit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="886" max-vertical-offset="1920">
+          <caret line="116" column="8" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/restify/lib/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.841615" vertical-offset="0" max-vertical-offset="2835">
+          <caret line="122" column="40" selection-start-line="122" selection-start-column="40" selection-end-line="122" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/restify-cookies/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="915">
+          <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="435">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/objects/message/messageSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1526" max-vertical-offset="10575">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.WebStorm9/system/extLibs/http_github.com_borisyankov_DefinitelyTyped_raw_master_passport_passport.d.ts">
+    <entry file="file://$PROJECT_DIR$/node_modules/passport/lib/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="204" max-vertical-offset="1425">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="899">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/restify/lib/server.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/passport/lib/authenticator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="4498" max-vertical-offset="11985">
-          <caret line="310" column="31" selection-start-line="310" selection-start-column="31" selection-end-line="310" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="7095">
+          <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/passport/lib/middleware/initialize.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/rand-token/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="1050">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.5344828" vertical-offset="1365" max-vertical-offset="2235">
+          <caret line="122" column="15" selection-start-line="122" selection-start-column="12" selection-end-line="122" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
+    <entry file="file://$USER_HOME$/.WebStorm9/system/extLibs/http_github.com_borisyankov_DefinitelyTyped_raw_master_restify_restify.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="3480">
-          <caret line="58" column="27" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1545" max-vertical-offset="3330">
+          <caret line="126" column="4" selection-start-line="126" selection-start-column="4" selection-end-line="126" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28082192" vertical-offset="39" max-vertical-offset="1050">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/objects/client/token-model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/e2e/clients/clients-module-e2e.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3608" max-vertical-offset="4170">
+          <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1019,139 +1660,227 @@
     <entry file="file://$PROJECT_DIR$/objects/client/client-model.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="585">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oauth-test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="637" max-vertical-offset="1215">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/clients-module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="694" max-vertical-offset="1065">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/objects/message/message-model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6" max-vertical-offset="555">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/messages-module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="940" max-vertical-offset="1545">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-          <folding>
-            <element signature="e#627#2602#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/objects/message/message.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="700" max-vertical-offset="5040">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4524" max-vertical-offset="5040">
+          <caret line="322" column="22" selection-start-line="322" selection-start-column="22" selection-end-line="322" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/objects/client/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4672" max-vertical-offset="6060">
-          <caret line="331" column="0" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
+          <caret line="36" column="65" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
+          <folding>
+            <element signature="e#432#503#0" expanded="false" />
+            <element signature="e#506#739#0" expanded="false" />
+            <element signature="e#765#785#0" expanded="false" />
+            <element signature="e#854#1210#0" expanded="false" />
+            <element signature="e#1245#1591#0" expanded="false" />
+            <element signature="e#1275#1323#0" expanded="false" />
+            <element signature="e#1355#1406#0" expanded="false" />
+            <element signature="e#1450#1501#0" expanded="false" />
+            <element signature="e#1537#1588#0" expanded="false" />
+            <element signature="e#1631#1778#0" expanded="false" />
+            <element signature="e#1809#2009#0" expanded="false" />
+            <element signature="e#2060#3710#0" expanded="false" />
+            <element signature="e#2137#3686#0" expanded="false" />
+            <element signature="e#2206#2672#0" expanded="false" />
+            <element signature="e#2753#3327#0" expanded="false" />
+            <element signature="e#3115#3309#0" expanded="false" />
+            <element signature="e#3412#3675#0" expanded="false" />
+            <element signature="e#3490#3657#0" expanded="false" />
+            <element signature="e#3762#5070#0" expanded="false" />
+            <element signature="e#3829#4960#0" expanded="false" />
+            <element signature="e#3886#4363#0" expanded="false" />
+            <element signature="e#4007#4349#0" expanded="false" />
+            <element signature="e#4419#4506#0" expanded="false" />
+            <element signature="e#4565#4953#0" expanded="false" />
+            <element signature="e#4619#4727#0" expanded="false" />
+            <element signature="e#4784#4939#0" expanded="false" />
+            <element signature="e#4979#5064#0" expanded="false" />
+            <element signature="e#5073#5129#0" expanded="false" />
+            <element signature="e#5174#6208#0" expanded="false" />
+            <element signature="e#5320#6184#0" expanded="false" />
+            <element signature="e#5394#5586#0" expanded="false" />
+            <element signature="e#5515#5568#0" expanded="false" />
+            <element signature="e#5666#6041#0" expanded="false" />
+            <element signature="e#5809#6007#0" expanded="false" />
+            <element signature="e#6103#6173#0" expanded="false" />
+            <element signature="e#6211#6403#0" expanded="false" />
+            <element signature="e#6457#8359#0" expanded="false" />
+            <element signature="e#6534#8335#0" expanded="false" />
+            <element signature="e#6603#7169#0" expanded="false" />
+            <element signature="e#7232#7713#0" expanded="false" />
+            <element signature="e#7370#7695#0" expanded="false" />
+            <element signature="e#7773#8175#0" expanded="false" />
+            <element signature="e#7874#8157#0" expanded="false" />
+            <element signature="e#8242#8324#0" expanded="false" />
+            <element signature="e#8363#8679#0" expanded="false" />
+            <element signature="e#8736#8739#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/modules/messages/messages-module-unit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2965" max-vertical-offset="6225">
+          <caret line="223" column="11" selection-start-line="223" selection-start-column="11" selection-end-line="223" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/king-online.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1290">
+          <caret line="50" column="64" selection-start-line="50" selection-start-column="64" selection-end-line="50" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7005208" vertical-offset="2491" max-vertical-offset="3255">
-          <caret line="634" column="58" selection-start-line="634" selection-start-column="58" selection-end-line="634" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2629" max-vertical-offset="4920">
+          <caret line="500" column="13" selection-start-line="500" selection-start-column="13" selection-end-line="500" selection-end-column="13" />
           <folding>
             <element signature="e#561#632#0" expanded="false" />
             <element signature="e#711#1334#0" expanded="false" />
             <element signature="e#791#926#0" expanded="false" />
             <element signature="e#957#1316#0" expanded="false" />
             <element signature="e#1154#1298#0" expanded="false" />
-            <element signature="e#1365#1888#0" expanded="false" />
-            <element signature="e#1404#1881#0" expanded="false" />
-            <element signature="e#1471#1551#0" expanded="false" />
-            <element signature="e#1568#1639#0" expanded="false" />
-            <element signature="e#1929#2191#0" expanded="false" />
-            <element signature="e#2243#3249#0" expanded="false" />
-            <element signature="e#2434#3235#0" expanded="false" />
-            <element signature="e#2489#2584#0" expanded="false" />
-            <element signature="e#2590#2708#0" expanded="false" />
-            <element signature="e#2992#3194#0" expanded="false" />
-            <element signature="e#3083#3172#0" expanded="false" />
-            <element signature="e#3260#3463#0" expanded="false" />
-            <element signature="e#3846#3914#0" expanded="false" />
-            <element signature="e#3949#4334#0" expanded="false" />
-            <element signature="e#4012#4130#0" expanded="false" />
-            <element signature="e#4136#4278#0" expanded="false" />
-            <element signature="e#4589#4713#0" expanded="false" />
-            <element signature="e#4766#4813#0" expanded="false" />
-            <element signature="e#4873#4960#0" expanded="false" />
-            <element signature="e#4911#4944#0" expanded="false" />
-            <element signature="e#5028#5565#0" expanded="false" />
-            <element signature="e#5647#6218#0" expanded="false" />
-            <element signature="e#5672#6202#0" expanded="false" />
-            <element signature="e#5726#5879#0" expanded="false" />
-            <element signature="e#5773#5856#0" expanded="false" />
-            <element signature="e#5933#6191#0" expanded="false" />
-            <element signature="e#5979#6168#0" expanded="false" />
-            <element signature="e#6060#6150#0" expanded="false" />
-            <element signature="e#6302#6951#0" expanded="false" />
-            <element signature="e#6327#6935#0" expanded="false" />
-            <element signature="e#6381#6536#0" expanded="false" />
-            <element signature="e#6428#6513#0" expanded="false" />
-            <element signature="e#6590#6924#0" expanded="false" />
-            <element signature="e#6636#6901#0" expanded="false" />
-            <element signature="e#6718#6883#0" expanded="false" />
-            <element signature="e#7036#7622#0" expanded="false" />
-            <element signature="e#7698#8058#0" expanded="false" />
-            <element signature="e#7840#8031#0" expanded="false" />
-            <element signature="e#8153#8291#0" expanded="false" />
-            <element signature="e#8191#8275#0" expanded="false" />
-            <element signature="e#8362#8472#0" expanded="false" />
-            <element signature="e#8400#8456#0" expanded="false" />
-            <element signature="e#8555#8695#0" expanded="false" />
-            <element signature="e#8741#11505#0" expanded="false" />
-            <element signature="e#8870#9054#0" expanded="false" />
-            <element signature="e#8953#9040#0" expanded="false" />
-            <element signature="e#9104#9295#0" expanded="false" />
-            <element signature="e#9190#9281#0" expanded="false" />
-            <element signature="e#9413#10455#0" expanded="false" />
-            <element signature="e#9484#10129#0" expanded="false" />
-            <element signature="e#9597#9927#0" expanded="false" />
-            <element signature="e#9749#9901#0" expanded="false" />
-            <element signature="e#9787#9871#0" expanded="false" />
-            <element signature="e#9970#10087#0" expanded="false" />
-            <element signature="e#10199#10440#0" expanded="false" />
-            <element signature="e#10270#10418#0" expanded="false" />
-            <element signature="e#10672#10786#0" expanded="false" />
-            <element signature="e#10959#11144#0" expanded="false" />
-            <element signature="e#11012#11126#0" expanded="false" />
-            <element signature="e#11288#11474#0" expanded="false" />
-            <element signature="e#11341#11456#0" expanded="false" />
-            <element signature="e#11693#11904#0" expanded="false" />
-            <element signature="e#12311#12560#0" expanded="false" />
-            <element signature="e#12380#12546#0" expanded="false" />
-            <element signature="e#12630#12832#0" expanded="false" />
-            <element signature="e#12673#12812#0" expanded="false" />
-            <element signature="e#15400#15450#0" expanded="false" />
+            <element signature="e#1768#1839#0" expanded="false" />
+            <element signature="e#2118#4599#0" expanded="false" />
+            <element signature="e#2129#2391#0" expanded="false" />
+            <element signature="e#2443#3449#0" expanded="false" />
+            <element signature="e#2634#3435#0" expanded="false" />
+            <element signature="e#2689#2784#0" expanded="false" />
+            <element signature="e#2790#2908#0" expanded="false" />
+            <element signature="e#3192#3394#0" expanded="false" />
+            <element signature="e#3283#3372#0" expanded="false" />
+            <element signature="e#3460#3663#0" expanded="false" />
+            <element signature="e#3716#4592#0" expanded="false" />
+            <element signature="e#3875#4556#0" expanded="false" />
+            <element signature="e#4046#4114#0" expanded="false" />
+            <element signature="e#4149#4534#0" expanded="false" />
+            <element signature="e#4212#4330#0" expanded="false" />
+            <element signature="e#4336#4478#0" expanded="false" />
+            <element signature="e#5144#5231#0" expanded="false" />
+            <element signature="e#5299#5836#0" expanded="false" />
+            <element signature="e#5182#5215#0" expanded="false" />
+            <element signature="e#5918#6489#0" expanded="false" />
+            <element signature="e#5943#6473#0" expanded="false" />
+            <element signature="e#5997#6150#0" expanded="false" />
+            <element signature="e#6044#6127#0" expanded="false" />
+            <element signature="e#6204#6462#0" expanded="false" />
+            <element signature="e#6250#6439#0" expanded="false" />
+            <element signature="e#6331#6421#0" expanded="false" />
+            <element signature="e#6573#7222#0" expanded="false" />
+            <element signature="e#6598#7206#0" expanded="false" />
+            <element signature="e#6652#6807#0" expanded="false" />
+            <element signature="e#6699#6784#0" expanded="false" />
+            <element signature="e#6861#7195#0" expanded="false" />
+            <element signature="e#6907#7172#0" expanded="false" />
+            <element signature="e#6989#7154#0" expanded="false" />
+            <element signature="e#7307#7893#0" expanded="false" />
+            <element signature="e#7332#7877#0" expanded="false" />
+            <element signature="e#7386#7543#0" expanded="false" />
+            <element signature="e#7433#7520#0" expanded="false" />
+            <element signature="e#7597#7866#0" expanded="false" />
+            <element signature="e#7643#7843#0" expanded="false" />
+            <element signature="e#7726#7825#0" expanded="false" />
+            <element signature="e#7969#8329#0" expanded="false" />
+            <element signature="e#7332#7877#0" expanded="false" />
+            <element signature="e#7386#7543#0" expanded="false" />
+            <element signature="e#7433#7520#0" expanded="false" />
+            <element signature="e#7597#7866#0" expanded="false" />
+            <element signature="e#7643#7843#0" expanded="false" />
+            <element signature="e#7726#7825#0" expanded="false" />
+            <element signature="e#8424#8562#0" expanded="false" />
+            <element signature="e#8462#8546#0" expanded="false" />
+            <element signature="e#8111#8302#0" expanded="false" />
+            <element signature="e#8633#8743#0" expanded="false" />
+            <element signature="e#8671#8727#0" expanded="false" />
+            <element signature="e#8826#8966#0" expanded="false" />
+            <element signature="e#8864#8950#0" expanded="false" />
+            <element signature="e#9043#9310#0" expanded="false" />
+            <element signature="e#8864#8950#0" expanded="false" />
+            <element signature="e#11549#11740#0" expanded="false" />
+            <element signature="e#11635#11726#0" expanded="false" />
+            <element signature="e#14069#14363#0" expanded="false" />
+            <element signature="e#11858#12900#0" expanded="false" />
+            <element signature="e#11929#12574#0" expanded="false" />
+            <element signature="e#12042#12372#0" expanded="false" />
+            <element signature="e#12194#12346#0" expanded="false" />
+            <element signature="e#12232#12316#0" expanded="false" />
+            <element signature="e#12415#12532#0" expanded="false" />
+            <element signature="e#12644#12885#0" expanded="false" />
+            <element signature="e#12715#12863#0" expanded="false" />
+            <element signature="e#14442#14698#0" expanded="false" />
+            <element signature="e#14593#14684#0" expanded="false" />
+            <element signature="e#13117#13231#0" expanded="false" />
+            <element signature="e#14756#15005#0" expanded="false" />
+            <element signature="e#13404#13589#0" expanded="false" />
+            <element signature="e#13457#13571#0" expanded="false" />
+            <element signature="e#15075#15277#0" expanded="false" />
+            <element signature="e#13733#13919#0" expanded="false" />
+            <element signature="e#13786#13901#0" expanded="false" />
+            <element signature="e#15330#17811#0" expanded="false" />
+            <element signature="e#14069#14363#0" expanded="false" />
+            <element signature="e#14138#14349#0" expanded="false" />
+            <element signature="e#14442#14698#0" expanded="false" />
+            <element signature="e#14593#14684#0" expanded="false" />
+            <element signature="e#15404#16488#0" expanded="false" />
+            <element signature="e#14825#14991#0" expanded="false" />
+            <element signature="e#16566#17801#0" expanded="false" />
+            <element signature="e#15118#15257#0" expanded="false" />
+            <element signature="e#17845#17895#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="3480">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/objects/message/message-model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth-test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8319328" vertical-offset="195" max-vertical-offset="1215">
+          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/messages-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1456" max-vertical-offset="2580">
+          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/clients-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41323793" vertical-offset="519" max-vertical-offset="1110">
+          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
