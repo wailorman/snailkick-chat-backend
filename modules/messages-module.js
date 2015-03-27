@@ -163,5 +163,49 @@ var postMessage = function ( req, res, next ) {
 
 };
 
+var deleteMessage = function ( req, res, next ) {
+
+    var messageId = req.params.id;
+
+    async.series( [
+
+        // check id passed
+        function ( scb ) {
+
+            if ( ! messageId ) return scb( new restify.InvalidArgumentError( "Message id missing" ) );
+
+            scb();
+
+        },
+
+        // find msg with this id and remove it
+        function ( scb ) {
+
+            MessageModel
+                .findOne( { _id: new mf.ObjectId( messageId ) } )
+                .exec( function ( err, doc ) {
+
+                    if ( err ) return scb( new restify.InternalError( "Mongo find error: " + err ) );
+
+                    if ( ! doc ) return scb( new restify.ResourceNotFoundError( "Can't find message with such id" ) );
+
+                    doc.remove( function ( err ) {
+
+                        if ( err ) return scb( new restify.InternalError( "Mongo remove error: " + err ) );
+                        res.send( 200 );
+
+                        scb();
+
+                    } );
+
+                } );
+
+        }
+
+    ], next );
+
+};
+
+module.exports.deleteMessage = deleteMessage;
 module.exports.findMessages = findMessages;
 module.exports.postMessage = postMessage;

@@ -59,6 +59,7 @@ server.use( function ( req, res, next ) {
 
 server.get( '/messages', MessagesModule.findMessages );
 server.post( '/messages', MessagesModule.postMessage );
+server.del( '/messages/:id', MessagesModule.deleteMessage );
 
 server.get( '/clients/:id', ClientsModule.getClient );
 

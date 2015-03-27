@@ -26,7 +26,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90138990-ec94-46aa-b87e-0499b4795de1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/clients-module.js" afterPath="$PROJECT_DIR$/modules/clients-module.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js" afterPath="$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/messages-module.js" afterPath="$PROJECT_DIR$/modules/messages-module.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oauth-test.js" afterPath="$PROJECT_DIR$/oauth-test.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -51,14 +52,14 @@
     <favorites_list name="snailkick-chat-backend" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.48009798">
+    <splitter split-orientation="horizontal" split-proportion="0.53091687">
       <split-first>
         <leaf>
-          <file leaf-file-name="clients-module.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="clients-module.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/modules/clients-module.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.41323793" vertical-offset="519" max-vertical-offset="1110">
-                  <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="690" max-vertical-offset="1184">
+                  <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -67,18 +68,18 @@
           <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Dockerfile">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="255">
+                <state vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="272">
                   <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="messages-module.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="messages-module.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/modules/messages-module.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="1456" max-vertical-offset="2580">
-                  <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.256651" vertical-offset="2508" max-vertical-offset="3456">
+                  <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -87,7 +88,7 @@
           <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/objects/client/client.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
+                <state vertical-scroll-proportion="0.0" vertical-offset="336" max-vertical-offset="848">
                   <caret line="36" column="65" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
                   <folding>
                     <element signature="e#432#503#0" expanded="false" />
@@ -144,7 +145,7 @@
           <file leaf-file-name="king-online.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/modules/king-online.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1290">
+                <state vertical-scroll-proportion="0.0" vertical-offset="800" max-vertical-offset="1376">
                   <caret line="50" column="64" selection-start-line="50" selection-start-column="64" selection-end-line="50" selection-end-column="64" />
                   <folding />
                 </state>
@@ -154,7 +155,7 @@
           <file leaf-file-name="client-model.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/objects/client/client-model.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="585">
+                <state vertical-scroll-proportion="0.0" vertical-offset="368" max-vertical-offset="624">
                   <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
                   <folding />
                 </state>
@@ -164,7 +165,7 @@
           <file leaf-file-name="token-model.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/objects/client/token-model.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="405">
+                <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="432">
                   <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
                   <folding />
                 </state>
@@ -174,9 +175,11 @@
           <file leaf-file-name="message.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/objects/message/message.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="4524" max-vertical-offset="5040">
+                <state vertical-scroll-proportion="0.0" vertical-offset="4033" max-vertical-offset="5376">
                   <caret line="322" column="22" selection-start-line="322" selection-start-column="22" selection-end-line="322" selection-end-column="22" />
-                  <folding />
+                  <folding>
+                    <marker date="1425894736239" expanded="true" signature="1426:1618" placeholder="{...}" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -184,8 +187,8 @@
           <file leaf-file-name="message-model.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/objects/message/message-model.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
-                  <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="592">
+                  <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
                   <folding />
                 </state>
               </provider>
@@ -195,29 +198,27 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="oauth-test.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="oauth-test.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/oauth-test.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.8319328" vertical-offset="195" max-vertical-offset="1215">
-                  <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="413" max-vertical-offset="1312">
+                  <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="messages-module-e2e.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="messages-module-e2e.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="2629" max-vertical-offset="4920">
-                  <caret line="500" column="13" selection-start-line="500" selection-start-column="13" selection-end-line="500" selection-end-column="13" />
+                <state vertical-scroll-proportion="0.6616314" vertical-offset="1946" max-vertical-offset="3648">
+                  <caret line="650" column="0" selection-start-line="650" selection-start-column="0" selection-end-line="650" selection-end-column="0" />
                   <folding>
                     <element signature="e#561#632#0" expanded="false" />
-                    <element signature="e#711#1334#0" expanded="false" />
                     <element signature="e#791#926#0" expanded="false" />
                     <element signature="e#957#1316#0" expanded="false" />
                     <element signature="e#1154#1298#0" expanded="false" />
                     <element signature="e#1768#1839#0" expanded="false" />
-                    <element signature="e#2118#4599#0" expanded="false" />
                     <element signature="e#2129#2391#0" expanded="false" />
                     <element signature="e#2443#3449#0" expanded="false" />
                     <element signature="e#2634#3435#0" expanded="false" />
@@ -226,15 +227,14 @@
                     <element signature="e#3192#3394#0" expanded="false" />
                     <element signature="e#3283#3372#0" expanded="false" />
                     <element signature="e#3460#3663#0" expanded="false" />
-                    <element signature="e#3716#4592#0" expanded="false" />
-                    <element signature="e#3875#4556#0" expanded="false" />
                     <element signature="e#4046#4114#0" expanded="false" />
                     <element signature="e#4149#4534#0" expanded="false" />
                     <element signature="e#4212#4330#0" expanded="false" />
                     <element signature="e#4336#4478#0" expanded="false" />
+                    <element signature="e#5037#5084#0" expanded="false" />
                     <element signature="e#5144#5231#0" expanded="false" />
-                    <element signature="e#5299#5836#0" expanded="false" />
                     <element signature="e#5182#5215#0" expanded="false" />
+                    <element signature="e#5299#5836#0" expanded="false" />
                     <element signature="e#5918#6489#0" expanded="false" />
                     <element signature="e#5943#6473#0" expanded="false" />
                     <element signature="e#5997#6150#0" expanded="false" />
@@ -257,24 +257,18 @@
                     <element signature="e#7643#7843#0" expanded="false" />
                     <element signature="e#7726#7825#0" expanded="false" />
                     <element signature="e#7969#8329#0" expanded="false" />
-                    <element signature="e#7332#7877#0" expanded="false" />
-                    <element signature="e#7386#7543#0" expanded="false" />
-                    <element signature="e#7433#7520#0" expanded="false" />
-                    <element signature="e#7597#7866#0" expanded="false" />
-                    <element signature="e#7643#7843#0" expanded="false" />
-                    <element signature="e#7726#7825#0" expanded="false" />
+                    <element signature="e#8111#8302#0" expanded="false" />
                     <element signature="e#8424#8562#0" expanded="false" />
                     <element signature="e#8462#8546#0" expanded="false" />
-                    <element signature="e#8111#8302#0" expanded="false" />
                     <element signature="e#8633#8743#0" expanded="false" />
                     <element signature="e#8671#8727#0" expanded="false" />
                     <element signature="e#8826#8966#0" expanded="false" />
                     <element signature="e#8864#8950#0" expanded="false" />
-                    <element signature="e#9043#9310#0" expanded="false" />
-                    <element signature="e#8864#8950#0" expanded="false" />
+                    <element signature="e#9406#10778#0" expanded="false" />
+                    <element signature="e#10862#11140#0" expanded="false" />
+                    <element signature="e#11186#13950#0" expanded="false" />
                     <element signature="e#11549#11740#0" expanded="false" />
                     <element signature="e#11635#11726#0" expanded="false" />
-                    <element signature="e#14069#14363#0" expanded="false" />
                     <element signature="e#11858#12900#0" expanded="false" />
                     <element signature="e#11929#12574#0" expanded="false" />
                     <element signature="e#12042#12372#0" expanded="false" />
@@ -283,25 +277,23 @@
                     <element signature="e#12415#12532#0" expanded="false" />
                     <element signature="e#12644#12885#0" expanded="false" />
                     <element signature="e#12715#12863#0" expanded="false" />
-                    <element signature="e#14442#14698#0" expanded="false" />
-                    <element signature="e#14593#14684#0" expanded="false" />
                     <element signature="e#13117#13231#0" expanded="false" />
-                    <element signature="e#14756#15005#0" expanded="false" />
                     <element signature="e#13404#13589#0" expanded="false" />
                     <element signature="e#13457#13571#0" expanded="false" />
-                    <element signature="e#15075#15277#0" expanded="false" />
                     <element signature="e#13733#13919#0" expanded="false" />
                     <element signature="e#13786#13901#0" expanded="false" />
-                    <element signature="e#15330#17811#0" expanded="false" />
                     <element signature="e#14069#14363#0" expanded="false" />
                     <element signature="e#14138#14349#0" expanded="false" />
                     <element signature="e#14442#14698#0" expanded="false" />
                     <element signature="e#14593#14684#0" expanded="false" />
-                    <element signature="e#15404#16488#0" expanded="false" />
+                    <element signature="e#14756#15005#0" expanded="false" />
                     <element signature="e#14825#14991#0" expanded="false" />
-                    <element signature="e#16566#17801#0" expanded="false" />
+                    <element signature="e#15075#15277#0" expanded="false" />
                     <element signature="e#15118#15257#0" expanded="false" />
-                    <element signature="e#17845#17895#0" expanded="false" />
+                    <element signature="e#15330#17814#0" expanded="false" />
+                    <element signature="e#15404#16488#0" expanded="false" />
+                    <element signature="e#16566#17804#0" expanded="false" />
+                    <element signature="e#19251#19301#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -310,7 +302,7 @@
           <file leaf-file-name="vk-auth.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="3480">
+                <state vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="3712">
                   <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
                   <folding />
                 </state>
@@ -320,7 +312,7 @@
           <file leaf-file-name="clients-module-e2e.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test/e2e/clients/clients-module-e2e.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="3608" max-vertical-offset="4170">
+                <state vertical-scroll-proportion="0.0" vertical-offset="4032" max-vertical-offset="4448">
                   <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
                   <folding />
                 </state>
@@ -330,7 +322,7 @@
           <file leaf-file-name="messages-module-unit.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test/modules/messages/messages-module-unit.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="2965" max-vertical-offset="6225">
+                <state vertical-scroll-proportion="0.0" vertical-offset="3568" max-vertical-offset="6640">
                   <caret line="223" column="11" selection-start-line="223" selection-start-column="11" selection-end-line="223" selection-end-column="11" />
                   <folding />
                 </state>
@@ -381,11 +373,11 @@
         <option value="$PROJECT_DIR$/objects/client/client-model.js" />
         <option value="$PROJECT_DIR$/objects/client/client.js" />
         <option value="$PROJECT_DIR$/test/modules/messages/messages-module-unit.js" />
-        <option value="$PROJECT_DIR$/modules/messages-module.js" />
-        <option value="$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js" />
         <option value="$PROJECT_DIR$/modules/auth/vk-auth.js" />
-        <option value="$PROJECT_DIR$/oauth-test.js" />
         <option value="$PROJECT_DIR$/modules/clients-module.js" />
+        <option value="$PROJECT_DIR$/modules/messages-module.js" />
+        <option value="$PROJECT_DIR$/oauth-test.js" />
+        <option value="$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js" />
       </list>
     </option>
   </component>
@@ -455,7 +447,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -642,6 +633,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -766,11 +758,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Mocha.all">
+  <component name="RunManager" selected="Mocha.module messages e2e">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <method />
     </configuration>
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -778,10 +774,6 @@
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="Chrome Canary" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -1195,32 +1187,38 @@
       <option name="project" value="LOCAL" />
       <updated>1425894498590</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Delete req.client if no token passed to avoid some errors">
+      <created>1425896690824</created>
+      <option name="number" value="00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1425896690824</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.50757575" sideWeight="0.65351814" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44372293" sideWeight="0.65351814" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45238096" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12953092" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="810" y="208" width="300" height="624" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12953092" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="810" y="208" width="300" height="624" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24242425" sideWeight="0.6273987" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24242425" sideWeight="0.6273987" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24242425" sideWeight="0.37260127" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26385927" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1736" height="856" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33405405" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1244,7 +1242,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="+ Dockerfile" />
     <MESSAGE value="remove CMD from Dockerfile" />
     <MESSAGE value="fix ADD in Dockerfile" />
     <MESSAGE value="+ EXPOSE &amp; turn back CMD" />
@@ -1269,36 +1266,34 @@
     <MESSAGE value="Finish ban-list (without control panel)" />
     <MESSAGE value="Finish ban-list (without control panel)&#10;&#10;commit 2d5e211cf0414c378018e0fcdca9d4d2af2a94bd&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Fri Mar 6 22:46:06 2015 +0300&#10;&#10;    Finish ban-list (without control panel)&#10;&#10;commit f9854f1e5f27dd84b0ca48a407b7ee90e37b5117&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Fri Mar 6 21:05:36 2015 +0300&#10;&#10;    + attach client to request module&#10;&#10;commit dad9f795b6ccf1fcf20f11c89a587bc833efb5bb&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Fri Mar 6 21:04:37 2015 +0300&#10;&#10;    + attach client to request middleware&#10;&#10;commit 84a4db9e9987f6f4ec468bb08a79075f8aefb88f&#10;Author: wailorman &lt;wailorman@gmail.com&gt;&#10;Date:   Fri Mar 6 20:59:43 2015 +0300&#10;&#10;    Start creating ban list&#10;" />
     <MESSAGE value="Fix error: Able to post message without token" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix error: Able to post message without token" />
+    <MESSAGE value="Delete req.client if no token passed to avoid some errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete req.client if no token passed to avoid some errors" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/modules/clients-module.js</url>
-          <line>61</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js</url>
-          <line>398</line>
-          <option name="timeStamp" value="45" />
+          <line>798</line>
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="47" />
+      <option name="time" value="52" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="NodeJSConfigurationType">
         <watch expression="client" language="JavaScript" />
         <watch expression="docs" language="JavaScript" />
         <watch expression="generatedToken" language="JavaScript" />
-        <watch expression="req.params.token" language="JavaScript" />
-        <watch expression="req.route.name === 'getmessages' " language="JavaScript" />
+        <watch expression="messageId" language="JavaScript" />
+        <watch expression="req.params.id" />
+        <watch expression="req" language="JavaScript" />
       </configuration>
       <configuration name="mocha-javascript-test-runner">
         <watch expression="client" language="JavaScript" />
         <watch expression="docs" language="JavaScript" />
         <watch expression="generatedToken" language="JavaScript" />
+        <watch expression="messageId" language="JavaScript" />
       </configuration>
     </watches-manager>
   </component>
@@ -1665,14 +1660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/objects/message/message.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4524" max-vertical-offset="5040">
-          <caret line="322" column="22" selection-start-line="322" selection-start-column="22" selection-end-line="322" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/objects/client/client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
@@ -1744,18 +1731,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="3480">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/objects/message/message.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4033" max-vertical-offset="5376">
+          <caret line="322" column="22" selection-start-line="322" selection-start-column="22" selection-end-line="322" selection-end-column="22" />
+          <folding>
+            <marker date="1425894736239" expanded="true" signature="1426:1618" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/objects/message/message-model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="592">
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/clients-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="690" max-vertical-offset="1184">
+          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth-test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="413" max-vertical-offset="1312">
+          <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/messages-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.256651" vertical-offset="2508" max-vertical-offset="3456">
+          <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/e2e/messages/messages-module-e2e.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2629" max-vertical-offset="4920">
-          <caret line="500" column="13" selection-start-line="500" selection-start-column="13" selection-end-line="500" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.6616314" vertical-offset="1946" max-vertical-offset="3648">
+          <caret line="650" column="0" selection-start-line="650" selection-start-column="0" selection-end-line="650" selection-end-column="0" />
           <folding>
             <element signature="e#561#632#0" expanded="false" />
-            <element signature="e#711#1334#0" expanded="false" />
             <element signature="e#791#926#0" expanded="false" />
             <element signature="e#957#1316#0" expanded="false" />
             <element signature="e#1154#1298#0" expanded="false" />
             <element signature="e#1768#1839#0" expanded="false" />
-            <element signature="e#2118#4599#0" expanded="false" />
             <element signature="e#2129#2391#0" expanded="false" />
             <element signature="e#2443#3449#0" expanded="false" />
             <element signature="e#2634#3435#0" expanded="false" />
@@ -1764,15 +1799,14 @@
             <element signature="e#3192#3394#0" expanded="false" />
             <element signature="e#3283#3372#0" expanded="false" />
             <element signature="e#3460#3663#0" expanded="false" />
-            <element signature="e#3716#4592#0" expanded="false" />
-            <element signature="e#3875#4556#0" expanded="false" />
             <element signature="e#4046#4114#0" expanded="false" />
             <element signature="e#4149#4534#0" expanded="false" />
             <element signature="e#4212#4330#0" expanded="false" />
             <element signature="e#4336#4478#0" expanded="false" />
+            <element signature="e#5037#5084#0" expanded="false" />
             <element signature="e#5144#5231#0" expanded="false" />
-            <element signature="e#5299#5836#0" expanded="false" />
             <element signature="e#5182#5215#0" expanded="false" />
+            <element signature="e#5299#5836#0" expanded="false" />
             <element signature="e#5918#6489#0" expanded="false" />
             <element signature="e#5943#6473#0" expanded="false" />
             <element signature="e#5997#6150#0" expanded="false" />
@@ -1795,24 +1829,18 @@
             <element signature="e#7643#7843#0" expanded="false" />
             <element signature="e#7726#7825#0" expanded="false" />
             <element signature="e#7969#8329#0" expanded="false" />
-            <element signature="e#7332#7877#0" expanded="false" />
-            <element signature="e#7386#7543#0" expanded="false" />
-            <element signature="e#7433#7520#0" expanded="false" />
-            <element signature="e#7597#7866#0" expanded="false" />
-            <element signature="e#7643#7843#0" expanded="false" />
-            <element signature="e#7726#7825#0" expanded="false" />
+            <element signature="e#8111#8302#0" expanded="false" />
             <element signature="e#8424#8562#0" expanded="false" />
             <element signature="e#8462#8546#0" expanded="false" />
-            <element signature="e#8111#8302#0" expanded="false" />
             <element signature="e#8633#8743#0" expanded="false" />
             <element signature="e#8671#8727#0" expanded="false" />
             <element signature="e#8826#8966#0" expanded="false" />
             <element signature="e#8864#8950#0" expanded="false" />
-            <element signature="e#9043#9310#0" expanded="false" />
-            <element signature="e#8864#8950#0" expanded="false" />
+            <element signature="e#9406#10778#0" expanded="false" />
+            <element signature="e#10862#11140#0" expanded="false" />
+            <element signature="e#11186#13950#0" expanded="false" />
             <element signature="e#11549#11740#0" expanded="false" />
             <element signature="e#11635#11726#0" expanded="false" />
-            <element signature="e#14069#14363#0" expanded="false" />
             <element signature="e#11858#12900#0" expanded="false" />
             <element signature="e#11929#12574#0" expanded="false" />
             <element signature="e#12042#12372#0" expanded="false" />
@@ -1821,66 +1849,24 @@
             <element signature="e#12415#12532#0" expanded="false" />
             <element signature="e#12644#12885#0" expanded="false" />
             <element signature="e#12715#12863#0" expanded="false" />
-            <element signature="e#14442#14698#0" expanded="false" />
-            <element signature="e#14593#14684#0" expanded="false" />
             <element signature="e#13117#13231#0" expanded="false" />
-            <element signature="e#14756#15005#0" expanded="false" />
             <element signature="e#13404#13589#0" expanded="false" />
             <element signature="e#13457#13571#0" expanded="false" />
-            <element signature="e#15075#15277#0" expanded="false" />
             <element signature="e#13733#13919#0" expanded="false" />
             <element signature="e#13786#13901#0" expanded="false" />
-            <element signature="e#15330#17811#0" expanded="false" />
             <element signature="e#14069#14363#0" expanded="false" />
             <element signature="e#14138#14349#0" expanded="false" />
             <element signature="e#14442#14698#0" expanded="false" />
             <element signature="e#14593#14684#0" expanded="false" />
-            <element signature="e#15404#16488#0" expanded="false" />
+            <element signature="e#14756#15005#0" expanded="false" />
             <element signature="e#14825#14991#0" expanded="false" />
-            <element signature="e#16566#17801#0" expanded="false" />
+            <element signature="e#15075#15277#0" expanded="false" />
             <element signature="e#15118#15257#0" expanded="false" />
-            <element signature="e#17845#17895#0" expanded="false" />
+            <element signature="e#15330#17814#0" expanded="false" />
+            <element signature="e#15404#16488#0" expanded="false" />
+            <element signature="e#16566#17804#0" expanded="false" />
+            <element signature="e#19251#19301#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/auth/vk-auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="3480">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/objects/message/message-model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oauth-test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8319328" vertical-offset="195" max-vertical-offset="1215">
-          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/messages-module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1456" max-vertical-offset="2580">
-          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/clients-module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41323793" vertical-offset="519" max-vertical-offset="1110">
-          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>

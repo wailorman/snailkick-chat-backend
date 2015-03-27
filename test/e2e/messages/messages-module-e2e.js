@@ -732,7 +732,7 @@ describe( 'Messages REST', function () {
                     restifyClient.post(
                         '/messages?token=' + clientToken,
                         {
-                            text: 'Message with text and sticker',
+                            text:    'Message with text and sticker',
                             sticker: "01008"
                         },
                         function ( err ) {
@@ -768,6 +768,67 @@ describe( 'Messages REST', function () {
                 }
 
             ], done );
+
+        } );
+
+    } );
+
+    describe( 'delete message', function () {
+
+        var messageId;
+
+        it( 'should create message', function ( done ) {
+
+            restifyClient.post( '/messages?token='+clientToken, { text: 'The Random text' },
+                function ( err ) {
+
+                    should.not.exist( err );
+                    done();
+
+                }
+            );
+
+        } );
+
+        it( 'should find new message', function ( done ) {
+
+            restifyClient.get( '/messages', function ( err, req, res, data ) {
+
+                should.not.exist( err );
+
+                //data[ 0 ].id.should.eql( messageId );
+                data[ 0 ].text.should.eql( 'The Random text' );
+                data[ 0 ].client.should.eql( clientId );
+
+                messageId = data[ 0 ].id;
+
+                done();
+            } );
+
+        } );
+
+        it( 'should send DELETE request', function ( done ) {
+
+            restifyClient.del( '/messages/' + messageId, function ( err ) {
+
+                should.not.exist( err );
+                done();
+
+            } );
+
+        } );
+
+        it( 'should not find deleted message', function ( done ) {
+
+            restifyClient.get( '/messages', function ( err, req, res, data ) {
+
+                should.not.exist( err );
+
+                data[ 0 ].text.should.not.eql( 'The Random text' );
+
+                done();
+
+            } );
 
         } );
 
