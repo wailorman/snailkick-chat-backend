@@ -141,6 +141,7 @@ Client.prototype.create = function ( data, next ) {
 
                 if ( data.avatar )   dataForWrite.avatar = data.avatar;
                 if ( data.profile )  dataForWrite.profile = data.profile;
+                if ( data.statuses )  dataForWrite.statuses = data.statuses;
 
                 var newDocument = new ClientModel( dataForWrite );
 

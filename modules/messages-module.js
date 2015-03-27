@@ -165,16 +165,35 @@ var postMessage = function ( req, res, next ) {
 
 var deleteMessage = function ( req, res, next ) {
 
-    var messageId = req.params.id;
+    var messageId = req.params.id,
+        client = req.client;
 
     async.series( [
 
-        // check id passed
+        // check params passed
         function ( scb ) {
 
-            if ( ! messageId ) return scb( new restify.InvalidArgumentError( "Message id missing" ) );
+            if ( !messageId ) return scb( new restify.InvalidArgumentError( "Message id missing" ) );
+
+            if ( !client ) return scb( new restify.ForbiddenError( "Token missing" ) );
 
             scb();
+
+        },
+
+        // check client statuses
+        function ( scb ) {
+
+            /** @namespace req.client.statuses.queen */
+            var isClientAllowedToDeleteMessages = req.client.statuses &&
+                                                  ( req.client.statuses.elf === true || req.client.statuses.king === true || req.client.statuses.queen === true );
+
+
+            if ( isClientAllowedToDeleteMessages ) {
+                return scb();
+            } else {
+                return scb( new restify.ForbiddenError( "You are not allowed to delete messages" ) );
+            }
 
         },
 
@@ -187,7 +206,7 @@ var deleteMessage = function ( req, res, next ) {
 
                     if ( err ) return scb( new restify.InternalError( "Mongo find error: " + err ) );
 
-                    if ( ! doc ) return scb( new restify.ResourceNotFoundError( "Can't find message with such id" ) );
+                    if ( !doc ) return scb( new restify.ResourceNotFoundError( "Can't find message with such id" ) );
 
                     doc.remove( function ( err ) {
 

@@ -775,11 +775,41 @@ describe( 'Messages REST', function () {
 
     describe( 'delete message', function () {
 
-        var messageId;
+        var messageId, privilegedClientToken;
+
+        // create special client with statuses
+        before( function ( done ) {
+
+            var theClient = new Client();
+
+            theClient.create(
+                {
+                    name:     'Крутой Сергей',
+                    avatar:   'http://cs322630.vk.me/v322630142/30f5/W_dxOG7y8AE.jpg',
+                    statuses: {
+                        elf: true
+                    }
+                },
+                function ( err ) {
+
+                    should.not.exist( err );
+
+                    theClient.attachToken( function ( err, token ) {
+
+                        should.not.exist( err );
+                        privilegedClientToken = token;
+
+                        done();
+
+                    } );
+                }
+            );
+
+        } );
 
         it( 'should create message', function ( done ) {
 
-            restifyClient.post( '/messages?token='+clientToken, { text: 'The Random text' },
+            restifyClient.post( '/messages?token=' + clientToken, { text: 'The Random text' },
                 function ( err ) {
 
                     should.not.exist( err );
@@ -807,9 +837,20 @@ describe( 'Messages REST', function () {
 
         } );
 
-        it( 'should send DELETE request', function ( done ) {
+        it( 'should not allow to delete message for non-admins', function ( done ) {
 
-            restifyClient.del( '/messages/' + messageId, function ( err ) {
+            restifyClient.del( '/messages/' + messageId + '?token=' + clientToken, function ( err ) {
+
+                should.exist( err );
+                done();
+
+            } );
+
+        } );
+
+        it( 'should allow to delete message for admins (elf, king, queen, ...)', function ( done ) {
+
+            restifyClient.del( '/messages/' + messageId + '?token=' + privilegedClientToken, function ( err ) {
 
                 should.not.exist( err );
                 done();
@@ -817,6 +858,8 @@ describe( 'Messages REST', function () {
             } );
 
         } );
+
+        it( 'should allow to delete for admins (elf, king, queen)' );
 
         it( 'should not find deleted message', function ( done ) {
 
