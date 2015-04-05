@@ -20,6 +20,7 @@
   "scripts": {
     "preinstall": "npm install -g forever",
     "start": "forever start -o snailkick-chat-backend.out.log -e snailkick-chat-backend.error.log ./oauth-test.js",
-    "stop": "forever stop ./oauth-test.js"
+    "stop": "forever stop ./oauth-test.js",
+    "restart": "npm stop && npm start"
   }
 }
