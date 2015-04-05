@@ -18,6 +18,8 @@
     "mocha": "^2.1.0"
   },
   "scripts": {
-    "start": "npm i && node oauth-test.js"
+    "preinstall": "npm install -g forever",
+    "start": "forever start -o snailkick-chat-backend.out.log -e snailkick-chat-backend.error.log ./oauth-test.js",
+    "stop": "forever stop ./oauth-test.js"
   }
 }
