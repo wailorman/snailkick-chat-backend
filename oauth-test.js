@@ -29,7 +29,7 @@ var mongoHost;
 if ( process.env.MONGO_HOST ) {
     mongoHost = 'mongodb://' + process.env.MONGO_HOST + '/snailkick-chat';
 } else {
-    mongoHost = 'mongodb://localhost/snailkick-chat';
+    mongoHost = 'mongodb://snail2:qwerty123@ds037601.mlab.com:37601/snailkick-chat';
 }
 
 console.log( 'Connecting to MongoDB server: ' + mongoHost );

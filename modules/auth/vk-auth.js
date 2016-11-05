@@ -166,7 +166,7 @@ var authResultMiddleware = function ( req, res, next ) {
             } );
 
             /** @namespace req.params.rkey */
-            var redirectTo = req.params.rto ? req.params.rto : 'http://chat.snailkick.ru/';
+            var redirectTo = req.params.rto ? req.params.rto : 'https://wailorman.github.io/snailkick-chat/built/';
 
             res.header( 'Location', redirectTo );
             res.send( 302 );
@@ -185,17 +185,17 @@ function passportHandler( req, res, next ) {
     var redirectUri, apiHost;
 
     if ( req.params.rto.match( /local/gi ) ) {
-        apiHost = 'api.chat.snailkick.local';
+        apiHost = 'localhost:1515';
     } else {
-        apiHost = 'api.chat.snailkick.ru';
+        apiHost = 'snailkick-chat-backend.herokuapp.com';
     }
 
     /** @namespace req.params.rto */
 
     if ( req.params.rto ) {
-        redirectUri = "http://" + apiHost + ":1515/auth/vk/callback?rto=" + req.params.rto;
+        redirectUri = "http://" + apiHost + "/auth/vk/callback?rto=" + req.params.rto;
     } else {
-        redirectUri = "http://" + apiHost + ":1515/auth/vk/callback";
+        redirectUri = "http://" + apiHost + "/auth/vk/callback";
     }
 
     passport.use(

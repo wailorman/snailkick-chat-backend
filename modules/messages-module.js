@@ -45,11 +45,12 @@ var findMessages = function ( req, res, next ) {
 
                 MessageModel
                     .find()
-                    .limit( limit )
+                    .limit( parseInt(limit) )
                     .sort( { _id: -1 } )
                     .exec( function ( err, docs ) {
 
                         if ( err ) return scb( new restify.InternalError( 'Mongo error: ' + err.message ) );
+                        // if ( err ) throw err;
 
                         if ( !docs ) return scb();
 
