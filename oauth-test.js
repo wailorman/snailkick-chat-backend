@@ -29,7 +29,7 @@ var mongoHost;
 if ( process.env.MONGO_HOST ) {
     mongoHost = 'mongodb://' + process.env.MONGO_HOST + '/snailkick-chat';
 } else {
-    mongoHost = 'mongodb://mongo.local/snailkick-chat';
+    mongoHost = 'mongodb://localhost/snailkick-chat';
 }
 
 console.log( 'Connecting to MongoDB server: ' + mongoHost );
@@ -68,7 +68,7 @@ server.get( '/auth/vk/callback', vkAuth.passportHandler, vkAuth.authResultMiddle
 
 server.get( '/is-king-online', KingOnline.isKingOnline );
 
-server.listen( 1515, function () {
+server.listen( process.env.PORT || 1515, function () {
     console.log( 'Server started!' );
 } );
 
