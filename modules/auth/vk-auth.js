@@ -166,7 +166,7 @@ var authResultMiddleware = function ( req, res, next ) {
             } );
 
             /** @namespace req.params.rkey */
-            var redirectTo = req.params.rto ? req.params.rto : 'https://wailorman.github.io/snailkick-chat/built/';
+            var redirectTo = req.params.rto ? req.params.rto : 'https%3A%2F%2Fwailorman.github.io%2Fsnailkick-chat%2Fbuilt%2F';
 
             res.header( 'Location', redirectTo );
             res.send( 302 );
